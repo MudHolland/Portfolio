@@ -1,0 +1,96 @@
+:root{
+	--primary:#f0c800;
+	--secondary: #940000;
+	--dark: #002033;
+	--white:#ffffff;
+	--dark-grey:#00304d;
+	--light-grey:#f0f1f1;
+}
+
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+html{
+	scroll-behavior: smooth;
+}
+
+body{
+	height:100dvh;
+	width:100dvw;
+	font-family: 'Rubik', sans-serif;
+	font-size:14px;
+	font-weight:400;
+	line-height:1.6;
+}
+
+main{
+	display:flex;
+	flex-direction: row;
+	width:dvw;;
+}
+
+header{
+	display:flex;
+	flex-direction: column;
+	position:sticky;
+	top:0;
+	width:33vw;
+	height:100vh;
+	background-color:var(--dark-grey);
+	color:var(--light-grey);
+	padding:1em;
+}
+
+.logo{
+	font-weight:700;
+	font-size:6em;
+	color:var(--primary);
+
+}
+
+.categories{
+    position: relative;
+	background-color:var(--light-grey);
+	color:var(--dark);
+	height:100dvh;
+    scroll-behavior: smooth;
+    overflow: auto;
+    scroll-snap-type:y mandatory;
+}
+
+nav{
+	font-weight:700;
+	font-size:3em;
+}
+
+nav a{
+	color:var(--white);
+	text-decoration: none;
+}
+
+nav ul{
+	font-size:1em;
+	list-style: none;
+	opacity:0.5;
+}
+
+nav a .active{
+	opacity: 1.0;
+	cursor:default;
+}
+
+article{
+	padding:1em;
+    scroll-snap-align: start;
+	height:80dvh;
+}
+
+h2{
+	font-size:3em;
+	bottom:0;
+	color:var(--primary);
+}

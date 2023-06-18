@@ -1,0 +1,29 @@
+body{
+	color:#002033;
+	font-family:'Courier New', Courier, monospace;
+	transition: all 200ms;
+}
+
+html{
+	scroll-behavior: smooth;
+}
+
+.du-dark,.du-hover-dark:hover{
+	color:#fff!important;
+	background-color:#002033!important
+}
+
+.du-yellow,.du-hover-yellow:hover{
+	color:#002033!important;
+	background-color:#ffc800!important
+}
+
+du.red,.du-hover-red:hover{
+	color:#ffc800!important;
+	background-color: #940000!important;
+}
+
+img{
+	border-radius: 8px;
+	box-shadow: 0px 2px 4px #002033;
+}

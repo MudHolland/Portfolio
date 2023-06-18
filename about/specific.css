@@ -1,0 +1,68 @@
+.header > .nav-bar {
+	background-color:var(--secondary);
+	margin-bottom:-1px;
+}
+
+.no-top-padding {
+	padding:.6rem 0 4rem 0;
+}
+
+.nav-bar > .wrapper > nav > ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-bar > .wrapper > nav > ul > li{
+	display: inline;
+}
+
+.nav-bar > .wrapper > nav > ul > li > a{
+	color:var(--white);
+	opacity:0.5;
+	font-weight:700;
+	text-decoration: none;
+	transition:200ms;
+}
+
+.nav-bar > .wrapper > nav > ul > li > a:hover{
+	opacity:1;
+	color:var(--primary);
+	text-decoration: underline;
+}
+
+.nav-bar > .wrapper > nav > ul > li > a.active{
+	opacity:1;
+	color:var(--primary);
+}
+
+.nav-bar > .wrapper > nav > ul > li > a.active:hover{
+	text-decoration: none;
+	cursor:default;
+}
+
+
+  
+.nav-bar > .wrapper > nav > ul > li:first-child {
+	padding:0px;
+	margin:0px;
+}
+
+/* .angle-bottom {
+	margin: -2em -2em 0em -2em;
+	padding:4em 0 2em 0;
+	transform: rotate(-3deg);
+	margin-bottom: 3rem;
+}
+
+.angle-top {
+	margin: 0em -2em -2em -2em;
+	padding: 4rem 0 4rem 0;
+	transform: rotate(-3deg);
+}
+
+.angle-both {
+	margin: 0em -2em 3rem -2em;
+	padding: 4rem 0;
+	transform: rotate(-3deg);
+} */

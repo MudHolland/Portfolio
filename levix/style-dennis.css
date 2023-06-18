@@ -1,0 +1,218 @@
+html, body {
+	margin: 0px; 
+	padding: 0px;
+	height: 100%;
+
+}
+
+h1{
+	color:#fdeb00;
+	font-size:24px;
+	padding-bottom:20px;
+	font-weight:700;
+	text-align:center;
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-shadow: 2px 2px 0px rgba(0,49,98,0.75);
+}
+
+.bg img{
+	min-height: 100%;
+  	min-width: 1280px;
+  	width: 100%;
+  	height: auto;
+  	position: fixed;
+  	top: 0;
+  	left: 0;
+	z-index: -1;
+}
+
+
+
+.logo{
+	position:relative;
+	top: 20%;
+	z-index:10;
+	width:245px;
+    margin: 0 auto;
+}
+
+.logo img{
+	width:245px;
+}
+
+#search{
+	width:80%;
+	min-width:320px;
+	max-width:600px;
+	margin:0px auto;
+	text-align:center;
+	position:relative;
+	top: 30%;
+}
+
+
+
+.knoppen{
+	width: 850px;
+	margin:0px auto;
+	text-align:center;
+	position:relative;
+	top: 40%;  
+}
+
+.RSS{
+	width: 850px;
+	margin:0px auto;
+	text-align:center;
+	position:relative;
+	top: 30px;  
+}
+.RSS2{
+	width: 1100px;
+	margin:0px auto;
+	text-align:center;
+	position:relative;
+	top: 200px;  
+}
+
+.Nu{
+	display:inline-block;
+	vertical-align: middle;
+	position: relative;
+	left:0px;
+	width:520px;
+	min-height:400px;
+	margin:10px; 
+}
+
+.twitter-timeline{
+	display:inline-block;
+	position: relative;
+	left: 850px;
+	min-height:400px;
+	margin:10px;
+	float:right;
+}
+
+.Telegraaf{
+	display:inline-block;
+	vertical-align: middle;
+	position:relative;
+	left: 0px;
+	width:520px;
+	min-height:400px;
+	margin:10px;
+	
+}
+
+.nieuws h1{
+	padding-top:5px;
+	padding-bottom:10px;
+	background-color:#004a95;
+	border-radius:5px 5px 0px 0px;
+}
+
+.nieuws img{  
+	padding:5px;
+	max-width:100%;
+	max-height:100px;
+	width:auto;
+}
+
+.knop{
+	display:inline-block;
+	vertical-align: middle;
+	width:250px;
+	margin:10px;
+}
+
+.knop a{
+	padding:50px; 
+	height:150px; 
+	width:150px;
+}
+
+.knop img{ 
+	height:100px; 
+	width:100px;
+}
+
+input[type="text"] {
+	display: block;
+	margin: 0;
+	width: 80%;
+	height:50px;
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	color:#333;
+	font-size: 18px;
+	appearance: none;
+	box-shadow: none;
+	border-radius: 4px 0px 0px 4px;
+	background-color: #fff;
+	padding-left: 15px;
+	border: solid 0px #bbb;
+	transition: box-shadow 0.3s, border 0.3s;
+	float:left;
+	-webkit-box-shadow: 2px 2px 0px 0px rgba(0,49,98,0.75);
+	-moz-box-shadow: 2px 2px 0px 0px rgba(0,49,98,0.75);
+	box-shadow: 2px 2px 0px 0px rgba(0,49,98,0.75);
+}
+
+
+#submit {
+    	background-color: #fdeb00;
+    	color: #004a95;
+	height:50px;
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    	font-size: 18px;
+    	text-decoration: none;
+    	cursor: pointer;
+	border:none;
+	padding: 10px;
+	width:20%;
+	display:block;
+	float:left;
+	border-radius: 0px 4px 4px 0px;
+	-webkit-box-shadow: 2px 2px 0px 0px rgba(0,49,98,0.75);
+	-moz-box-shadow: 2px 2px 0px 0px rgba(0,49,98,0.75);
+	box-shadow: 2px 2px 0px 0px rgba(0,49,98,0.75);
+}
+
+@media screen and (max-width: 850px) {
+	.bg  img{
+    		left: 50%;
+    		margin-left: -640px;
+  	}  
+
+	#search{
+		top:10%;
+	}
+	
+	.logo{
+		top:10px;
+	}
+	
+	.knoppen{
+		width: 100%;
+		max-width:500px;
+		top: 30%;  
+	}
+
+	.knop{
+		width:25%;
+	}
+
+	.knop img{ 
+		height:72px; 
+		width:72px;
+	}
+	
+	.knop a{
+		padding:0px; 
+	}
+
+	h1{
+		font-size:20px;
+	}
+}
+

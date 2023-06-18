@@ -1,0 +1,25 @@
+p{
+	z-index:1;
+}
+
+mark{
+	transform:skewX(15deg);
+	opacity:1;
+	background:var(--secondary);
+	color:var(--white);
+	z-index:0;
+}
+
+abbr{
+	text-decoration: 2px underline dotted var(--secondary);
+}
+
+abbr:hover{
+	content:attr(data-attribute);
+	position:relative;
+	top:-1em;
+	width:20px;
+	height:20px;
+	background:var(--dark);
+	color:white;
+}

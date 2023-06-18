@@ -1,0 +1,66 @@
+body {
+	background-color: #F8F8FF;
+	color: #333;
+	font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+	text-align: center;
+	margin: 20px 0;
+  }
+
+  #planet-cards {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+  }
+  
+  .planet-card {
+	width: calc(100% / 4 - 40px); /* Berekend op basis van het aantal kaarten in de breedte en de margin */
+	margin: 20px;
+	padding: 10px;
+	background-color: #FFF;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  /* #planet-cards {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+  }
+  
+  .planet-card {
+	width: 250px;
+	margin: 20px;
+	padding: 10px;
+	background-color: #FFF;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  } */
+  
+  .planet-card img {
+	width: 100%;
+	height: auto;
+  }
+  
+  .planet-card h2 {
+	text-align: center;
+	margin: 0 0 10px;
+	font-size: 18px;
+  }
+  
+  .planet-card p {
+	font-size: 14px;
+  }
+  
+  button {
+	padding: 10px 20px;
+	margin: 10px;
+	background-color: #333;
+	color: #FFF;
+	border: none;
+	cursor: pointer;
+  }
+  
+  button:hover {
+	background-color: #444;
+  }

@@ -1,0 +1,26 @@
+body{
+	width:100%;
+	margin:0 auto;
+	font-size:16px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#333;
+	background:rgba(200, 200, 255, 0.1);
+	height:100vh;
+}
+
+.top-card,
+.bottom-card{
+	box-shadow: 1em,1em,1em,black;
+}
+
+.top-card{
+	background-color: blue;
+	height:10em;
+	width:5em;
+}
+
+.bottom-card{
+	background-color:white;
+	width:5em;
+	height:10em;
+}

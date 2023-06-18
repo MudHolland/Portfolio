@@ -1,0 +1,100 @@
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 20px;
+	margin: 20px;
+	}
+  
+  @media (max-width: 768px) {
+	.grid {
+	  grid-template-columns: repeat(2, 1fr);
+	}
+  }
+  
+  @media (max-width: 480px) {
+	.grid {
+	  grid-template-columns: repeat(1, 1fr);
+	}
+  }
+  
+  .card {
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	border-radius: 5px;
+	overflow: hidden;
+  }
+  
+  .card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .card img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+  }
+  
+  .card h2 {
+	margin: 10px;
+	font-size: 1.5em;
+  }
+  
+  .card p {
+	margin: 10px;
+	font-size: 1em;
+  }
+
+  .card {
+	background: linear-gradient(to bottom, white, white);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	border-radius: 5px;
+	overflow: hidden;
+  }
+  
+  .card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .card.sun {
+	background: linear-gradient(to bottom, #FFCC00, #FFFFFF);
+  }
+  
+  .card.mercury {
+	background: linear-gradient(to bottom, #B2B2B2, #FFFFFF);
+  }
+  
+  .card.venus {
+	background: linear-gradient(to bottom, #D9604B, #FFFFFF);
+  }
+  
+  .card.earth {
+	background: linear-gradient(to bottom, #3399CC, #FFFFFF);
+  }
+  
+  .card.mars {
+	background: linear-gradient(to bottom, #CC6600, #FFFFFF);
+  }
+  
+  .card.jupiter {
+	background: linear-gradient(to bottom, #CCA377, #FFFFFF);
+  }
+  
+  .card.saturn {
+	background: linear-gradient(to bottom, #E6E6E6, #FFFFFF);
+  }
+  
+  .card.uranus {
+	background: linear-gradient(to bottom, #66CCCC, #FFFFFF);
+  }
+  
+  .card.neptune {
+	background: linear-gradient(to bottom, #3333CC, #FFFFFF);
+  }
+  
+  .card.pluto {
+	background: linear-gradient(to bottom, #999999, #FFFFFF);
+  }
+  
+  

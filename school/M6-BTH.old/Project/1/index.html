@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WVX0SD01YQ"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-WVX0SD01YQ');
+	</script>
+	<meta charset="UTF-8">
+	<meta content="IE-edge" http-equiv="X-UA-Compatible">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/ico" href="/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/modal.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/script/darkmode.js" defer=""></script>
+	<script type="text/javascript" src="/script/modal.js" defer=""></script>
+	<title>1-fase</title>
+</head>
+<body>
+	<button class="darkmode" onclick="darkmode()">dark mode</button> 
+	<div id="myModal" class="modal">
+		<span class="close">&times;</span>
+		<img class="modal-content" id="img01">
+		<div id="caption"></div>
+	</div>
+	<div class="header">
+		<div class="wrapper">
+			<h1>1-fase</h1>
+			<nav class="subtitle crumbs">
+				<ol>
+					<li class="crumb"><a href="/">Portfolio</a></li>
+					<li class="crumb"><a href="/school">School</a></li>
+					<li class="crumb"><a href="/school#BTH">Beyond the hype</a></li>
+					<li class="crumb"><a href="../">Mobiliteitsshift Arnhem</a></li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+	<div class="main">
+		<div class="wrapper">
+			<p class="opening">In het artikel <a href="https://mindig.nl/grip-houden-op-digitale-experimenten-met-1-10-100/" target="_blank" rel="noopener noreferrer">Grip houden op digitale experimenten met 1-10-100</a> leerde ik dat de 1-fase van de 1-10-100-aanpak een projectmoment is waar je in &eacute;&eacute;n dag het complete project doorloopt. Uiteraard kun je hier niet het project aanpakken zoals je wil, dus zullen er consessies gedaan moeten worden. Op deze pagina is te lezen hoe ik dit met mijn projectgroep heb aangepakt.</p>
+			<h2>Vooronderzoek</h2>
+			<p>Nog voor we daadwerkelijk aan de 1-fase waren begonnen, heb ik wat voorbereidend onderzoek gedaan. Dit zodat ik donderdag wat te bespreken had, om wellicht al een ori&euml;nterend gesprek te starten in de groep.</p>
+			<h3>Ontwerpvraag vinden</h3>
+			<p>Ik wilde een manier maken om met de ontwerpgroep makkelijk verschillende scenario's te bespreken. Zo dacht ik dat een formulier met dropdown-velden een handige manier was om snel prototypes, doelgroepen en contexten vast te leggen.</p>
+			<form style="padding-bottom:1em;">
+				<label for="prototype">Ontwerp een </label>
+					<select style="width:100%" name="prototype" id="prototype">
+						<option value="" selected disabled hidden>product</option>
+						<option value="1">Digital Twin</option>
+						<option value="2">Schets</option>
+						<option value="3">Moodboard</option>
+						<option value="3">Representatie</option>
+						<option value="3">3D-Render</option>
+						<option value="3">AI-gegenereerd verhaal</option>
+						<option value="3">AI-gegenereerde afbeeldingen/sfeerimpressies</option>
+					</select>
+					<br>
+				<label for="doelgroep">dat </label>
+					<select style="width:100%"name="doelgroep" id="doelgroep">
+						<option value="" disabled hidden>de doelgroep</option>
+						<option value="1">Inwoners</option>
+						<option value="1">Jongere inwoners (15-30 jaar)</option>
+						<option value="1">Ouders met jonge gezinnen (30-40 jaar)</option>
+						<option value="1">'Ouderen' (40-60 jaar)</option>
+						<option value="1">'Senioren' (60-80 jaar)</option>
+						<option value="2">beleidsmakers</option>
+						<option value="3">Winkeleigenaren</option>
+						<option value="3">Stadsbezoekers</option>
+						<option value="3" selected>mensen die op 5 tot 20 minuten rijden van het centrum wonen</option>
+					</select>
+					<br>
+				<label for="context">tijdens </label>
+					<select style="width:100%"name="context" id="context">
+						<option value="" disabled hidden>drijfveer</option>
+						<option value="1">spitsuren op werkdagen (werk, school)</option>
+						<option value="2">werkdagen</option>
+						<option value="3">uitgaansavonden</option>
+						<option value="3" selected>stadsbezoek</option>
+					</select>
+					<br>
+				<label for="context">om </label>
+					<select style="width:100%"name="context" id="context">
+						<option value="" disabled selected hidden>activiteit</option>
+						<option value="1">van en naar werk te gaan</option>
+						<option value="2">boodschappen of inkopen te doen</option>
+						<option value="3">uit te gaan en sociale gelegenheden bij te wonen</option>
+						<option value="3">werkzaamheden uit te voeren</option>
+					</select>
+					<br>
+				<label for="doelgedrag">helpt de keuze te maken om </label>
+					<select style="width:100%"name="doelgedrag" id="doelgedrag">
+						<option value="" disabled selected hidden>doelgedrag uit te voeren</option>
+						<option value="1">minder vaak de auto te pakken</option>
+						<option value="2">vaker te fietsen en te lopen</option>
+						<option value="3">minder uitgaven aan brandstof te hebben</option>
+						<option value="3">meer rust te vinden in de dag</option>
+					</select>
+					<br>
+				<label for="doelgedrag uit te voeren">op een manier die</label>
+					<select style="width:100%"name="doelgedrag uit te voeren" id="doelgedrag uit te voeren">
+						<option value="" disabled selected hidden>aansluit bij hun behoeften </option>
+						<option value="1">zo kort mogelijke tijd in beslag neemt</option>
+						<option value="2">die zo min mogelijk inspanning (afstand, heuvels) vereist</option>
+						<option value="3">zo goedkope mogelijk is</option>
+						<option value="3">fysiek gezonde is</option>
+						<option value="3">mentaal gezond is</option>
+						<option value="3">een goed gevoel geeft</option>
+						<option value="3">een mooie omgeving toont</option>
+					</select>
+			</form>
+			<h3>Ontwerpvraag</h3>
+			<p>Hiermee zouden we dan makkelijk een ontwerpvraag op kunnen stellen, met onderstaande ontwerpvraag als voorbeeld:</p>
+			<blockquote class="small" big-text="ontwerpvraag">Hoe kunnen wij een product ontwerpen dat de doelgroep tijdens hun activiteiten in staat stelt deze activiteiten uit te voeren op een manier die hen fietsen of lopen laat verkiezen boven de de auto.</blockquote>
+			<p>Dit bleek op de donderdag echter niet zo handig, omdat de doelstelling nog niet helder was.</p>
+			<h3>ChatGPT</h3>
+			<p>Het gebruiken van nieuwe technologie kan het proces versimpelen, verbeteren of verdiepen. Door ChatGPT te vragen wat deze met onze casus zou doen, zou ik wellicht op vernieuwende en andere idee&euml;n komen die ik tot nu toe nog niet had gehad.</p>
+			<p>Om snel tot nieuwe oplossingen te komen heb ik de casus kort opgesteld:</p>
+			<blockquote>de gemeente arnhem wil minder auto's in het stadscentrum. Om dit te doen willen autogebruik in de stad verminderen en lopen en fietsen bevorderen. Om dit te doen willen zij aanpassingen doen aan de inrichting en vormgeving van de stad, om zodoende ook meer inwoners van de stad naar het centrum te trekken.</blockquote>
+			<p class="no-spacing">Hierop kwam ChatGPT met de volgende idee&euml;n:</p>
+			<ul>
+				<li>Maak fiets- en voetgangersgebieden: Door gebieden alleen toegankelijk te maken voor fietsers en voetgangers, kunnen auto's beperkt worden.</li>
+				<li>Stel parkeerbeleid aan: Het invoeren van hogere parkeertarieven of het beperken van de hoeveelheid beschikbare parkeerplaatsen voor auto's zal hen ontmoedigen om naar het centrum te komen.</li>
+				<li>Verbeteren van het openbaar vervoer: Het verbeteren van het openbaar vervoer, waaronder het toevoegen van meer bussen en treinen, zal het voor mensen gemakkelijker maken om het centrum te bereiken zonder een auto te gebruiken.</li>
+				<li>Bevorderen van fiets- en wandelroutes: Het cre&euml;ren van fiets- en wandelroutes door de stad, waaronder fietspaden en -parkeerplaatsen, kan mensen aanmoedigen om de auto thuis te laten.</li>
+				<li>Verfraaien van het stadscentrum: Het verfraaien van het stadscentrum, zoals het toevoegen van parken en openbare ruimtes, kan aantrekkelijker zijn voor bezoekers en hen aanmoedigen om het centrum te verkennen te voet of op de fiets.</li>
+			</ul>
+			<h3>Vragen</h3>
+			<p class="no-spacing">Uit dit vooronderzoek heb ik de volgende vragen geformuleerd om aanknopingspunten te hebben voor donderdag:</p>
+			<ul>
+				<li>Wat is de doelgroep waar de gemeente Arnhem hier naar op zoek is? Inwoners, winkeleigenaren die goed bereikbaar willen blijven?</li>
+				<li>Waar woont de doelgroep (in welke wijken van Arnhem)?</li>
+				<li>Hoe kunnen we hier in de 1-fase naar op zoek? Mood boards, customer journeys en huidige ontwerpen kunnen aanknopingspunten bieden.</li>
+				<li>Wat is de leeftijd van de doelgroep?</li>
+				<li>Wat zijn de redenen waarvoor de doelgroep van en naar het centrum beweegt?</li>
+				<li>Wat zijn de redenen dat zij auto boven fietsen of lopen verkiezen, of visa versa?</li>
+				<li>Wat zijn de eigenschappen van hun af te leggen routes (afstand, verkeerssituaties, omgeving, hoogteverschillen)?</li>
+				<li>Wat zijn de manieren waarop dit soort verkeersbewegingen momenteel in kaart wordt gebracht (IoT: camera's, bewegingssensoren, fietsers-/voetgangersknoppen bij verkeerslichten)?</li>
+			</ul>
+		</div>
+		<div class="diagonal">
+			<div class="wrapper">
+				<h1>Samenkomst</h1>
+				<nav class="subtitle crumbs">
+					<ol>
+						<li class="crumb"><a href="/">Portfolio</a></li>
+						<li class="crumb"><a href="/school">School</a></li>
+						<li class="crumb"><a href="/school#BTH">Beyond the hype</a></li>
+						<li class="crumb"><a href="../">Mobiliteitsshift Arnhem</a></li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+		<div class="wrapper">				
+			<p class="opening">Door voor de 1-fase op de donderdag in het kort het gehele Design Thinking-proces te doorlopen, weet ik zeker dat mijn geteste uitkomsten zijn voortgekomen uit besproken en ge&euml;valueerde informatie uit onderzoek.</p>
+			<h2>Empathize</h2>
+			<p>Om in deze eerste week een concept op te leveren is het nodig om oppervlakkig en kortstondig de behoeften van de belangrijkste belanghebbenden in kaart te brengen. Dit zijn de gemeente en haar inwoners.</p>
+			<h3>Gemeente</h3>
+			<p>Nederland wil in 2030 55% minder broeikasgassen uitstoten vergeleken met 1990. Het streven is zelfs 60% vermindering. In 2050 wil Nederland klimaatneutraal zijn. </p>
+			<p>De CO2-uitstoot van passagierstransport varieert aanzienlijk afhankelijk van het type transport. Passagiersauto's zijn een belangrijke vervuiler en vertegenwoordigen 60,7% van de totale CO2-uitstoot van het wegtransport. </p>			
+			<p>Het fietsen en lopen moet aantrekkelijker worden zodat bewoners eerder de fiets pakken of gaan lopen, om zo gezondere inwoners te krijgen. Het kan zijn dat er betere loop en fietsroutes moeten komen om het voor bewoners en bezoekers van Arnhem aantrekkelijker te maken om de fiets te pakken of te gaan lopen. Op deze manier trek je meer mensen naar de stad en kan je Arnhem populairder maken voor fiets- en loopverkeer.</p>
+			<p>Uit de mail van ons contactpersoon van de gemeente blijkt echter dat er nog geen data is over de hoeveelheid loop- en fietsverkeer, noch over de kwaliteit en kwantiteit van fiets- en loopladen. Het is daardoor lastig in kaar te brengen wat ons product of dienst zou toevoegen. We missen hierin een duidelijk meetbare vraag vanuit de gemeente, behalve de wens van het bevorderen van lopen en fietsen. De gemeente geeft aan dat de de eerste week van februari het ontwerpbureau <a href="https://posadmaxwan.nl/https://posadmaxwan.nl/" target="_blank" rel="noopener noreferrer">Posad Maxwan</a> is ingeschakeld om onderzoek, strategie, ontwerp en uitvoering te bepalen voor het huidige wegennet voor fietsers en voetgangers. Dit moet een eerste stap zijn om aan de doelstelling van de gemeente te voldoen.</p>
+			<p>Helaas hebben wij in de eerste week van het project nog geen contact kunnen hebben met een medewerker van de gemeente, waardoor wij de klantvraag niet duidelijker hebben kunnen krijgen.</p>
+			<h3>Inwoners</h3>
+			<p class="no-spacing">Een aantal uur geeft ons niet de tijd om meerdere inwoners van Arnhem te spreken. Gelukkig hebben we wel een aantal mensen uit Arnhem die vaak fietsen in hun gemeente. Hiermee hebben we al een eerste beeld van de <i>pains en gains</i> van deze doelgroep:</p>
+			<ul>
+				<li>Gemeente Arnhem is heuvelachtig. Dit maakt fietsen soms een inspanning, en afhankelijk van de locatie bestaat de kans dat je bezweet op locatie of thuis komt,</li>
+				<li>Fietsen en lopen kosten meer energie en kunnen minder comfortabel zijn. Als het regent wordt je nat, als het heet is zweet je meer,</li>
+				<li>Arnhem is een groene gemeente met veel parken. Ondanks dat zijn er veel verkeerssituaties waar verkeersstromen samenkomen. Dit wordt veelal met verkeersregelinstallaties (VRI's). Dit maakt lopen of fietsen in de gemeente niet makkelijker,</li>
+				<li>Autoverkeer wordt veelal via eenrichtingswegen rondgeleid. Dit zorgt ervoor dat woon-werkverkeer binnen arnhem altijd om moet rijden, of dat nu 's ochtends of 's avonds is. daarmee worden Arnhemmers ontmoedigd met de auto naar hun werk binnen de gemeente te gaan.</li>
+			</ul>
+			<figure class="half-width">
+				<img src="/images/BTH-1-1-mindmap.jpeg" alt="Mindmap van punten die opkwamen bij het inleven in Mobiliteit met daaronder mogelijk te volgen idee&euml;n">
+				<figcaption>Mindmap van punten die opkwamen bij het inleven in Mobiliteit met daaronder mogelijk te volgen idee&euml;n</figcaption>
+			</figure>
+			<h2>Define</h2>
+			<p>Door deze duidelijke doelstelling maar geen nulmeting of vertrekpunt is het voor ons duidelijk dat simpelweg maken wat de gemeente wil - 'een manier om autorijden te ontmoedigen of fietsen en lopen te bevorderen'  - niet de juiste insteek is om een meet- en testbaar resultaat op te leveren. We kunnen beter een stap terug nemen en voor kansontwerp op zoek gaan naar idee&euml;n die aansluit bij de behoeften van de gemeente en de inwoners.</p>
+			<h3>Doelstelling bijstellen</h3>
+			<p>De gemeente wil mensen een reden geven om de fiets of benenwagen te pakken als ze er op uit gaan en wil hiermee een verschil maken met wat men nu doet. Om dit te doen zoomen wij een niveau uit en bepalen de doelstelling als:</p>
+			<blockquote class="small" big-text="doelstelling">"Zorg dat inwoners van Arnhem vrijwillig de fiets en lopen verkiezen boven de auto en daarmee de gemeente voorzien van inzicht in de kwaliteit en verloop van hun reisbewegingen."</blockquote>
+			<h3>Ontwerpvraag aanpassen</h3>
+			<p>Dit leidt tot een ontwerpvraag:</p>
+			<blockquote>"Hoe kunnen wij inwoners van Arnhem vrijwillig de fiets en lopen laten verkiezen boven de auto en daarmee de gemeente voorzien van inzicht in de kwaliteit en verloop van hun reisbewegingen."</blockquote>
+			<p class="no-spacing">Deze ontwerpvraag bestaat uit twee belangrijke delen:</p>
+			<ol>
+				<li>Inwoners van Arnhem vrijwillig de fiets en lopen laten verkiezen boven de auto,</li>
+				<li>De gemeente voorzien van inzicht in de kwaliteit en verloop van hun reisbewegingen.</li>
+			</ol>
+			<p>Waar de gemeente de vraag en doelstelling vooral heeft uitgezet om te focussen op mensen uit de auto en op de fiets krijgen, denken wij dat de gemeente veel beter geholpen is met een product dat ze inzicht geeft in huidig gebruik. Dit product kan namelijk de originele doelstelling behalen, en een springplank zijn voor toekomstige aanpassingen in de stad, die direct meetbaar zijn. Op deze manier zou ons product perfect aansluiten op de informatie die door Posad Maxwan wordt opgehaald.</p>
+			<p>We richten ons hierbij op een doelgroep die 5 tot 20 minuten fietsen van het centrum af ligt. De context maakt hierbij niet veel uit, omdat het gaat om inzicht in kwaliteit en verloop van de reisbeweging, niet van waar tot waar deze verloopt. Qua leeftijd hebben we weinig eisen, behalve dat gebruikers ouder dan 18 moeten zijn om toestemming voor dataverzameling te geven. </p>
+			<p class="no-spacing">Hierbij zijn we echter wel gebonden aan een aantal aannames:</p>
+			<ul>
+				<li>Wij hebben nog geen gesprek gehad met de beleidsmaker van de gemeente Arnhem, daardoor kunnen wij niet verifi&euml;ren of dit een gewenste aanpak is. Aangezien het de 1-fase is, is het daardoor wel erg handig om in een dag te zien waar we uit kunnen komen, en wellicht de doelstelling van de gemeente kunnen hervormen,</li>
+				<li>Arnhemmers willen en kunnen de auto uit en de fiets op. Het is aan te nemen dat mensen de behoefte en mogelijkheden hebben om zich fietsend of lopend voort te bewegen voor de afstanden die ze af willen leggen,</li>
+				<li>De locaties waar de gemeente naar op zoek is is ongeveer 5 tot 20 minuten van het centrum.</li>
+			</ul>
+			<p class="no-spacing">Uit de mindmap haalden we al veel informatie, welke we om hebben gezet naar kernpunten waar het concept op gebaseerd kan worden:</p>
+			<ul>
+				<li>We willen niet automobilisten (slecht gedrag) straffen, maar goed gedrag (lopen en fietsen) belonen. Dit werkt effectiever en focust op positief gedrag,</li>
+				<li>We willen data verzamelen bij de gebruikers van het verkeer, </li>
+				<li>VRI's (verkeersregelinstallaties) kunnen daarbij helpen.</li>
+			</ul>
+			<h2>Ideate</h2>
+			<p>Met deze kennis, aannames en inzichten kunnen wij idee&euml;n op gaan stellen die de doelstelling kunnen behalen.</p>
+			<h3>Yes, and...</h3>
+			<p class="no-spacing">Door door te gaan op de kernpunten uit de mindmap kwamen we op wat eerste vormen voor het concept:</p>
+			<ul>
+				<li>Data kan worden verzameld met een app. Deze kan op de achtergond draaien,</li>
+				<li>De app kan locatie doorsturen. Met locatie en tijd kan snelheid en beweging worden vastgelegd, wat de gemeente informatie geeft over doorstroming van verkeer,</li>
+				<li>Sensoren in de telefoon kunnen vastleggen met beweging en snelheid of de gebruiker loopt, fietst of autorijdt,</li>
+				<li>VRI's kunnen op de data reageren en bijvoorbeeld fietsers vaker en langer voorrang geven,</li>
+				<li>VRI's kunnen ook inspelen op het weer en op regenachtige dagen fietsers voorrang geven boven auto's. Dit kan simpelweg met regensensoren bovenop de verkeerslichten.</li>
+			</ul>
+			<p class="no-spacing">Deze brachten ons al op een aantal idee&euml;n:</p>
+			<ul>
+				<li>Ik had het idee voor podcasts die zich aansluiten op je locatie (vertellen wat je ziet op die plek), tijdsduur van je reis en je interesses,</li>
+				<li>Een idee was een app die je een melding stuurt als je dicht bij een interessante locatie bent. Wanneer je je telefoon pakt, kun je in Augmented Reality op zoek naar de interessante locatie en hier meer over te weten komen,</li>
+				<li>Ik had het idee voor een navigatie-app die je via Augmented Reality met virtuele elementen de weg wijzen, laten blenden met de natuur en interessanter maken: blaadjes die door de wind de juiste kant op waaien, vogels die circelen rond je volgende navigatiepunt, </li>
+				<li>Het idee van data verzamelen, locatie doorsturen en belonen deed Damian denken aan <a href="https://sweatco.in/" target="_blank" rel="noopener noreferrer">Sweatcoin</a>. In deze app verdien je crypto op basis van je gelopen afstand. Deze crypto kun je vervolgens uitgeven aan (veelal gezonde) diensten, zoals Audible, Headspace en YogaClub.</li>
+			</ul>
+			<p>We vonden het Augmented Reality-concept interessant, maar het idee van meldingen sturen tijdens het navigeren stond ons tegen.</p>
+			<p class="no-spacing">Sweatcoin bracht ons op het idee om fietsers en voetgangers in Arnhem te belonen voor hun afgelegde afstanden in Arnhem. Deze beloningen kunnen daarmee gekoppeld worden aan uitgaven in het centrum van Arnhem, zoals een kop koffie of thee bij <a href="https://www.mamscoffee.nl/c-3838068/locaties/" target="_blank" rel="noopener noreferrer">Mams</a>, een populaire koffiebar. Hiermee snijdt het mes aan meerdere kanten:</p>
+			<ol>
+				<li>Gemeente Arnhem krijgt inzicht in kwaliteit en verloop van reisbewegingen in Arnhem,</li>
+				<li>Inwoners van Arnhem worden beloond voor gezonde activiteiten, zoals buiten lopen en fietsen,</li>
+				<li>Winkels in het centrum van Arnhem krijgen meer klandizie. Een gezellig centrum trekt meer publiek aan.</li>
+			</ol>
+			<h2>Prototype</h2>
+			<p>Vanuit dit idee zijn we een conceptposter op gaan stellen. Hiermee wilden we visualiseren welke stappen er in het proces zitten, welke informatie hierbij wordt uitgewisseld, en welke mogelijkheden dit voor de gemeente gaat opleveren.</p>
+			<h3>Conceptposter</h3>
+			<p>Door de conceptposter eerst op een whiteboard op te maken, konden we veilig manieren van weergave testen om te zien of dit het idee overbracht. </p>
+			<figure class="half-width">
+				<img src="/images/BTH-1-2-Concept.jpeg" alt="Opzet van visualisatie van de onderdelen van het concept: de route, de app, de beloning, de achterliggende data">
+				<figcaption>Opzet van visualisatie van de onderdelen van het concept: de route, de app, de beloning, de achterliggende data</figcaption>
+			</figure>
+			<p class="no-spacing">Op deze poster zijn de volgende stappen getoond:</p>
+			<ul>
+				<li>Inwoners van Arnhem vinden de app door posters die door de stad zijn verspreid,</li>
+				<li>Gebruikers van de app geven toestemming voor het uitwisselen en delen van hun data,</li>
+				<li>Gebruikers starten de app en daarmee hun reis,</li>
+				<li>Gebruikers stoppen hun reis. Ze hebben bijvoorbeeld 5 kilometer afgelegd en verdienen hier bijvoorbeeld 500 ArnhemCoin mee,</li>
+				<li>Gebruikers kunnen hun punten uitgeven in een Store in de app, en zien op welke plekken in Arnhem ze hun punten kunnen uitgeven,</li>
+				<li>Gemeente ontvangt de reisdata van de gebruiker,</li>
+				<li>Gemeente heeft een dashboard waarop alle reizen in de gemeente geplot worden. Deze visualisatie kunnen zij met filters aanpassen om dieperliggende informatie te achterhalen,</li>
+				<li>Gemeente kan VRI's op basis van verzamelde informatie aanpassen. Door de app kunnen zij snel ziet wat dit doet met de doorstroming van wandelend en fietsend verkeer.</li>
+			</ul>
+			<p>Deze schets is daarna op papier gemaakt, zodat we deze konden meenemen om later die dag te presenteren.</p>
+				<figure class="half-width">
+					<img src="/images/BTH-1-3-Poster.jpeg" alt="De conceptposter die opgesteld is aan de hand van de visualisatie op het whiteboard">
+					<figcaption>De conceptposter die opgesteld is aan de hand van de visualisatie op het whiteboard</figcaption>
+				</figure>
+			<h2>Test</h2>
+			<p>Om het idee te presenteren wilden we een naam voor het concept. Dit zou er voor moeten zorgen dat het idee afgekaderd is en het de doelstelling bekrachtigd. We hebben gekozen voor <i>Arnhem on the Move</i>, het focust op Arnhemmers aan het bewegen krijgen, op de activiteit waarbij de informatie wordt verzameld en op het er op uit gaan. Positiviteit in beweging.</p>
+			<figure class="half-width">
+				<img src="/images/BTH-1-4-Presentatie.jpeg" alt="De conceptposter zoals die getoond is tijdens de presentatie, met productnaam, zodat het concreter wordt en er een doel uit blijft">
+				<figcaption>De conceptposter zoals die getoond is tijdens de presentatie, met productnaam, zodat het concreter wordt en er een doel uit blijkt</figcaption>
+			</figure>
+			<p>Dit idee moest worden uitgelegd aan peers. Om dit te doen heb ik onze 1-fase puntsgewijs vastgelegd zodat dit in verhaalvorm kan worden overgebracht: Onze casus benoemen, benoemen wat daarin niet aansluit op de doelstelling, welke nieuwe kansen we zien, en welke kans we daarin hebben aangegrepen. Daarna de poster stap voor stap doorlopen en tonen wat de voordelen voor de verschillende belanghebbenden zijn.</p>
+			<figure class="">
+				<img src="/images/BTH-1-5-TalkingPoints.jpeg" alt="Belangrijke punten die we willen benoemen in de presentatie">
+				<figcaption>Belangrijke punten die we willen benoemen in de presentatie</figcaption>
+			</figure>
+			<h3>Quality Review Board (QRB)</h3>
+			<p>Uit de Quality Review Board bleek dat ons concept interessant is. Het is echter de vraag of dit ook de beleving van de gemeente is. Dit zijn nog openstaande vragen. </p>
+			<h2>Conclusie</h2>
+			<p>We hebben een interessant pad afgelegd met het verleggen van de vraag en doelstelling van de gemeente. Hiermee hebben we ook een krachtig concept opgesteld dat door zijn vernieuwde blik op het probleem van de gemeente flink kan provoceren in een gesprek met de beleidsmaker. De volgende stap, en daarmee de aftrap voor de 10-fase, is dit gesprek voeren met de beleidsmaker.</p>
+		</div>
+		<div class="diagonal">
+			<div class="wrapper">
+				<h1>Proces</h1>
+				<nav class="subtitle crumbs">
+					<ol>
+						<li class="crumb"><a href="/">Portfolio</a></li>
+						<li class="crumb"><a href="/school">School</a></li>
+						<li class="crumb"><a href="/school#BTH">Beyond the hype</a></li>
+						<li class="crumb"><a href="../">Mobiliteitsshift Arnhem</a></li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+		<div class="wrapper">
+			<p>Hieronder kun je naar andere fases uit het project springen:</p>
+			<div class="grid-4">
+				<a href="../"><button class="button">Introductie</button></a>
+				<a><button class="button active">1-fase</button></a>
+				<a href="../10"><button class="button">10-fase</button></a>
+				<a href="../100"><button class="button">100-fase</button></a>
+			</div>
+		</div>
+	</div>
+	<div class="footer">	
+		<div class="wrapper">
+			<p class="detail"><a href="/about">Over mij</a> | &copy; <script>document.write(new Date().getFullYear());</script> dennisulijn.com | All rights reserved | <a href="mailto:dennisulijn@gmail.com">contact</a></p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+.card{
+	background-color: var(--dark);
+	position:relative;
+	border-radius:var(--size-m);
+	border:1px solid var(--light-grey);
+}
+
+.card::before,
+.card::after{
+	border-radius:inherit;
+	content:"";
+	position:absolute;
+	height:100%;
+	width:100%;
+	top: 0px;
+	left:0px;
+	background: radial-gradient(
+		800px circle at var(--mouse-x) var(--mouse-y),
+		rgba(255, 255, 255, 0.438),
+		transparent 40%
+	);
+	z-index:30;
+
+}
