@@ -1,5 +1,0 @@
-print('Hello World')
-print(6 * 9)
-print('A' + 'B')
-print('A' * 3)
-print('B' > 'A')
