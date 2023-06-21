@@ -221,7 +221,7 @@ figure{
 	transition-duration: var(--transition-time);
 	margin:0 -1em 0 -1em;
 	padding: var(--size-m);
-    border-radius: var(--size-s);
+    border-radius: var(--size-m);
 	z-index:1;
 }
 
@@ -603,7 +603,7 @@ header .angle-bottom,
 	position:relative;
 	display:flex;
 	flex-direction: column;
-	box-shadow: 0 var(--size-xxxs) var(--size-xxs) 0;
+	box-shadow: 0 var(--size-xxxs) var(--size-xxs) 0 var(--dark);
 	color:var(--dark);
 	background-color:var(--white);
 	border-radius: var(--size-s);
@@ -622,7 +622,7 @@ header .angle-bottom,
 }
 
 .card:hover {
-	box-shadow: 0 0.75em 1.5em 0;
+	box-shadow: 0 var(--size-s) var(--size-m) 0 var(--dark);
 	scale:1.05;
 	z-index:2;
 }
@@ -832,7 +832,7 @@ ol .crumb:not(:last-child):after {
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--primary);
 	border: var(size-xxs) solid var(--dark);
-	box-shadow: var(--size-m) var(--size-m) var(--dark);
+	box-shadow: 0 var(--size-s) var(--size-m) 0 var(--dark);
 }
 
 .darkmode {
@@ -1007,7 +1007,7 @@ ol .crumb:not(:last-child):after {
 	}
 
 	figure:hover{
-		box-shadow:0 var(--size-s) var(--size-m) var(--dark);
+		box-shadow:0 var(--size-s) var(--size-m) 0 var(--dark);
 	}
 
 	.accordion__button{
@@ -1053,7 +1053,7 @@ ol .crumb:not(:last-child):after {
 	}
 
 	figure:hover{
-		box-shadow:0 var(--size-s) var(--size-m) var(--dark);
+		box-shadow:0 var(--size-s) var(--size-m) 0 var(--dark);
 	}
 }
 
