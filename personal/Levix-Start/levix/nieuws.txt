@@ -1,6 +1,6 @@
 <div class="nieuws">
 <h1>Nu.nl</h1>
-<a href="http://www.nu.nl/"><img src="Nu.nl-Logo.png" alt="nu.nl"></a> 
+<a href="http://www.nu.nl/"><img src="Nu.nl-Logo.png" loading="lazy" alt="nu.nl"></a> 
 </div>
 
 
