@@ -54,8 +54,6 @@
 
     if (image.height > image.width) {
       figureElement.classList.add('half-width');
-    } else {
-      figureElement.classList.remove('half-width');
     }
   }
 
