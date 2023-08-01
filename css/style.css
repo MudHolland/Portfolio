@@ -1007,7 +1007,7 @@ ol .crumb:not(:last-child):after {
 	}
 
 	figure:hover{
-		box-shadow:0 var(--size-s) var(--size-m) 0 var(--dark);
+		box-shadow:0 var(--size-s) var(--size-m) 0 #000;
 	}
 
 	.accordion__button{
