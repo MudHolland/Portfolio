@@ -21,6 +21,11 @@
 </head>
 <body>
 	<button class="darkmode" onclick="darkmode()">dark mode</button> 
+	<div id="myModal" class="modal">
+		<span class="close">&times;</span>
+		<img class="modal-content" id="img01">
+		<div id="caption"></div>
+	</div>
 	<div class="header">
 		<div class="angle-bottom">
 			<div class="wrapper">
@@ -83,8 +88,10 @@
 			</ul>
 			<h3>Interactie</h3>
 			<p>Interactie tussen het spel/systeem en de speler vindt plaats middel het Interactiemodel (rechts afgebeeld). Dit vindt op de volgende manier plaats:</p>
-			<img class="half-width" src="/images/sag-lwg4-interactiemodel.png" loading="lazy" alt="Weergave van (spel-)interactie tussen de speler en het spelsysteem">
-			<p class="half-width detail">Schematische weergave van (spel-)interactie tussen de speler en het spelsysteem</p>
+			<figure  class="half-width">
+				<img src="/images/sag-lwg4-interactiemodel.png" loading="lazy" alt="Weergave van (spel-)interactie tussen de speler en het spelsysteem">
+				<figcaption>Schematische weergave van (spel-)interactie tussen de speler en het spelsysteem</figcaption>
+			</figure>
 			<ul>
 				<li>De speler wil een actie uitvoeren,</li>
 				<li>De user interface informeert de gebruiker over de beschikbare mogelijkheden,</li>
@@ -170,11 +177,15 @@
 				<li>Als de gebuiker een vegende beweging maakt, gaat het water omlaag, maar tegelijkertijd stijgt het water sneller dan voorheen (variabele WaterStijgt wordt groter). Dit maakt het uitvoeren van de handeling moeilijker niet moeilijker, maar het bereiken van het doel (oplossen van het water) moeilijker.</li>
 				<li>Er is geen manier om het water stijgen op te laten lossen, dus de speler zal vroeger of later accepteren en overgeven aan het feit dat ze helemaal onder water zijn (een depressie ervaren).</li>
 			</ul>
-			<iframe src="https://cloud.protopie.io/p/6b6069d780?touchHint=false&ui=false&scaleToFit=false&cursorType=touch&mockup=true&playerAppPopup=false" style="border:0px #ffffff none;" name="eXperienceProtopie" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="800px" allowfullscreen></iframe>
-			<p class="detail half-width">Mid-fidelity prototype: Interactie leegscheppen</p>
+			<figure>
+				<iframe src="https://cloud.protopie.io/p/6b6069d780?touchHint=false&ui=false&scaleToFit=true&cursorType=touch&mockup=true&playerAppPopup=false" style="border:0px #ffffff none; border-radius:var(--size-s)" name="eXperienceProtopie" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" width="640px" height="320px"></iframe>
+				<figcaption>Mid-fidelity prototype: Interactie leegscheppen</figcaption>
+			</figure>
 			<p>Om de ervaring beter aan te laten sluiten op de ervaring die ik voor ogen heb, hoef ik hierdoor alleen nog maar achtergrondgeluid en -afbeeldingen aan te brengen en de huidige assets te vervangen voor realistischere afbeeldingen.</p>
-			<iframe src="https://cloud.protopie.io/p/84d208eb76?touchHint=false&ui=false&scaleToFit=false&cursorType=touch&mockup=true&playerAppPopup=false" style="border:0px #ffffff none;" name="eXperienceProtopie" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="800px" allowfullscreen></iframe>
-			<p class="detail half-width">High-fidelity prototype: Interactie leegscheppen</p>
+			<figure>
+				<iframe src="https://cloud.protopie.io/p/84d208eb76?touchHint=false&ui=false&scaleToFit=true&cursorType=touch&mockup=true&playerAppPopup=false" style="border:0px #ffffff none; border-radius:var(--size-s)" name="eXperienceProtopie" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" width="640px" height="320px"></iframe>
+				<figcaption>High-fidelity prototype: Interactie leegscheppen</figcaption>
+			</figure>
 			<p>Ik heb de ervaring uitgebreid door de achtergrondmuziek toe te voegen, en het na 10 seconde te laten klinken alsof je onderwater bent. Dit draagt, samen met het donkerder worden en het kantelen bij bewegen van de telefoon, bij aan het gevoel dat je er echt bent, immersie, en daarmee sensation.</p>
 			<h3>Testen</h3>
 			<p>Ik heb de mid- en high-fidelity prototypes getest met de doelgroep. Hierbij waren conclusies dat mijn participant (een achiever) inderdaad het scherm leeg wilde krijgen, en het erg oneerlijk vond dat, toen het gelukt was (accomplishment), dit geen effect had. dit leidde er snel toe dat ze het niet meer wilde proberen (avoidance).</p>
