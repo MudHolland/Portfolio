@@ -219,7 +219,7 @@ img {
 figure{
 	position:relative;
 	transition-duration: var(--transition-time);
-	margin:0 -1em 0 -1em;
+	margin:0 -1em 1em -1em;
 	padding: var(--size-m);
     border-radius: var(--size-m);
 	z-index:1;
@@ -438,6 +438,7 @@ figcaption {
 	opacity:0.8;
 	font-style:italic;
 	transition-duration: var(--transition-time);
+	margin-bottom:-0.25em;
 }
 
 .detail{
