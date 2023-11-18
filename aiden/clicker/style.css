@@ -72,8 +72,8 @@ button{
 	color:white;
 	font-weight:700;
 	border:none;
-	padding:8px;
-	border-radius: 8px;
+	padding:16px;
+	border-radius: 16px;
 	cursor:pointer;
 }
 
