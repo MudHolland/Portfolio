@@ -25,8 +25,10 @@ function handleIncrement() {
 
 // Function to update the displayed number
 function updateNumber() {
-    document.getElementById("number").innerText = number;
+    const numberElement = document.getElementById("number");
+    numberElement.innerText = number.toLocaleString(); // Use toLocaleString to format the number
 }
+
 
 // Function to increase CPS
 function increaseCPS1() {
@@ -189,26 +191,43 @@ function updateBuyButtons() {
     }
 }
 
-// Function to update the displayed Item1 count
+// Function to update the displayed NPC
 function updateNPC() {
     npc = (1 + 1 * item1 + 7 * item2 + 40 * item3 + 1000 * item4);
-    document.getElementById("npc").innerText = npc;
+    const npcElement = document.getElementById("npc");
+    npcElement.innerText = npc.toLocaleString(); // Use toLocaleString to format the NPC
 }
+
+// Function to update the displayed CPS
 function updateCPS() {
-    document.getElementById("cps").innerText = cps;
+    const cpsElement = document.getElementById("cps");
+    cpsElement.innerText = cps.toLocaleString(); // Use toLocaleString to format the CPS
 }
+
+// Function to update the displayed Item1 count
 function updateItem1() {
-    document.getElementById("item1").innerText = item1;
+    const item1Element = document.getElementById("item1");
+    item1Element.innerText = item1.toLocaleString(); // Use toLocaleString to format Item1 count
 }
+
+// Function to update the displayed Item2 count
 function updateItem2() {
-    document.getElementById("item2").innerText = item2;
+    const item2Element = document.getElementById("item2");
+    item2Element.innerText = item2.toLocaleString(); // Use toLocaleString to format Item2 count
 }
+
+// Function to update the displayed Item3 count
 function updateItem3() {
-    document.getElementById("item3").innerText = item3;
+    const item3Element = document.getElementById("item3");
+    item3Element.innerText = item3.toLocaleString(); // Use toLocaleString to format Item3 count
 }
+
+// Function to update the displayed Item4 count
 function updateItem4() {
-    document.getElementById("item4").innerText = item4;
+    const item4Element = document.getElementById("item4");
+    item4Element.innerText = item4.toLocaleString(); // Use toLocaleString to format Item4 count
 }
+
 
 // Function to add CPS to number every second
 setInterval(function() {
