@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="script.js" defer></script>
+	<title>Website clicker</title>
+</head>
+<body>
+	<main>
+		<div class="links">
+			<div class="klik-kaart"> 
+				<button id="incrementButton" class="knop" onclick="handleIncrement()">klik hier</button>
+                <div class="punten"><b>Number:</b> <span id="number">0</span></div>
+                <div class="naam">Naam: <input type="text" id="nameInput" value="Placeholder"></div>  
+                <div class="npc">Numbers per click: <span id="npc">1</span></div>          
+                <div class="pps">Clicks per Second: <span id="cps">0</span></div>          
+			</div>
+		</div>
+		<div class="rechts">
+			<div class="rechts-boven">
+				<h2>Upgrades</h2>
+                <button id="buyItem1" onclick="buyItem1()">Add 1 per click for 40</button>
+                <div>Item1 (40): <span id="item1">0</span></div>
+				
+                <button id="buyItem2" onclick="buyItem2()">Add 7 per click for 200</button>
+                <div>Item2 (200): <span id="item2">0</span></div>
+				
+                <button id="buyItem3" onclick="buyItem3()">Add 40 per click for 1000</button>
+                <div>Item3 (1000): <span id="item3">0</span></div>
+			</div>
+			<div class="rechts-onder">
+				<h2>Buy</h2>
+
+                <button id="increaseCPSButton" onclick="increaseCPS1()">Add 1CPS for 100</button>
+                <button id="increaseCPSButton" onclick="increaseCPS2()">Add 3CPS for 200</button>
+			</div>
+		</div>
+	</main>	
+</body>
+</html>
