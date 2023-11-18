@@ -9,7 +9,7 @@ let item4 = 0;
 let costItem1 = 40;
 let costItem2 = 150;
 let costItem3 = 500;
-let costItem4 = 500000;
+let costItem4 = 5000;
 let cpsItem1 = 100;
 let cpsItem2 = 200;
 let cpsItem3 = 1000;
@@ -52,7 +52,7 @@ function increaseCPS2() {
 function increaseCPS3() {
     if (number >= cpsItem3) {
         number -= cpsItem3;
-        cps += 10;
+        cps += 20;
         updateCPS();
         updateNumber();
         updateBuyButtons();
@@ -62,7 +62,7 @@ function increaseCPS3() {
 function increaseCPS4() {
     if (number >= cpsItem4) {
         number -= cpsItem4;
-        cps += 25;
+        cps += 250;
         updateCPS();
         updateNumber();
         updateBuyButtons();
@@ -72,7 +72,7 @@ function increaseCPS4() {
 function increaseCPS5() {
     if (number >= cpsItem5) {
         number -= cpsItem5;
-        cps += 100;
+        cps += 10000;
         updateCPS();
         updateNumber();
         updateBuyButtons();
