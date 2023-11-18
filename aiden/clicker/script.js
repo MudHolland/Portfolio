@@ -214,4 +214,5 @@ function updateItem4() {
 setInterval(function() {
     number += cps;
     updateNumber();
+    updateBuyButtons();
 }, 1000);
