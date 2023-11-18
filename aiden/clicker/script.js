@@ -16,6 +16,10 @@ let cpsItem3 = 1000;
 let cpsItem4 = 10000;
 let cpsItem5 = 1000000;
 
+document.addEventListener('touchmove', function (event) {
+    if (event.scale !== 1) { event.preventDefault(); }
+  }, { passive: false });
+  
 // Function to handle increment button click
 function handleIncrement() {
     number += npc;
