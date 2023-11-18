@@ -69,10 +69,10 @@ function increaseCPS4() {
     }
 }
 
-function increaseCPS2() {
+function increaseCPS5() {
     if (number >= cpsItem5) {
         number -= cpsItem5;
-        cps += 3;
+        cps += 100;
         updateCPS();
         updateNumber();
         updateBuyButtons();
@@ -206,7 +206,7 @@ function updateItem2() {
 function updateItem3() {
     document.getElementById("item3").innerText = item3;
 }
-function updateItem3() {
+function updateItem4() {
     document.getElementById("item4").innerText = item4;
 }
 
