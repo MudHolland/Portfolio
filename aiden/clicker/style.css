@@ -126,10 +126,23 @@ button:active:enabled{
 
 .buyItem{
 	display:flex;
+	flex-direction: row;
 	margin:1em;
 	gap:1em;
 	align-items: center;
 	background-color: white;
 	border-radius:16px;
 	padding:8px;
+}
+
+@media only screen and (max-width: 600px){
+	main{
+		grid-template-columns: 100%;
+		row-gap: 1em;
+	}
+
+	.buyItem{
+		display:flex;
+		flex-direction: column;
+	}
 }
