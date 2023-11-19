@@ -6,10 +6,12 @@ let item1 = 0;
 let item2 = 0;
 let item3 = 0;
 let item4 = 0;
+let item5 = 0;
 let costItem1 = 40;
 let costItem2 = 150;
 let costItem3 = 500;
 let costItem4 = 5000;
+let costItem5 = 10000;
 let cpsItem1 = 100;
 let cpsItem2 = 200;
 let cpsItem3 = 1000;
@@ -195,6 +197,13 @@ function updateBuyButtons() {
     } else {
         buyItem4Button.disabled = true;
     }
+    // Update Buy Item4 button
+    const buyItem5Button = document.getElementById("buyItem5");
+    if (number >= costItem5) {
+        buyItem5Button.disabled = false;
+    } else {
+        buyItem5Button.disabled = true;
+    }
     // Update Buy increaseCPSButton1 button
     const buyCPS1Button = document.getElementById("increaseCPSButton1");
     if (number >= cpsItem1) {
@@ -267,6 +276,12 @@ function updateItem3() {
 function updateItem4() {
     const item4Element = document.getElementById("item4");
     item4Element.innerText = item4.toLocaleString(); // Use toLocaleString to format Item4 count
+}
+
+// Function to update the displayed Item4 count
+function updateItem5() {
+    const item5Element = document.getElementById("item5");
+    item5Element.innerText = item5.toLocaleString(); // Use toLocaleString to format Item4 count
 }
 
 
