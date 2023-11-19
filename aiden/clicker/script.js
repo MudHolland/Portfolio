@@ -8,18 +8,27 @@ let item3 = 0;
 let item4 = 0;
 let item5 = 0;
 let item6 = 0;
+let item7 = 0;
+let item8 = 0;
+let item9 = 0;
 let costItem1 = 40;
 let costItem2 = 150;
 let costItem3 = 500;
 let costItem4 = 5000;
 let costItem5 = 10000;
 let costItem6 = 50000;
+let costItem7 = 100000;
+let costItem8 = 500000;
+let costItem9 = 1000000;
 let item1strength1 = 1;
 let item1strength2 = 3;
 let item1strength3 = 7;
 let item1strength4 = 20;
 let item1strength5 = 50;
 let item1strength6 = 100;
+let item1strength7 = 250;
+let item1strength8 = 1000;
+let item1strength9 = 5000;
 let cpsItem1 = 100;
 let cpsItem2 = 200;
 let cpsItem3 = 1000;
@@ -195,6 +204,48 @@ function buyItem6() {
     }
 }
 
+function buyItem7() {
+    if (number >= costItem7) {
+        number -= costItem7;
+        item7 += 1;
+        costItem7 = costItem7 + costItem7 * item7;
+        const npsCost7Element = document.getElementById("npcCost7");
+        npsCost7Element.innerText = costItem7.toLocaleString(); // Use toLocaleString to format the NPC
+        updateNumber();
+        updateNPC();
+        updateItem7();
+        updateBuyButtons();
+    }
+}
+
+function buyItem8() {
+    if (number >= costItem8) {
+        number -= costItem8;
+        item8 += 1;
+        costItem8 = costItem8 + costItem8 * item8;
+        const npsCost8Element = document.getElementById("npcCost8");
+        npsCost8Element.innerText = costItem8.toLocaleString(); // Use toLocaleString to format the NPC
+        updateNumber();
+        updateNPC();
+        updateItem8();
+        updateBuyButtons();
+    }
+}
+
+function buyItem9() {
+    if (number >= costItem9) {
+        number -= costItem9;
+        item9 += 1;
+        costItem9 = costItem9 + costItem9 * item9;
+        const npsCost9Element = document.getElementById("npcCost9");
+        npsCost9Element.innerText = costItem9.toLocaleString(); // Use toLocaleString to format the NPC
+        updateNumber();
+        updateNPC();
+        updateItem9();
+        updateBuyButtons();
+    }
+}
+
 function updateBuyButtons() {
     // Update Buy Item1 button
     const buyItem1Button = document.getElementById("buyItem1");
@@ -203,7 +254,7 @@ function updateBuyButtons() {
 
         // Check if number is above costItem1 and remove "display-none" class
         const buyItem1Element = document.querySelector('.buyItem1');
-        if (number > costItem1) {
+        if (number >= costItem1) {
             buyItem1Element.classList.remove('display-none');
         }
     } else {
@@ -217,7 +268,7 @@ function updateBuyButtons() {
 
         // Check if number is above 150 and remove "display-none" class
         const buyItem2Element = document.querySelector('.buyItem2');
-        if (number > 150) {
+        if (number >= costItem2) {
             buyItem2Element.classList.remove('display-none');
         }
     } else {
@@ -231,7 +282,7 @@ function updateBuyButtons() {
 
         // Check if number is above costItem2 and remove "display-none" class
         const buyItem3Element = document.querySelector('.buyItem3');
-        if (number > costItem3) {
+        if (number >= costItem3) {
             buyItem3Element.classList.remove('display-none');
         }
     } else {
@@ -245,7 +296,7 @@ function updateBuyButtons() {
 
         // Check if number is above costItem4 and remove "display-none" class
         const buyItem4Element = document.querySelector('.buyItem4');
-        if (number > costItem4) {
+        if (number >= costItem4) {
             buyItem4Element.classList.remove('display-none');
         }
     } else {
@@ -259,7 +310,7 @@ function updateBuyButtons() {
 
         // Check if number is above costItem5 and remove "display-none" class
         const buyItem5Element = document.querySelector('.buyItem5');
-        if (number > costItem5) {
+        if (number >= costItem5) {
             buyItem5Element.classList.remove('display-none');
         }
     } else {
@@ -273,11 +324,53 @@ function updateBuyButtons() {
 
         // Check if number is above costItem6 and remove "display-none" class
         const buyItem6Element = document.querySelector('.buyItem6');
-        if (number > costItem6) {
+        if (number >= costItem6) {
             buyItem6Element.classList.remove('display-none');
         }
     } else {
         buyItem6Button.disabled = true;
+    }
+
+    // Update Buy Item7 button
+    const buyItem7Button = document.getElementById("buyItem7");
+    if (number >= costItem7) {
+        buyItem7Button.disabled = false;
+
+        // Check if number is above costItem7 and remove "display-none" class
+        const buyItem7Element = document.querySelector('.buyItem7');
+        if (number >= costItem7) {
+            buyItem7Element.classList.remove('display-none');
+        }
+    } else {
+        buyItem7Button.disabled = true;
+    }
+
+    // Update Buy Item8 button
+    const buyItem8Button = document.getElementById("buyItem8");
+    if (number >= costItem8) {
+        buyItem8Button.disabled = false;
+
+        // Check if number is above costItem8 and remove "display-none" class
+        const buyItem8Element = document.querySelector('.buyItem8');
+        if (number >= costItem8) {
+            buyItem8Element.classList.remove('display-none');
+        }
+    } else {
+        buyItem8Button.disabled = true;
+    }
+
+    // Update Buy Item9 button
+    const buyItem9Button = document.getElementById("buyItem9");
+    if (number >= costItem9) {
+        buyItem9Button.disabled = false;
+
+        // Check if number is above costItem9 and remove "display-none" class
+        const buyItem9Element = document.querySelector('.buyItem9');
+        if (number >= costItem9) {
+            buyItem9Element.classList.remove('display-none');
+        }
+    } else {
+        buyItem9Button.disabled = true;
     }
     // Update Buy increaseCPSButton1 button
     const buyCPS1Button = document.getElementById("increaseCPSButton1");
@@ -324,8 +417,11 @@ function updateNPC() {
         item1strength2 * item2 + 
         item1strength3 * item3 + 
         item1strength4 * item4 + 
-        item1strength5 * item5 + 
-        item1strength6 * item6);
+        item1strength5 * item5 +
+        item1strength6 * item6 +
+        item1strength7 * item7 +
+        item1strength8 * item8 + 
+        item1strength9 * item9);
     const npcElement = document.getElementById("npc");
     npcElement.innerText = npc.toLocaleString(); // Use toLocaleString to format the NPC
 }
@@ -370,6 +466,24 @@ function updateItem5() {
 function updateItem6() {
     const item6Element = document.getElementById("item6");
     item6Element.innerText = item6.toLocaleString(); // Use toLocaleString to format Item4 count
+}
+
+// Function to update the displayed Item7 count
+function updateItem7() {
+    const item7Element = document.getElementById("item7");
+    item7Element.innerText = item7.toLocaleString(); // Use toLocaleString to format Item4 count
+}
+
+// Function to update the displayed Item8 count
+function updateItem8() {
+    const item8Element = document.getElementById("item8");
+    item8Element.innerText = item8.toLocaleString(); // Use toLocaleString to format Item4 count
+}
+
+// Function to update the displayed Item6 count
+function updateItem9() {
+    const item9Element = document.getElementById("item9");
+    item9Element.innerText = item9.toLocaleString(); // Use toLocaleString to format Item4 count
 }
 
 
