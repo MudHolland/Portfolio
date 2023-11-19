@@ -23,47 +23,51 @@
 		<div class="rechts">
 			<div class="rechts-boven">
 				<h2>Buy upgrades</h2>
-				<div class="buyItem">
-					<button id="buyItem1" onclick="buyItem1()" disabled>Add 1 per click for 40</button>
-					<div><b>Item1:</b> <span id="item1">0</span></div>
+				<div class="upgrade-list">
+					<div class="buyItem">
+						<button id="buyItem1" onclick="buyItem1()" disabled>Add 1 per click for <span id="npcCost1">40</span></button>
+						<div><b>Item1:</b> <span id="item1">0</span></div>
+					</div>
+					<div class="buyItem">
+						<button id="buyItem2" onclick="buyItem2()" disabled>Add 7 per click for <span id="npcCost2">150</span></button>
+						<div><b>Item2:</b> <span id="item2">0</span></div>
+					</div>
+					<div class="buyItem">
+						<button id="buyItem3" onclick="buyItem3()" disabled>Add 40 per click for <span id="npcCost3">500</span></button>
+						<div><b>Item3:</b> <span id="item3">0</span></div>
+					</div>
+					<div class="buyItem">
+						<button id="buyItem4" onclick="buyItem4()" disabled>Add 500 per click for <span id="npcCost4">5,000</span></button>
+						<div><b>Item4:</b> <span id="item4">0</span></div>
+					</div>
+					<div class="buyItem">
+						<button id="buyItem5" onclick="buyItem5()" disabled>Add 10,000 per click for <span id="npcCost5">10,000</span></button>
+						<div><b>Item5:</b> <span id="item5">0</span></div>
+					</div>
 				</div>
 				
-				<div class="buyItem">
-					<button id="buyItem2" onclick="buyItem2()" disabled>Add 7 per click for 150</button>
-					<div><b>Item2:</b> <span id="item2">0</span></div>
-				</div>
-				
-				<div class="buyItem">
-					<button id="buyItem3" onclick="buyItem3()" disabled>Add 40 per click for 500</button>
-					<div><b>Item3:</b> <span id="item3">0</span></div>
-				</div>
-				
-				<div class="buyItem">
-					<button id="buyItem4" onclick="buyItem4()" disabled>Add 500 per click for 5,000</button>
-					<div><b>Item4:</b> <span id="item4">0</span></div>
-				</div>
 			</div>
 			<div class="rechts-onder">
 				<h2>Buy items</h2>
 				<div class="buy-overview">
 				<div class="buyItem">
-					<button id="increaseCPSButton1" onclick="increaseCPS1()" disabled>Add 1CPS for 100</button>
+					<button id="increaseCPSButton1" onclick="increaseCPS1()" disabled>Add 1CPS for <span id="cpsCost1">100</span></button>
 				</div>
 				
 				<div class="buyItem">
-					<button id="increaseCPSButton2" onclick="increaseCPS2()" disabled>Add 3CPS for 200</button>
+					<button id="increaseCPSButton2" onclick="increaseCPS2()" disabled>Add 3CPS for <span id="cpsCost2">200</span></button>
 				</div>
 				
 				<div class="buyItem">
-					<button id="increaseCPSButton3" onclick="increaseCPS3()" disabled>Add 20CPS for 1,000</button>
+					<button id="increaseCPSButton3" onclick="increaseCPS3()" disabled>Add 20CPS for <span id="cpsCost3">1,000</span></button>
 				</div>
 				
 				<div class="buyItem">
-					<button id="increaseCPSButton4" onclick="increaseCPS4()" disabled>Add 250CPS for 10,000</button>
+					<button id="increaseCPSButton4" onclick="increaseCPS4()" disabled>Add 250CPS for <span id="cpsCost4">10,000</span></button>
 				</div>
 				
 				<div class="buyItem">
-					<button id="increaseCPSButton5" onclick="increaseCPS5()" disabled>Add 10,000CPS for 1,000,000</button>
+					<button id="increaseCPSButton5" onclick="increaseCPS5()" disabled>Add 10,000CPS for <span id="cpsCost5">1,000,000</span></button>
 				</div></div>
 			</div>
 		</div>

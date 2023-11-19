@@ -35,6 +35,9 @@ function increaseCPS1() {
     if (number >= cpsItem1) {
         number -= cpsItem1;
         cps += 1;
+        cpsItem1 = cpsItem1 + cpsItem1 * cps / 2;
+        const cpsCost1Element = document.getElementById("cpsCost1");
+        cpsCost1Element.innerText = cpsItem1.toLocaleString(); // Use toLocaleString to format the NPC
         updateCPS();
         updateNumber();
         updateBuyButtons();
@@ -45,6 +48,9 @@ function increaseCPS2() {
     if (number >= cpsItem2) {
         number -= cpsItem2;
         cps += 3;
+        cpsItem2 = cpsItem2 + cpsItem2 * cps / 2;
+        const cpsCost2Element = document.getElementById("cpsCost2");
+        cpsCost2Element.innerText = cpsItem2.toLocaleString(); // Use toLocaleString to format the NPC
         updateCPS();
         updateNumber();
         updateBuyButtons();
@@ -55,6 +61,9 @@ function increaseCPS3() {
     if (number >= cpsItem3) {
         number -= cpsItem3;
         cps += 20;
+        cpsItem3 = cpsItem3 + cpsItem3 * cps / 2;
+        const cpsCost3Element = document.getElementById("cpsCost3");
+        cpsCost3Element.innerText = cpsItem3.toLocaleString(); // Use toLocaleString to format the NPC
         updateCPS();
         updateNumber();
         updateBuyButtons();
@@ -65,6 +74,9 @@ function increaseCPS4() {
     if (number >= cpsItem4) {
         number -= cpsItem4;
         cps += 250;
+        cpsItem4 = cpsItem4 + cpsItem4 * cps / 2;
+        const cpsCost4Element = document.getElementById("cpsCost4");
+        cpsCost4Element.innerText = cpsItem4.toLocaleString(); // Use toLocaleString to format the NPC
         updateCPS();
         updateNumber();
         updateBuyButtons();
@@ -75,6 +87,9 @@ function increaseCPS5() {
     if (number >= cpsItem5) {
         number -= cpsItem5;
         cps += 10000;
+        cpsItem5 = cpsItem5 + cpsItem5 * cps / 2;
+        const cpsCost5Element = document.getElementById("cpsCost5");
+        cpsCost5Element.innerText = cpsItem5.toLocaleString(); // Use toLocaleString to format the NPC
         updateCPS();
         updateNumber();
         updateBuyButtons();
@@ -85,6 +100,9 @@ function buyItem1() {
     if (number >= costItem1) {
         number -= costItem1;
         item1 += 1;
+        costItem1 = costItem1 + costItem1 * item1 / 2;
+        const npsCost1Element = document.getElementById("npcCost1");
+        npsCost1Element.innerText = costItem1.toLocaleString(); // Use toLocaleString to format the NPC
         updateNumber();
         updateNPC();
         updateItem1();
@@ -96,6 +114,9 @@ function buyItem2() {
     if (number >= costItem2) {
         number -= costItem2;
         item2 += 1;
+        costItem2 = costItem2 + costItem2 * item1 / 2;
+        const npsCost2Element = document.getElementById("npcCost2");
+        npsCost2Element.innerText = costItem2.toLocaleString(); // Use toLocaleString to format the NPC
         updateNumber();
         updateNPC();
         updateItem2();
@@ -107,6 +128,9 @@ function buyItem3() {
     if (number >= costItem3) {
         number -= costItem3;
         item3 += 1;
+        costItem3 = costItem3 + costItem3 * item3 / 2;
+        const npsCost3Element = document.getElementById("npcCost3");
+        npsCost3Element.innerText = costItem3.toLocaleString(); // Use toLocaleString to format the NPC
         updateNumber();
         updateNPC();
         updateItem3();
@@ -118,9 +142,26 @@ function buyItem4() {
     if (number >= costItem4) {
         number -= costItem4;
         item4 += 1;
+        costItem4 = costItem4 + costItem4 * item4 / 2;
+        const npsCost4Element = document.getElementById("npcCost4");
+        npsCost4Element.innerText = costItem4.toLocaleString(); // Use toLocaleString to format the NPC
         updateNumber();
         updateNPC();
         updateItem4();
+        updateBuyButtons();
+    }
+}
+
+function buyItem5() {
+    if (number >= costItem5) {
+        number -= costItem5;
+        item5 += 1;
+        costItem5 = costItem5 + costItem5 * item5 / 2;
+        const npsCost5Element = document.getElementById("npcCost5");
+        npsCost5Element.innerText = costItem5.toLocaleString(); // Use toLocaleString to format the NPC
+        updateNumber();
+        updateNPC();
+        updateItem5();
         updateBuyButtons();
     }
 }
