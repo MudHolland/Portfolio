@@ -1,0 +1,61 @@
+blockquote {
+    transition: var(--time-025);
+    font-style:italic;
+    font-size:1rem;
+    opacity:0.9;
+    min-height: 1rem;
+    padding: 1rem;
+    position: relative;
+    margin: 1rem 0;
+    background-color: var(--primary-010);
+    border-radius: var(--border-radius-100);
+    z-index: 1;
+}
+
+blockquote::before {
+    transition: var(--time-025);
+    content: attr(big-text);
+	color: var(--white);
+    display: block;
+    font-size: 7.5rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+	position: absolute;
+    top: 1.75rem;
+    right: 2.75rem;
+	z-index: -1;
+}
+
+blockquote.quote::after {
+    transition: var(--time-025);
+    content: attr(big-text);
+	color: var(--white);
+    display: block;
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+	position: absolute;
+    bottom: -0.1rem;
+    right: 1.27rem;
+	z-index: -1;
+}
+
+blockquote.small::after {
+    transition: var(--time-025);
+    content: attr(big-text);
+	color: var(--white);
+    display: block;
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+	position: absolute;
+    top: 0;
+    right: 1.75rem;
+	z-index: -1;
+}
+
+blockquote.quote::before,
+blockquote.small::before {
+    font-size: 0rem;
+    top: -1.5rem;
+}

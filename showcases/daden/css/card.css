@@ -1,0 +1,73 @@
+.card{
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap:1em;
+
+	background-color:var(--white);
+	box-shadow: 0 0.1em 0.5em var(--primary-50);
+	transition: box-shadow 200ms ease 0ms;
+	/* transition: scale 200ms ease 0ms; */
+	border-radius:var(--border-radius-100);
+	z-index:1;
+	padding:1em;
+
+	& .card__content{
+		flex-grow:1;
+		background-color:var(--primary-90);
+		display:flex;
+		justify-content: center;
+	}
+
+	& .pie-chart{
+		width:50%;
+		height:50%;
+
+		background-color:var(--primary-50);
+	}
+
+	& .card__closer{
+		display:flex;
+		flex-direction:row;
+		gap:1em;
+		justify-content: space-between;
+		font-size:0.75em;
+		color:var(--primary-50);
+	}
+
+	& .card__title{
+		margin-block:-0.25em;
+		margin-inline:-0.25em;
+		padding-inline:0.25em;
+		border:solid 0.1em var(--white);
+		border-radius: var(--border-radius-025);
+		transition:border 200ms ease;
+	}
+
+	& .card__title:hover{
+		border:solid 0.1em var(--primary-50);
+		background-color: var(--primary-95);
+	}
+}
+
+.card:hover{
+	box-shadow: 0 0.1em 1em var(--primary-20);
+	/* scale:1.05; */
+	z-index:10;
+}
+
+.card--square{
+	aspect-ratio: 1 / 1;
+}
+
+.card--high{
+    grid-row: span 2;
+}
+
+.card--wide{
+    grid-column: span 2;
+}
+
+.card--full-width{
+	grid-column: span 3;
+}

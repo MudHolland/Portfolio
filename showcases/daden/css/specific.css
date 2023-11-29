@@ -1,0 +1,30 @@
+.swatch{
+	display:flex;
+	flex-direction: row;
+	padding:2em;
+	justify-content: space-between;
+	border-radius: var(--border-radius-100);
+	margin-bottom:2em;
+
+	& .dark{
+	display: flex;
+	flex-direction: column;
+	text-align:left;
+	color:var(--dark-100);
+	}
+
+	& .light{
+	display: flex;
+	flex-direction: column;
+	text-align:right;
+	color:var(--white-100);
+	}
+
+	& .title{
+	font-weight:700;
+	}
+
+	& .value{
+	font-weight:400;
+	}
+}

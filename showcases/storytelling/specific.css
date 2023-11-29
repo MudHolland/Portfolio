@@ -1,0 +1,21 @@
+label{
+	font-weight:700;
+}
+
+select{
+	margin-bottom:1em;
+	width:100%;
+}
+
+button{
+	margin-bottom:2em;
+}
+
+.dark-button{
+	border-color:var(--dark);
+	background-color:var(--dark);
+}
+
+h2{
+	margin-top:2em;
+}

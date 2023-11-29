@@ -1,0 +1,90 @@
+:root{
+	/* color */	
+	--black: black;
+	--primary-5:hsl(230, 50%, 5%);
+	--primary-10:hsl(230, 50%, 10%);
+	--primary-20:hsl(230, 50%, 20%);
+	--primary-30:hsl(230, 50%, 30%);
+	--primary-40:hsl(230, 50%, 40%);
+	--primary-50:hsl(230, 50%, 50%);
+	--primary-60:hsl(230, 50%, 60%);
+	--primary-70:hsl(230, 50%, 70%);
+	--primary-80:hsl(230, 50%, 80%);
+	--primary-90:hsl(230, 50%, 90%);
+	--primary-95:hsl(230, 50%, 95%);
+	--primary-99:hsl(230, 50%, 99%);
+	--white: white;
+	--white-050:rgba(255,255,255,0.5);
+	--white-025:rgba(255,255,255,0.25);
+
+	--background-color:#fff;
+	--foreground-color:var(--dark-100);
+
+	/* COLORS */
+	--dark-100:rgba(0,46,61,1);
+	--dark-090:rgba(0,46,61,0.9);
+	--dark-075:rgba(0,46,61,0.75);
+	--dark-050:rgba(0,46,61,0.5);
+	--dark-025:rgba(0,46,61,0.25);
+	--dark-010:rgba(0,46,61,0.1);
+
+	--white-100:rgba(255,255,255,1);
+
+	--blue-100:rgba(0, 153, 204,1);
+	--blue-075:rgba(0, 153, 204,0.75);
+	--blue-050:rgba(0, 153, 204,0.5);
+	--blue-025:rgba(0, 153, 204,0.25);
+	--blue-010:rgba(0, 153, 204,0.1);
+
+	--green-100:rgba(142,189,0,1);
+	--green-075:rgba(142,189,0,0.75);
+	--green-050:rgba(142,189,0,0.5);
+
+	--red-100:rgba(189,47,0,1);
+	--red-075:rgba(189,47,0,0.75);
+	--red-050:rgba(189,47,0,0.5);
+
+	--yellow-100:rgb(231,215,24,1);
+	--yellow-075:rgb(231,215,24,0.75);
+	--yellow-050:rgb(231,215,24,0.5);
+
+	--primary-100:var(--dark-100);
+	--primary-090:var(--dark-090);
+	--primary-075:var(--dark-075);
+	--primary-050:var(--dark-050);
+	--primary-025:var(--dark-025);
+	--primary-010:var(--dark-010);
+	--complementary-100:var(--red-100);
+
+	/* SIZES */
+	--size-400: 4rem;
+	--size-300: 3rem;
+	--size-200: 2rem;
+	--size-150: 1.5rem;
+	--size-125: 1.25rem;
+	--size-100: 1rem;
+	--size-075: 0.75rem;
+	--size-050: 0.5rem;
+	--size-025: 0.25rem;
+	--size-010: 0.125rem;
+	--size-005: 0.0625rem; /* @16px = 1px*/
+
+	--border-radius-100:var(--size-100);
+	--border-radius-050:var(--size-050);
+	--border-radius-025:var(--size-025);
+
+	/* timing */
+	--time-100: 1000ms;
+	--time-050: 500ms;
+	--time-025: 250ms;
+	--time-010: 100ms;
+
+	/* FONTS */
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap');
+	--font-heading:'Inter', sans-serif;
+	--font-body:'Inter', sans-serif;
+
+	--font-weight-normal:400;
+	--font-weight-bold:700;
+	--font-weight-light:100;
+}

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap');
+
+body{
+	font-family: 'Inter', sans-serif;
+	font-size:16px;
+	line-height:24px;
+	font-weight:400;
+	color:var(--dark-100);
+}
+
+h1,h2,h3,h4,h5,h6{
+	margin-top:1em;
+	margin-bottom:0em;
+	font-weight:700;
+}
+
+h1{
+	font-size:3rem;
+	line-height:3rem;
+	margin-bottom:1rem;
+}
+
+h2{
+	font-size:2rem;
+	line-height:2.5rem;
+	margin-bottom:1rem;
+}
+
+h3{
+	font-size:1.5rem;
+	line-height:2rem;
+	color:var(--dark-050);
+}
+
+h4{
+	font-size:1rem;
+	line-height:1.5rem;
+	font-weight:400;
+	text-transform: uppercase;
+	font-style: italic;
+	letter-spacing:0.5rem;
+}
+
+h5{
+	margin-top:1rem;
+	font-size:0.75rem;
+	line-height:1rem;
+	text-transform: uppercase;
+	font-weight:700;
+}
+
+a{	
+    color: var(--primary-100);
+	font-weight:700;
+	text-decoration-line: underline;
+	text-decoration-thickness: var(--size-010);
+	transition: color var(--time-025) ease-in;
+}
+
+a:hover{
+    color: var(--primary-050);
+}
+
+p{
+	font-size:1rem;
+	line-height:1.5rem;
+}
+
+p + p{
+	margin-top:1rem;
+}
+
+.opening,
+.bold,
+b,
+strong{
+	font-weight:700;
+}
+
+.italics,
+i,
+em{
+	font-style: italic;
+}
+
+.detail,
+figcaption{
+	font-size:0.75rem;
+	color:var(--dark-075);
+}
+

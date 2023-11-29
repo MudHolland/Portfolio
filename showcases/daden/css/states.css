@@ -1,0 +1,89 @@
+.danger,
+.error{
+	background-color:var(--red-100);
+	color:var(--dark-100);
+}
+
+.danger:hover,
+.error:hover{
+	background-color:var(--red-075);
+}
+
+.success{
+	background-color:var(--green-100);
+	color:var(--dark-100);
+}
+
+.success:hover{
+	background-color:var(--green-075);
+}
+
+.warning,
+.caution{
+	background-color:var(--yellow-100);
+	color:var(--dark-100);
+}
+
+.warning:hover,
+.caution:hover{
+	background-color:var(--yellow-075);
+}
+
+.info{
+	background-color: var(--blue-100);
+	color:var(--dark-100);
+}
+
+.info:hover{
+	background-color: var(--blue-075);
+}
+
+
+
+
+
+
+
+.danger-border,
+.error-border{
+	color:var(--red-100);
+	border-color:var(--red-100);
+}
+
+.danger-border:hover,
+.error-border:hover{
+	color:var(--red-075);
+	border-color:var(--red-075);
+}
+
+.success-border{
+	color:var(--green-100);
+	border-color:var(--green-100);
+}
+
+.success-border:hover{
+	color:var(--green-075);
+	border-color:var(--green-075);
+}
+
+.warning-border,
+.caution-border{
+	color:var(--yellow-100);
+	border-color:var(--yellow-100);
+}
+
+.warning:hover,
+.caution:hover{
+	color:var(--yellow-075);
+	border-color:var(--yellow-075);
+}
+
+.info{
+	color:var(--blue-100);
+	border-color:var(--blue-100);
+}
+
+.info:hover{
+	color:var(--blue-075);
+	border-color:var(--blue-075);
+}

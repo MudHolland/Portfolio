@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/main.css">
+	<link rel="stylesheet" href="./css/typography.css">
+	<link rel="stylesheet" href="./css/blockquote.css">
+	<link rel="stylesheet" href="./css/list-styles.css">
+	<link rel="stylesheet" href="./css/header-footer.css">
+	<link rel="stylesheet" href="./css/footer.css">
+	<link rel="stylesheet" href="./css/dashboard.css">
+	<link rel="stylesheet" href="./css/card.css">
+	<link rel="stylesheet" href="./css/button.css">
+	<link rel="stylesheet" href="./css/states.css">
+	<link rel="stylesheet" href="./css/form.css">
+	<link rel="stylesheet" href="./css/variables.css">
+	<link rel="stylesheet" href="./css/specific.css">
+	<title>Daden Huisstijl</title>
+</head>
+<body>
+	<header>
+		<div class="wrapper">
+			<a href="#" class="logo">
+				<div class="logo-img">D</div>
+				<div class="logo-text">Daden Huisstijl</div>
+			</a>
+			<ul class="nav">
+				<li><a href="./particles" class="active">Particles</a></li>
+				<li><a href="./atoms">Atoms</a></li>
+				<li><a href="./molecules">Molecules</a></li>
+				<li><button class="cta-button">Make Your Own</button></li>
+				<!-- <li class="user-profile">D</li> -->
+			</ul>
+		</div>
+	</header>
+	<main>
+		<div class="dashboard" style="max-width:70rch">
+			<div class="card--full-width">
+				<h1>Form inputs</h1>
+				<h2>Checkbox</h2>
+				<label class="mcui-checkbox">
+					<input type="checkbox">
+					<div>
+					  	<svg class="mcui-check" viewBox="-2 -2 35 35" aria-hidden="true">
+							<title>checkmark-circle</title>
+							<polyline points="7.57 15.87 12.62 21.07 23.43 9.93" />
+					  	</svg>
+					</div>
+					<div>Unchecked</div>
+				  </label>
+				  <h2>Radio button</h2>
+				  <label class="mcui-radio">
+						<input type="radio" name="one">
+						<div></div>
+						<div>Unchecked</div>
+				  </label>
+				  <label class="mcui-radio">
+						<input type="radio" name="two" checked>
+						<div></div>
+						<div>Checked</div>
+				  </label>
+				<h1>Colors</h1>
+				<div class="swatch" style="background-color:var(--dark-100);padding:1em;">
+					<div class="dark" style="background-color:var(--white-025);padding:1em;border-radius:var(--border-radius-050)">
+						<div class="title">Dark</div>
+						<div class="value">#002E3D</div>
+						<div class="value" style="color:var(--red-100)">Contrast Ratio: 1:1</div>
+					</div>
+					<div class="light" style="padding:1em">
+						<div class="title">Dark, text</div>
+						<div class="value">#002E3D</div>
+						<div class="value">Contrast Ratio: 14.4:1</div>						
+					</div>
+				</div>
+				<div class="swatch" style="background-color:var(--white-100);border:var(--size-010) solid var(--dark-100);padding:1em;">
+					<div class="dark" style="padding:1em">
+						<div class="title">Light</div>
+						<div class="value">#FFFFFF</div>
+						<div class="value">Contrast Ratio: 14.4:1</div>
+					</div>
+					<div class="light"style="background-color:var(--dark-075);padding:1em;border-radius:var(--border-radius-050)">
+						<div class="title">Light, background</div>
+						<div class="value">#FFFFFF</div>
+						<div class="value" style="color:var(--red-100)">Contrast Ratio: 1:1</div>						
+					</div>
+				</div>
+				<div class="swatch" style="background-color:var(--red-100);">
+					<div class="dark">
+						<div class="title">Red</div>
+						<div class="value">#BD2F00</div>
+						<div class="value">Contrast Ratio: 5.88:1</div>
+					</div>
+					<div class="light">
+						<div class="title">Danger, Error</div>
+						<div class="value">#BD2F00</div>
+						<div class="value">Contrast Ratio: 2.44:1</div>						
+					</div>
+				</div>
+				<div class="swatch" style="background-color:var(--green-100);">
+					<div class="dark">
+						<div class="title">Green</div>
+						<div class="value">#8ebd00</div>
+						<div class="value">Contrast Ratio: 6.46:1</div>
+					</div>
+					<div class="light">
+						<div class="title">Success</div>
+						<div class="value">#8ebd00</div>
+						<div class="value">Contrast Ratio: 2.22:1</div>
+					</div>
+				</div>
+				<div class="swatch" style="background-color:var(--yellow-100);">
+					<div class="dark">
+						<div class="title">Yellow</div>
+						<div class="value">#e7d718</div>
+						<div class="value">Contrast Ratio: 9.69:1</div>
+					</div>
+					<div class="light">
+						<div class="title">Warning, caution</div>
+						<div class="value">#e7d718</div>
+						<div class="value">Contrast Ratio: 1.48:1</div>
+					</div>
+				</div>
+				<div class="swatch" style="background-color:var(--blue-100);">
+					<div class="dark">
+						<div class="title">Blue</div>
+						<div class="value">#0099cc</div>
+						<div class="value">Contrast Ratio: 4.4:1</div>
+					</div>
+					<div class="light">
+						<div class="title">Info, informative</div>
+						<div class="value">#0099cc</div>
+						<div class="value">Contrast Ratio: 3.26:1</div>
+					</div>
+				</div>
+				<h1>Buttons</h1>
+				<h2>Primary button</h2>
+				<h3>Normal button</h3>
+				<button>Button</button>
+				<h3>Small button</h3>
+				<button class="small">Button</button>
+				<h3>Large button</h3>
+				<button class="large">Button</button>
+				<h3>Warning button</h3>
+				<button class="warning">Button</button>
+				<h3>Error button</h3>
+				<button class="error">Button</button>
+				<h3>Success button</h3>
+				<button class="success">Button</button>
+				<h3>Information button</h3>
+				<button class="info">Button</button>
+				<h3>Icon + text button</h3>
+				<button class=""><div>↓</div><div>Button</div></button>
+				<br>
+				<button class="small"><div>↓</div><div>Button</div></button>
+				<br>
+				<button class="large"><div>↓</div><div>Button</div></button>
+				<h2>Secondary button</h2>
+				<h3>Normal button</h3>
+				<button class="secondary">Button</button>
+				<h3>Small button</h3>
+				<button class="secondary small">Button</button>
+				<h3>Large button</h3>
+				<button class="secondary large">Button</button>
+				<h3>Warning button</h3>
+				<button class="secondary warning-border">Button</button>
+				<h3>Error button</h3>
+				<button class="secondary error-border">Button</button>
+				<h3>Success button</h3>
+				<button class="secondary success-border">Button</button>
+				<h3>Information button</h3>
+				<button class="secondary info-border">Button</button>
+				<h3>Icon + text button</h3>
+				<button class="secondary "><div>↓</div><div>Button</div></button>
+				<br>
+				<button class="secondary small"><div>↓</div><div>Button</div></button>
+				<br>
+				<button class="secondary large"><div>↓</div><div>Button</div></button>
+				<h2>Outline button</h2>
+				<h3>Normal button</h3>
+				<button class="outline-button">Button</button>
+				<h3>Small button</h3>
+				<button class="outline-button small">Button</button>
+				<h3>Large button</h3>
+				<button class="outline-button large">Button</button>
+				<h3>Warning button</h3>
+				<button class="outline-button warning-border">Button</button>
+				<h3>Error button</h3>
+				<button class="outline-button error-border">Button</button>
+				<h3>Success button</h3>
+				<button class="outline-button success-border">Button</button>
+				<h3>Information button</h3>
+				<button class="outline-button info-border">Button</button>
+				<h3>Icon + text button</h3>
+				<button class="outline-button "><div>↓</div><div>Button</div></button>
+				<br>
+				<button class="outline-button small"><div>↓</div><div>Button</div></button>
+				<br>
+				<button class="outline-button large"><div>↓</div><div>Button</div></button>
+				<h1>Blockquotes</h1>
+				<blockquote big-text="tekst">"Dit is de inhoud van een blockquote zonder class. Een blockquote kan gebruikt worden om een stuk tekst uit een boek of ander document te citeren."</blockquote>
+				<blockquote class="small" big-text="tekst">"Dit is de inhoud van een blockquote met class small. Hiermee kan ook worden geciteerd, maar de tekst in de rechter bovenhoek is wat kleiner."</blockquote>
+				<blockquote class="quote" big-text="~ Naam">"Dit is de inhoud van een blockquote met de class quote, om iemand te quoten."</blockquote>
+				<h1>Text styles</h1>
+				<p class="opening">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos error eius quidem veritatis recusandae quaerat tempora fugit asperiores, soluta ipsa voluptatum accusantium dolorum in deleniti excepturi fugiat facere tempore perferendis!</p>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt repellat, rerum necessitatibus facere perspiciatis fuga pariatur recusandae natus iusto ratione esse vel nobis dolorem non possimus assumenda suscipit itaque, nisi deleniti placeat. Atque, aspernatur tenetur eum voluptatem eligendi iure cumque sapiente voluptatum velit alias fuga iusto est commodi soluta incidunt adipisci, quas repellendus, repellat quaerat rem voluptate! Id similique sint laborum porro aliquam cum corrupti minima pariatur harum, doloribus, architecto nisi voluptatibus dolor fugit mollitia. Explicabo, dolore libero veniam alias possimus odio totam neque. Alias, facere eum sint quas nam accusantium officia doloribus, commodi molestiae illum autem voluptate exercitationem dolorum!</p>
+				<h2>Lorem ipsum, dolor sit amet</h2>
+				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+				<p>Eos soluta quam dignissimos debitis, minus officia delectus eum eligendi perspiciatis quaerat!</p>
+				<h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit, qui.</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium fugit at earum laboriosam tempora eveniet debitis et, officia similique nemo.</p>
+				<h4>Title</h4>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium fugit at earum laboriosam tempora eveniet debitis et, officia similique nemo.</p>
+				<p>Dit is hoe een <a href="http://#" target="_blank" rel="noopener noreferrer">link</a> er uit ziet.</p>
+				<p>Dit is hoe een <a href="http://#" target="_blank" rel="noopener noreferrer">link</a> er uit ziet.</p>
+				<h5>Title</h5>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium fugit at earum laboriosam tempora eveniet debitis et, officia similique nemo.</p>
+				<p>Unordered list title</p>
+				<ul>
+					<li>Lorem, ipsum dolor.</li>
+					<li>Lorem, ipsum dolor.</li>
+					<li>Lorem, ipsum dolor.</li>
+				</ul>
+				<p>Ordered list title</p>
+				<ol>
+					<li>Lorem, ipsum dolor.</li>
+					<li>Lorem, ipsum dolor.</li>
+					<li>Lorem, ipsum dolor.</li>
+				</ol>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium fugit at earum laboriosam tempora eveniet debitis et, officia similique nemo.</p>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class="wrapper">
+			<a class="feedback">feedback</a>
+			<ul class="nav">
+				<li><a href="./particles">Particles</a></li>
+				<li><a href="./atoms">Atoms</a></li>
+				<li><a href="./molecules">Molecules</a></li>
+			</ul>
+			<a class="footer-copyright">copyright</a>
+		</div>
+	</footer>
+
+	
+</body>
+</html>
