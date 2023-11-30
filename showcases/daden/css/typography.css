@@ -5,7 +5,7 @@ body{
 	font-size:16px;
 	line-height:24px;
 	font-weight:400;
-	color:var(--dark-100);
+	color: var(--dark-100);
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -15,8 +15,8 @@ h1,h2,h3,h4,h5,h6{
 }
 
 h1{
-	font-size:3rem;
-	line-height:3rem;
+	font-size:4rem;
+	line-height:4rem;
 	margin-bottom:1rem;
 }
 
@@ -33,6 +33,14 @@ h3{
 }
 
 h4{
+	margin-top:1rem;
+	font-size:0.75rem;
+	line-height:1rem;
+	text-transform: uppercase;
+	font-weight:700;
+}
+
+h5{
 	font-size:1rem;
 	line-height:1.5rem;
 	font-weight:400;
@@ -41,12 +49,11 @@ h4{
 	letter-spacing:0.5rem;
 }
 
-h5{
-	margin-top:1rem;
-	font-size:0.75rem;
-	line-height:1rem;
-	text-transform: uppercase;
+h6{
+	font-size:1rem;
+	line-height:1.5rem;
 	font-weight:700;
+	text-transform:capitalize;
 }
 
 a{	

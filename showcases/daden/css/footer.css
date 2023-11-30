@@ -1,6 +1,7 @@
 footer{
+	font-size:0.75em;
 	color:white;
-	background-color: var(--primary-100);
+	background-color: var(--dark-100);
 	padding-block:var(--size-200);
 
 	& .wrapper{
@@ -18,3 +19,5 @@ footer{
 		color:var(--white-050);
 	}
 }
+
+

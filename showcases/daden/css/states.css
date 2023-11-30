@@ -38,12 +38,6 @@
 	background-color: var(--blue-075);
 }
 
-
-
-
-
-
-
 .danger-border,
 .error-border{
 	color:var(--red-100);
@@ -72,18 +66,18 @@
 	border-color:var(--yellow-100);
 }
 
-.warning:hover,
-.caution:hover{
+.warning-border:hover,
+.caution-border:hover{
 	color:var(--yellow-075);
 	border-color:var(--yellow-075);
 }
 
-.info{
+.info-border{
 	color:var(--blue-100);
 	border-color:var(--blue-100);
 }
 
-.info:hover{
+.info-border:hover{
 	color:var(--blue-075);
 	border-color:var(--blue-075);
 }
