@@ -66,3 +66,15 @@
 	justify-content: flex-start;
 	gap:1rem;
 }
+
+.shadow-low{
+	box-shadow:var(--box-shadow-050);
+}
+
+.shadow-normal{
+	box-shadow:var(--box-shadow-100);
+}
+
+.shadow-high{
+	box-shadow:var(--box-shadow-200);
+}

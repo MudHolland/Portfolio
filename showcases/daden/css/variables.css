@@ -13,11 +13,14 @@
 	--size-010: 0.125rem;
 	--size-005: 0.0625rem; /* @16px = 1px*/
 
-
-	
 	--border-radius-100:var(--size-100);
 	--border-radius-050:var(--size-050);
 	--border-radius-025:var(--size-025);
+
+	--box-shadow-025:0 var(--size-005) var(--size-005) 0 var(--dark-050);
+	--box-shadow-050:0 var(--size-005) var(--size-010) 0 var(--dark-050);
+	--box-shadow-100:0 var(--size-010) var(--size-050) 0 var(--dark-025);
+	--box-shadow-200:0 var(--size-025) var(--size-100) 0 var(--dark-025);
 
 	/* timing */
 	--time-100: 1000ms;
@@ -33,4 +36,16 @@
 	--font-weight-normal:400;
 	--font-weight-bold:700;
 	--font-weight-light:100;
+}
+
+.font-weight-normal{
+	font-weight:var(--font-weight-normal);
+}
+
+.font-weight-bold{
+	font-weight:var(--font-weight-bold);
+}
+
+.font-weight-light{
+	font-weight:var(--font-weight-light);
 }

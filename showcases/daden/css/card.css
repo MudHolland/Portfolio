@@ -1,3 +1,12 @@
+.shadow{
+	box-shadow:var(--box-shadow-050);
+	transition:box-shadow var(--time-025) ease;
+}
+
+.shadow:hover{
+	box-shadow:var(--box-shadow-200);
+}
+
 .card{
 	display:flex;
 	flex-direction: column;
