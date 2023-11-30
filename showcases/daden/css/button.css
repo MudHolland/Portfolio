@@ -31,6 +31,19 @@ button{
 	}
 }
 
+.small{
+	padding:0.5rem 0.5rem;
+	font-size:0.75rem;
+	gap:0.25rem;
+}
+
+.large{
+	gap:1.5rem;
+	padding:1rem 1.5rem;
+	font-size:1.5rem;
+	border-radius:var(--border-radius-100);
+}
+
 button:disabled{
 	background-color:var(--dark-025);
 	filter:saturate(0);
