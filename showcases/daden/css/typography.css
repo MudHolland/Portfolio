@@ -77,6 +77,10 @@ p + p{
 	margin-top:1rem;
 }
 
+.no-spacing{
+	margin-top:0rem;
+}
+
 .opening,
 .bold,
 b,
