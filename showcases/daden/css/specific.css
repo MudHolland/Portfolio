@@ -1,3 +1,7 @@
+.overview{
+	max-width:70rch;
+}
+
 .swatches{
 	display:flex;
 	padding:2em;
@@ -5,14 +9,14 @@
 	border-radius: var(--border-radius-100);
 	margin-bottom:2em;
 
-	& .dark{
+	& .dark-text{
 	display: flex;
 	flex-direction: column;
 	text-align:left;
 	color:var(--dark-100);
 	}
 
-	& .light{
+	& .light-text{
 	display: flex;
 	flex-direction: column;
 	text-align:right;
@@ -26,6 +30,50 @@
 	& .value{
 	font-weight:400;
 	}
+
+	&.dark{
+		background-color:var(--dark-100);
+	}
+
+	&.light{
+		background-color:var(--white-100);
+		border:var(--size-010) solid var(--dark-100);
+		padding:1em;
+	}
+
+	&.blue{
+		background-color:var(--blue-100);
+	}
+
+	&.red{
+		background-color:var(--red-100);
+	}
+
+	&.yellow{
+		background-color:var(--yellow-100);
+	}
+
+	&.green{
+		background-color:var(--green-100);
+	}
+}
+
+.reduced-padding{
+	padding:1em;
+}
+
+.dark-bg{
+	background-color:var(--dark-075);
+	border-radius:var(--border-radius-050);
+}
+
+.light-bg{
+	background-color:var(--white-075);
+	border-radius:var(--border-radius-050);
+}
+
+.warning{
+	color:var(--red-100);
 }
 
 .swatch{
