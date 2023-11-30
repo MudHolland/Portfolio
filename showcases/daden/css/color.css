@@ -1,6 +1,7 @@
 :root{
 	/* COLORS */	
-	--black: var(--dark-100);
+	--black: var(
+	--dark-100);
 	
 	--white: white;
 	--white-100:rgba(255,255,255,1);
@@ -8,12 +9,19 @@
 	--white-050:rgba(255,255,255,0.5);
 	--white-025:rgba(255,255,255,0.25);
 
-	--dark-100:#002E3D;
+	--dark-100:rgba(0,46,61,1);
+	--dark-090:rgba(0,46,61,0.9);
+	--dark-075:rgba(0,46,61,0.75);
+	--dark-050:rgba(0,46,61,0.5);
+	--dark-025:rgba(0,46,61,0.25);
+	--dark-010:rgba(0,46,61,0.1);
+
+	/* --dark-100:#002E3D;
 	--dark-090:#194250;
 	--dark-075:#40626e;
 	--dark-050:#7f969e;
 	--dark-025:#bfcbce;
-	--dark-010:#e5eaeb;
+	--dark-010:#e5eaeb; */
 
 
 	--blue-100:#0099cc;
@@ -32,21 +40,29 @@
 	--red-050:rgba(189,47,0,0.5);
 	--red-025:rgba(189,47,0,0.25);
 
-	--yellow-100:rgb(231,215,24,1);
+	--yellow-100: rgb(231,215,24,1);
 	--yellow-075:rgb(231,215,24,0.75);
 	--yellow-050:rgb(231,215,24,0.5);
 	--yellow-025:rgb(231,215,24,0.25);
 
-	--primary-100:var(--blue-100);
-	--primary-090:var(--dark-090);
-	--primary-075:var(--blue-075);
-	--primary-050:var(--blue-050);
-	--primary-025:var(--blue-025);
-	--primary-010:var(--blue-010);
-	--complementary-100:var(--red-100);
+	--primary-100:var(
+	--blue-100);
+	--primary-090:var(
+	--dark-090);
+	--primary-075:var(
+	--blue-075);
+	--primary-050:var(
+	--blue-050);
+	--primary-025:var(
+	--blue-025);
+	--primary-010:var(
+	--blue-010);
+	--complementary-100:var(
+	--red-100);
 
 	--background-color:#fff;
-	--foreground-color:var(--dark-100);
+	--foreground-color:var(
+	--dark-100);
 }
 
 /* :root{

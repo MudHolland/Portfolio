@@ -55,18 +55,17 @@ button{
 
 	&.info{
 		background-color: var(--blue-100);
-		color:var(--dark-100);
+		color:var(--white-100);
 
 		&:hover{
 			background-color: var(--blue-075);
-			color:var(--dark-100);
 		}
 	}
 	
 	&.danger,
 	&.error{
 		background-color:var(--red-100);
-		color:var(--dark-100);
+		color:var(--white-100);
 
 		&.danger:hover,
 		&.error:hover{
@@ -87,7 +86,7 @@ button{
 
 	&.success{
 		background-color:var(--green-100);
-		color:var(--dark-100);
+		color:var(--white-100);
 
 		&.success:hover{
 			background-color:var(--green-075);
@@ -152,7 +151,7 @@ button.secondary{
 }
 
 
-button.outline-button{
+button.ghost{
 	border:var(--size-010) solid var(--dark-100);
 	background-color: transparent;
 	color:var(--dark-100);
@@ -163,8 +162,8 @@ button.outline-button{
 
 	&:disabled{
 		color:var(--dark-025);
-		border-color:var(--dark-025);
-		cursor:not-allowed;
+	border-color:var(--dark-025);
+	cursor:not-allowed;
 
 		&:hover{
 			background-color:transparent;
@@ -172,8 +171,8 @@ button.outline-button{
 	}
 
 	&.info{
-		color:var(--blue-100);
-		border-color:var(--blue-100);
+	color:var(--blue-100);
+	border-color:var(--blue-100);
 
 		&:hover{
 			background-color: var(--blue-025);
@@ -183,8 +182,8 @@ button.outline-button{
 	
 	&.danger,
 	&.error{
-		color:var(--red-100);
-		border-color:var(--red-100);
+	color:var(--red-100);
+	border-color:var(--red-100);
 
 		&:hover{
 			background-color: var(--red-025);
@@ -194,8 +193,8 @@ button.outline-button{
 
 	&.warning,
 	&.caution{
-		color:var(--yellow-100);
-		border-color:var(--yellow-100);
+	color:var(--yellow-100);
+	border-color:var(--yellow-100);
 
 		&:hover{
 			background-color: var(--yellow-025);
@@ -204,8 +203,8 @@ button.outline-button{
 	}
 
 	&.success{
-		color:var(--green-100);
-		border-color:var(--green-100);
+	color:var(--green-100);
+	border-color:var(--green-100);
 
 		&:hover{
 			background-color: var(--green-025);
