@@ -3,7 +3,7 @@ body{
 }
 
 .overview{
-	max-width:70rch;
+	max-width:calc(70rch + 2 * var(--size-100));
 }
 
 .swatches{
