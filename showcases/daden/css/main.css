@@ -5,6 +5,10 @@
     font-weight: 400;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	min-height: 100vh;
 	margin: 0 auto;

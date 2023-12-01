@@ -100,7 +100,7 @@ button.secondary{
 	color:var(--dark-100);
 
 	&:hover{
-		background-color: var(--dark-025);
+		background-color: var(--dark-010);
 	}
 
 	&:disabled{
@@ -157,7 +157,7 @@ button.ghost{
 	color:var(--dark-100);
 
 	&:hover{
-		background-color: var(--dark-025);
+		background-color: var(--dark-010);
 	}
 
 	&:disabled{

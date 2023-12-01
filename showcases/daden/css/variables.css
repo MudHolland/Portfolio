@@ -14,8 +14,8 @@
 	--size-005: 0.0625rem; /* @16px = 1px*/
 
 	--border-radius-100:var(--size-100);
-	--border-radius-050:var(--size-050);
-	--border-radius-025:var(--size-025);
+	--border-radius-050:calc(var(--border-radius-100) / 2);
+	--border-radius-025:calc(var(--border-radius-100) / 4);
 
 	--box-shadow-025:0 var(--size-005) var(--size-005) 0 var(--dark-050);
 	--box-shadow-050:0 var(--size-005) var(--size-010) 0 var(--dark-050);
@@ -36,6 +36,14 @@
 	--font-weight-normal:400;
 	--font-weight-bold:700;
 	--font-weight-light:100;
+}
+
+.hl{
+	margin-inline:-1rem;
+	width:calc(100% + 2 * var(--size-100));
+	height:var(--size-005);
+	background-color: var(--dark-010);
+	margin-block:var(--size-200);
 }
 
 .font-weight-normal{
