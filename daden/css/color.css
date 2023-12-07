@@ -1,7 +1,6 @@
 :root{
 	/* COLORS */	
-	--black: var(
-	--dark-100);
+	--black: var(--dark-100);
 	
 	--white: white;
 	--white-100:rgba(255,255,255,1);
@@ -24,11 +23,11 @@
 	--dark-010:#e5eaeb; */
 
 
-	--blue-100:#0099cc;
-	--blue-075:#40b3d9;
-	--blue-050:#7fcce5;
-	--blue-025:#bfe5f2;
-	--blue-010:#e5f5fa;
+	--blue-100:rgba(0, 153, 204,1);
+	--blue-075:rgba(0, 153, 204,0.75);
+	--blue-050:rgba(0, 153, 204,0.5);
+	--blue-025:rgba(0, 153, 204,0.25);
+	--blue-010:rgba(0, 153, 204,0.1);
 
 	--green-100:rgba(142,189,0,1);
 	--green-075:rgba(142,189,0,0.75);
@@ -45,24 +44,16 @@
 	--yellow-050:rgb(231,215,24,0.5);
 	--yellow-025:rgb(231,215,24,0.25);
 
-	--primary-100:var(
-	--blue-100);
-	--primary-090:var(
-	--dark-090);
-	--primary-075:var(
-	--blue-075);
-	--primary-050:var(
-	--blue-050);
-	--primary-025:var(
-	--blue-025);
-	--primary-010:var(
-	--blue-010);
-	--complementary-100:var(
-	--red-100);
+	--primary-100:var(--blue-100);
+	--primary-090:var(--dark-090);
+	--primary-075:var(--blue-075);
+	--primary-050:var(--blue-050);
+	--primary-025:var(--blue-025);
+	--primary-010:var(--blue-010);
+	--complementary-100:var(--red-100);
 
-	--background-color:#fff;
-	--foreground-color:var(
-	--dark-100);
+	--background-color:var(--white-100);
+	--foreground-color:var(--dark-100);
 }
 
 /* :root{
@@ -114,3 +105,57 @@
 	--background-color:#fff;
 	--foreground-color:var(--dark-100);
 } */
+
+.info-bg{
+	background-color: var(--blue-100);
+}
+
+.info-text{
+	color:var(--blue-100);
+}
+
+.info-border{
+	border-color:var(--blue-100);
+}
+
+.danger-bg,
+.error-bg{
+	background-color: var(--red-100);
+}
+
+.danger-text,
+.error-text{
+	color:var(--red-100);
+}
+
+.danger-border,
+.error-border{
+	border-color:var(--red-100);
+}
+
+.warning-bg,
+.caution-bg{
+	background-color: var(--yellow-100);
+}
+
+.warning-text,
+.caution-text{
+	color:var(--yellow-100);
+}
+
+.warning-border,
+.caution-border{
+	border-color:var(--yellow-100);
+}
+
+.success-bg{
+	background-color: var(--green-100);
+}
+
+.success-text{
+	color:var(--green-100);
+}
+
+.success-border{
+	border-color:var(--green-100);
+}

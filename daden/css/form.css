@@ -1,9 +1,58 @@
+::placeholder{
+	color:var(--dark-050);
+}
+
+label{
+	font-family:inherit;
+	font-size:0.75rem;
+	font-weight:700;
+	margin-top:0rem;
+}
+
+input[type=text],
+textarea,
+select {
+	box-sizing: border-box;
+	width: 100%;
+	font-size:1rem;
+	font-weight:400;
+	padding: 0.5rem;
+	margin-bottom: 1rem;
+	border-radius:var(--border-radius-050);
+	border: var(--size-010) solid currentColor;
+	resize: none;
+	transition:
+		background-color var(--time-025) ease,
+		color var(--time-025) ease;
+
+	&:hover{
+		background-color:var(--dark-010);
+	}
+
+	&:focus{
+		border-color:var(--dark-100);
+		color:var(--dark-100);
+		background-color:var(--white-100);
+	}
+
+	&:error{
+		color:var(--red-100);
+		background-color:var(--red-025);
+		border-color:var(--red-100);
+	}
+}
+
+select > option {
+	background-color: red;
+}
+
 /* CHECKBOX */
 
 /* Customize the checkbox-label */
 .checkbox-label,
 .radio-button-label {
 	display: block;
+	font-weight: 400;
 	position: relative;
 	padding-left: 1.75rem;
 	cursor: pointer;
@@ -180,4 +229,8 @@ input:checked + .slider:before {
 	-webkit-transform: translateX(2rem);
 	-ms-transform: translateX(2rem);
 	transform: translateX(2rem);
+}
+
+input{
+	width:100%;
 }
