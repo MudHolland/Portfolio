@@ -42,10 +42,6 @@ select {
 	}
 }
 
-select > option {
-	background-color: red;
-}
-
 /* CHECKBOX */
 
 /* Customize the checkbox-label */
