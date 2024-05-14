@@ -652,9 +652,10 @@ textarea#kbb{
 .rest{
 	position:absolute;
 	left:26rem;
-	padding:1rem;
+	padding:2rem;
+	padding-right:0rem;
 
-	@media only screen and (max-width: 1201px){
+	@media only screen and (max-width: 1218px){
 		flex-direction:column;
 		padding-bottom:5.5rem;
 	}
@@ -662,7 +663,7 @@ textarea#kbb{
 
 .extra-kolommen{
 
-	@media only screen and (max-width: 1601px){
+	@media only screen and (max-width: 1624px){
 		flex-direction:column;
 	}
 
