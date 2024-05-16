@@ -812,7 +812,7 @@ button[disabled] {
 	margin: 5rem auto; /* 20% from the top and centered */
 	/* padding: 2rem; */
 	/* border:var(--card-border); */
-	width: 110rem; /* Could be more or less, depending on screen size */
+	width: 112rem; /* Could be more or less, depending on screen size */
 	/* height: 53rem; */
   }
   
