@@ -80,6 +80,33 @@ $(document).ready(function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const textarea = document.getElementById('kbb');
+    const charCount = document.getElementById('charCount');
+
+    textarea.addEventListener('input', () => {
+        const currentLength = textarea.value.length;
+        
+        if (currentLength > 79) {
+            charCount.style.display = 'block';
+            charCount.textContent = `${currentLength}/100 karakters`;
+        } else {
+            charCount.style.display = 'none';
+        }
+
+        if (currentLength > 100) {
+            charCount.style.color = 'var(--orange)';
+            charCount.style.fontWeight = '700';
+            textarea.style.borderColor = 'var(--orange)';
+            textarea.style.borderWidth = 'var(--size-xs)';
+        } else {
+            charCount.style.color = 'var(--darkgrey)';
+            charCount.style.fontWeight = '400';
+            textarea.style.borderColor = 'var(--grey)';
+            textarea.style.borderWidth = 'var(--size-xxs)';
+        }
+    });
+});
 
 
 function toggleMenu(clickedElement) {
@@ -306,32 +333,89 @@ function typeText() {
 }
 
 
-$(document).ready(function() {
-    $('.bbOpslaan').click(function() {
-        // Store the initially active .afbeeldingsbalk
-        var initiallyActive = $('.afbeeldingsbalk.active');
+document.addEventListener('DOMContentLoaded', (event) => {
+            const textarea = document.getElementById('kbb');
+            const charCount = document.getElementById('charCount');
+            const problemLength = document.querySelector('.problemLength');
 
-        // Find the <i> element with class fa-circle-o inside the initially active .afbeeldingsbalk and change it to fa-check-circle-o
-        initiallyActive.find('i.fa-circle-o').removeClass('fa-circle-o').addClass('fa-check-circle-o');
+            textarea.addEventListener('input', () => {
+                const currentLength = textarea.value.length;
+                
+                if (currentLength > 79) {
+                    charCount.style.display = 'block';
+                    charCount.textContent = `${currentLength}/100 karakters`;
+                } else {
+                    charCount.style.display = 'none';
+                }
 
-        // Remove 'active' class from all '.afbeeldingsbalk'
-        $('.afbeeldingsbalk').removeClass('active');
+                if (currentLength > 100) {
+                    charCount.style.color = 'var(--orange)';
+                    charCount.style.fontWeight = '700';
+                    textarea.style.borderColor = 'var(--orange)';
+                    textarea.style.borderWidth = 'var(--size-xs)';
+                    problemLength.style.display = 'block';
+                    charCount.style.color = 'var(--orange)';
+                    charCount.style.fontWeight = '700';
+                } else {
+                    charCount.style.color = 'var(--darkgrey)';
+                    charCount.style.fontWeight = '400';
+                    textarea.style.borderColor = 'var(--grey)';
+                    textarea.style.borderWidth = 'var(--size-xxs)';
+                    problemLength.style.display = 'none';
+                    charCount.style.color = 'var(--darkgrey)';
+                    charCount.style.fontWeight = '400';
+                }
+            });
+        });
 
-        // Add 'active' class to the '.afbeeldingsbalk' containing 'image-010'
-        var activeAfbeeldingsbalk = $('.afbeeldingsbalk img[src$="image-010.jpg"]').closest('.afbeeldingsbalk');
-        activeAfbeeldingsbalk.addClass('active');
+        $(document).ready(function() {
+            $('.bbOpslaan').click(function() {
+                // Store the initially active .afbeeldingsbalk
+                var initiallyActive = $('.afbeeldingsbalk.active');
 
-        // Trigger click event on the active .afbeeldingsbalk
-        activeAfbeeldingsbalk.click();
+                // Find the <i> element with class fa-circle-o inside the initially active .afbeeldingsbalk and change it to fa-check-circle-o
+                initiallyActive.find('i.fa-circle-o').removeClass('fa-circle-o').addClass('fa-check-circle-o');
 
-        // Check if activeAfbeeldingsbalk contains "image-010.jpg"
-        if (activeAfbeeldingsbalk.find('img[src$="image-010.jpg"]').length > 0) {
-            // Clear text in textareas with ids "kbb" and "lbb"
-            $('#kbb').val('');
-            $('#lbb').val('');
-        }
-    });
-});
+                // Remove 'active' class from all '.afbeeldingsbalk'
+                $('.afbeeldingsbalk').removeClass('active');
+
+                // Add 'active' class to the '.afbeeldingsbalk' containing 'image-010'
+                var activeAfbeeldingsbalk = $('.afbeeldingsbalk img[src$="image-010.jpg"]').closest('.afbeeldingsbalk');
+                activeAfbeeldingsbalk.addClass('active');
+
+                // Trigger click event on the active .afbeeldingsbalk
+                activeAfbeeldingsbalk.click();
+
+                // Check if activeAfbeeldingsbalk contains "image-010.jpg"
+                if (activeAfbeeldingsbalk.find('img[src$="image-010.jpg"]').length > 0) {
+                    // Clear text in textareas with ids "kbb" and "lbb"
+                    $('#kbb').val('');
+                    $('#lbb').val('');
+
+                    // Reset character count
+                    const charCount = document.getElementById('charCount');
+                    charCount.style.display = 'none';
+                    charCount.textContent = '0/100 karakters';
+                    charCount.style.color = 'var(--darkgrey)';
+                    charCount.style.fontWeight = '400';
+
+                    // Reset border color of textarea
+                    const textarea = document.getElementById('kbb');
+                    textarea.style.borderColor = 'var(--grey)';
+                    textarea.style.borderWidth = 'var(--size-xxs)';
+
+                    // Hide problem-length message
+                    const problemLength = document.querySelector('.problemLength');
+                    problemLength.style.display = 'none';
+                }
+
+                // Close .problemLengthPanel
+                const problemLengthPanel = document.querySelector('.problemLengthPanel');
+                if (problemLengthPanel) {
+                    problemLengthPanel.style.display = 'none';
+                }
+            });
+        });
 
 
 $(document).ready(function() {
@@ -449,6 +533,22 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".problemLengthOpenen").addEventListener("click", function() {
+        var problemLength = document.querySelector(".problemLengthPanel");
+        if (problemLength.style.display === "none" || problemLength.style.display === "") {
+            problemLength.style.display = "flex";
+        } else {
+            problemLength.style.display = "none";
+        }
+    });
+
+    document.querySelector(".problemLengthSluiten").addEventListener("click", function() {
+        var problemLength = document.querySelector(".problemLengthPanel");
+        problemLength.style.display = "none";
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
     // Get all elements with class ".richtlijnenBeeldbeschrijvingenOpenen"
     var openButtons = document.querySelectorAll(".richtlijnenBeeldbeschrijvingenOpenen");
 
@@ -470,3 +570,26 @@ document.addEventListener("DOMContentLoaded", function() {
         richtlijnenBeeldbeschrijvingen.style.display = "none";
     });
 });
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Get all elements with class ".richtlijnenBeeldbeschrijvingenOpenen"
+//     var openButtons = document.querySelectorAll(".richtlijnenBeeldbeschrijvingenOpenen");
+
+//     // Add event listener to each open button
+//     openButtons.forEach(function(button) {
+//         button.addEventListener("click", function() {
+//             var richtlijnenBeeldbeschrijvingen = document.querySelector(".richtlijnenBeeldbeschrijvingen");
+//             if (richtlijnenBeeldbeschrijvingen.style.display === "none" || richtlijnenBeeldbeschrijvingen.style.display === "") {
+//                 richtlijnenBeeldbeschrijvingen.style.display = "flex";
+//             } else {
+//                 richtlijnenBeeldbeschrijvingen.style.display = "none";
+//             }
+//         });
+//     });
+
+//     // Add event listener for closing guidelines
+//     document.querySelector(".richtlijnenBeeldbeschrijvingenSluiten").addEventListener("click", function() {
+//         var richtlijnenBeeldbeschrijvingen = document.querySelector(".richtlijnenBeeldbeschrijvingen");
+//         richtlijnenBeeldbeschrijvingen.style.display = "none";
+//     });
+// });

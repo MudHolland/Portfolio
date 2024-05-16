@@ -26,7 +26,7 @@
 		</div>
 		<div class="afbeeldingenlijst">
 			<div class="paginabalk">
-				<h3 id="paginaNumber">Pagina 0</h3>
+				<h3 id="paginaNumber">Pagina 1</h3>
 				<div class="functie" style="display:block">
 					<p>DecoratiefInformatief</p>
 				</div>
@@ -533,8 +533,8 @@
 							<p style="flex-grow: 3; flex-basis: 0;	max-width: 60%;" id="tekstinafbeelding" class="grey" style="flex-grow:3"><i>"Tekst in afbeelding"</i></p>
 						</div> -->
 					</div>
-					<button  id="openBeeldvergelijker" class="full-width" disabled>
-						Beeldvergelijker
+					<button  id="openBeeldvergelijker" class="full-width">
+						Afbeelding vergelijken in database
 					</button>
 				</div>
 				<div class="border-bottom"></div>
@@ -633,7 +633,14 @@
 							<label for="kbb">Korte beeldbeschrijving</label>
 							<i class="fa fa-question-circle-o" aria-hidden="true"></i>
 						</div>
-						<textarea id="kbb" name="kbb" rows="2" maxlength="255" placeholder="Een foto van wie, waar, wat en eventueel belangrijke actie" ></textarea>
+						<textarea id="kbb" name="kbb" rows="2" maxlength="255" placeholder="Een omschrijving van afbeeldingstype, daarna wie, waar, wat en eventueel belangrijke acties" ></textarea>   
+						<div class="problem problemLengthOpenen" style="display:flex;justify-content: right;gap:var(--size-s)">
+							<div id="charCount" style="display: none;">0/100 karakters</div>
+							<div class="problemLength" style="display: none;text-align:right;color:var(--orange)">
+								<i class="fa fa-question-circle-o" aria-hidden="true"></i>
+							</div>
+						</div>
+
 					</div>
 					<div class="lbb ">
 						<div class="flex richtlijnenBeeldbeschrijvingenOpenen">
@@ -657,6 +664,18 @@
 				</div>
 			</div>
 			<div class="kolom3">
+				<div class="alters problemLengthPanel" style="display:none">
+					<h1>Probleem in beeldbeschrijving</h1>
+					<p> </p>						
+					<p> </p>						
+					<h2>Lengte van korte beeldbeschrijving</h2>
+					<p>Dedicon schrijft voor de korte beeldbeschrijving maximaal 100 tekens lang te houden. Beschrijf hierin enkel de details die in een oogopslag te zien zijn.</p>
+					<p>Weet je zeker dat de korte beeldbeschrijving zo lang dient te zijn?</p>
+					<p> </p>						
+					<div class="alters-knoppen">
+						<button class="primary problemLengthSluiten">begrepen</button>
+					</div>
+				</div>
 				<div class="alters richtlijnenFunctie" style="display:none">
 					<h1>Richtlijnen: Functie</h1>
 					<p> </p>						

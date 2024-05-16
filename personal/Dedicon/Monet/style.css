@@ -806,14 +806,14 @@ button[disabled] {
   
   /* Modal Content/Box */
   .beeldvergelijker-content {
-	background-color: var(--white);
-	border:var(--card-border);
-	/* border-radius: 1rem; */
-	margin: 2rem auto; /* 20% from the top and centered */
-	padding: 2rem;
+	/* background-color: var(--white); */
 	/* border:var(--card-border); */
-	width: 100rem; /* Could be more or less, depending on screen size */
-	height: 53rem;
+	/* border-radius: 1rem; */
+	margin: 5rem auto; /* 20% from the top and centered */
+	/* padding: 2rem; */
+	/* border:var(--card-border); */
+	width: 110rem; /* Could be more or less, depending on screen size */
+	/* height: 53rem; */
   }
   
   /* The Close Button */
@@ -832,13 +832,28 @@ button[disabled] {
   }
 
   .richtlijnenFunctie,
-  .richtlijnenBeeldbeschrijvingen{
+  .richtlijnenBeeldbeschrijvingen,
+  .problemLengthPanel{
 	display:flex;
 	gap:0.5rem;
   }
 
   .richtlijnenFunctieOpenen:hover,
-  .richtlijnenBeeldbeschrijvingenOpenen:hover{
+  .richtlijnenBeeldbeschrijvingenOpenen:hover,
+  .problemLengthOpenen:hover{
 		background-color: var(--lightgrey);
 	  	cursor:pointer;
   }
+
+  .problemLengthPanel{
+	border-color:var(--orange)!important;
+	border-width:var(--size-xs);
+  }
+
+  #charCount {
+	text-align: right;
+	/* margin-top: var(--size-xs); */
+	font-size: 1rem;
+	color: var(--darkgrey);
+    font-weight: 400;
+ }
