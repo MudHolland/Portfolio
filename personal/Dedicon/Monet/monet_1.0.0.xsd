@@ -1,0 +1,1037 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<!--  
+  Miltimodal Notation for accessible assets.
+  Copyright: Dedicon @ 2021
+  Authors:
+   - Bart Donders (BD)
+   - Thomas Vink (TV)
+   - Edmar Schut (ES)
+  Version: 0.1.0
+  History:
+   - 20211116-ES: Initial version 0.0.1
+   - 20211117-ES : Updated version 0.0.2
+      - added defaultAttributes id, xml:lang for all elements
+      - force id;s to be globally unique
+      - idref <-> id check added for annoRef, noteref
+      - changed root sections from section-role to specific elements
+      - sequence publication root-elements added  
+   - 20211207-TV/ES: Update to version 0.0.3
+   - 20211215-ES:
+      - lowerCaseCase check
+      - Bumped to version 0.1.0
+   - 20221214-BD:
+   	- Bumped to version 0.3.0
+      
+ -->
+<xs:schema xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:saxon="http://saxon.sourceforge.net" xmlns:svg="http://www.w3.org/2000/svg" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:xs="http://www.w3.org/2001/XMLSchema" defaultAttributes="monetDefaultAttributes" elementFormDefault="unqualified" vc:minVersion="1.1">
+<link type="text/css" rel="stylesheet" id="dark-mode-custom-link"/>
+<link type="text/css" rel="stylesheet" id="dark-mode-general-link"/>
+<style lang="en" type="text/css" id="dark-mode-custom-style"/>
+<style lang="en" type="text/css" id="dark-mode-native-style"/>
+<style lang="en" type="text/css" id="dark-mode-native-sheet"/>
+<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+<xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="./mathml3/mathml3.xsd"/>
+<!-- xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="./svg/svg.xsd"/ -->
+<xs:element name="monet">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" ref="link"/>
+<xs:element minOccurs="1" ref="metadata"/>
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="publication"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<!-- Welke metadata verplicht worden is nog onduidelijk -->
+<xs:element name="metadata">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="meta"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="metaRequired">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="meta">
+<xs:complexType mixed="true">
+<xs:attribute fixed="productId" name="name" type="xs:string" use="required"/>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="meta">
+<xs:complexType mixed="true">
+<!-- 			<xs:attribute name="name" type="xs:string" use="required"/> -->
+<xs:attribute name="name" type="metaType" use="required"/>
+<xs:attribute name="schema" type="schemaType" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="schemaType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Dublin Core"/>
+<xs:enumeration value="ONIX"/>
+<xs:enumeration value="Schema.org"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="metaType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="dc:identifier"/>
+<xs:enumeration value="dc:title"/>
+<xs:enumeration value="dc:language"/>
+<xs:enumeration value="dc:date"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="link">
+<xs:complexType>
+<xs:attribute fixed="stylesheet" name="rel" use="required"/>
+<xs:attribute name="href" type="xs:anyURI" use="required"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="publication">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="1" minOccurs="0" ref="metadata"/>
+<!-- 				We want to make this optional for multiple publications in one MONET-xml -->
+<xs:element maxOccurs="1" minOccurs="0" ref="cover"/>
+<xs:element maxOccurs="1" minOccurs="1" ref="body"/>
+</xs:sequence>
+<xs:attribute name="type" type="publicationType" use="required"/>
+</xs:complexType>
+<xs:unique name="unique-elementId">
+<xs:selector xpath=".//*"/>
+<xs:field xpath="@id"/>
+</xs:unique>
+</xs:element>
+<xs:element name="cover">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="1" minOccurs="0" ref="frontcover"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="backcover"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="jacketcopy"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="body">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="1" minOccurs="0" ref="frontmatter"/>
+<xs:element maxOccurs="1" minOccurs="1" ref="bodymatter"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="backmatter"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="frontcover">
+<xs:complexType>
+<xs:all>
+<xs:group ref="cover"/>
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="figure"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<!-- 	Make assert check for cover.jpg -->
+<xs:element name="backcover">
+<xs:complexType>
+<xs:all>
+<xs:group ref="cover"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="figure"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="jacketcopy">
+<xs:complexType>
+<xs:all>
+<xs:group ref="cover"/>
+<xs:element maxOccurs="unbounded" ref="figure"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="frontmatter">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="section"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<!-- 	assert for atleast one article or section -->
+<xs:element name="bodymatter">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="section"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="article"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="backmatter">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="section"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="section">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="page"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="section"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="hd"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="table"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="list"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="p"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="figure"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="img"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="blockquote"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="annotation"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="note"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="linegroup"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="frame"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="question"/>
+<!-- <xs:element maxOccurs="unbounded" minOccurs="0" ref="label"/> -->
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="aside"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="assessment"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="dl"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="lead"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="source"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="code"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="pre"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="pullquote"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="div"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="chapterNotes"/>
+</xs:all>
+<xs:attribute name="level" type="levelRange" use="optional"/>
+<xs:attribute name="role" type="sectionRole" use="required"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="levelRange">
+<xs:restriction base="xs:integer">
+<xs:minInclusive value="1"/>
+<xs:maxInclusive value="6"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="sectionRole">
+<xs:restriction base="xs:string">
+<xs:enumeration value="part"/>
+<xs:enumeration value="chapter"/>
+<xs:enumeration value="toc"/>
+<xs:enumeration value="preface"/>
+<xs:enumeration value="index"/>
+<xs:enumeration value="dedication"/>
+<xs:enumeration value="colophon"/>
+<xs:enumeration value="interleaf"/>
+<xs:enumeration value="prologue"/>
+<!-- 			<xs:enumeration value="publisherInformation"/> -->
+<xs:enumeration value="titlePage"/>
+<xs:enumeration value="subChapter"/>
+<xs:enumeration value="practice"/>
+<xs:enumeration value="appendix"/>
+<xs:enumeration value="afterword"/>
+<xs:enumeration value="summary"/>
+<xs:enumeration value="bibliography"/>
+<xs:enumeration value="frenchTitlePage"/>
+<xs:enumeration value="introduction"/>
+<xs:enumeration value="endNotes"/>
+<xs:enumeration value="other"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="div">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="page"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="section"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="hd"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="table"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="list"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="p"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="figure"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="img"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="blockquote"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="annotation"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="note"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="linegroup"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="frame"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="question"/>
+<!-- <xs:element maxOccurs="unbounded" minOccurs="0" ref="label"/> -->
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="aside"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="assessment"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="dl"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="lead"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="source"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="code"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="pre"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="pullquote"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="frame">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="title"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="subTitle"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="blockquote"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="poem"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="hd">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="br"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="img"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="em"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="number"/>
+</xs:all>
+<xs:attribute name="level" type="levelRange" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="title">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="number"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="subTitle">
+<xs:complexType mixed="true">
+<xs:group ref="minimalText"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="p">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+<xs:element ref="number" maxOccurs="unbounded" minOccurs="0"/>
+</xs:all>
+<xs:attribute name="type" type="paragraphType"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="paragraphType">
+<!-- 		Both should be possible at the same time -->
+<xs:restriction base="xs:string">
+<xs:enumeration value="indented"/>
+<xs:enumeration value="precedingEmptyLine"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="line">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="minimalText"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="linegroup">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="line"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="poem">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="author"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="linegroup"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="line"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="q">
+<xs:complexType mixed="true"> </xs:complexType>
+</xs:element>
+<xs:element name="br"/>
+<xs:element name="abbr">
+<xs:complexType mixed="true"> </xs:complexType>
+</xs:element>
+<xs:element name="sub">
+<xs:complexType mixed="true"> </xs:complexType>
+</xs:element>
+<xs:element name="sup">
+<xs:complexType mixed="true"> </xs:complexType>
+</xs:element>
+<xs:element name="sent">
+<xs:complexType mixed="true"> </xs:complexType>
+</xs:element>
+<xs:element name="a">
+<xs:complexType mixed="true">
+<xs:attribute name="href" type="xs:string"/>
+<xs:attribute name="type" type="anchorType" use="required"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="anchorType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="pageRef"/>
+<xs:enumeration value="objectRef"/>
+<xs:enumeration value="exRef"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="question">
+<xs:complexType mixed="true">
+<xs:all>
+<!-- <xs:group ref="questionText"/> -->
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="p"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="subQuestion"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="list"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="figure"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="table"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="answer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="option"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="number"/>
+</xs:all>
+<xs:attribute name="type" type="questionType" use="required"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="questionType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="multipleChoice"/>
+<xs:enumeration value="open"/>
+<!-- <xs:enumeration value="trueFalse"/> A generic solution like multipleChoice might be sufficient -->
+<!-- <xs:enumeration value="match"/> -->
+<!-- <xs:enumeration value="learningObjective"/> needs more research -->
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="subQuestion">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="number"/>
+</xs:all>
+<xs:attribute name="type" type="questionType" use="required"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="answer">
+<xs:complexType mixed="true">
+<xs:attribute name="type" type="answerType" use="required"/>
+<xs:attribute name="width" type="answerWidth" use="optional"/>
+<xs:attribute name="idRef" type="xs:IDREF" use="optional"/>
+<xs:attribute default="false" name="prefilled" type="xs:boolean" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="answerWidth">
+<xs:restriction base="xs:string">
+<xs:enumeration value="fillWidth"/>
+<xs:enumeration value="minWidth"/>
+<xs:enumeration value="lineWidth"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="answerType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="text"/>
+<xs:enumeration value="textarea"/>
+<xs:enumeration value="checkbox"/>
+<xs:enumeration value="radiobutton"/>
+<xs:enumeration value="select"/>
+<xs:enumeration value="answerOption"/>
+<xs:enumeration value="canvas"/>
+<xs:enumeration value="custom"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="input">
+<xs:complexType mixed="true">
+<xs:attribute name="type" type="answerType" use="required"/>
+</xs:complexType>
+</xs:element>
+<!-- <xs:element name="label">
+		<xs:complexType mixed="true">
+			<xs:all>
+				<xs:element maxOccurs="unbounded" minOccurs="0" ref="input"/>
+				<xs:group ref="minimalText"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element> -->
+<xs:element name="audio">
+<xs:complexType mixed="true">
+<xs:attribute name="src" type="xs:string"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="video">
+<xs:complexType mixed="true">
+<xs:attribute name="src" type="xs:string"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="code">
+<xs:complexType mixed="true"> </xs:complexType>
+</xs:element>
+<xs:element name="pre">
+<xs:complexType mixed="true"> </xs:complexType>
+</xs:element>
+<xs:element name="dl">
+<!-- 		How to make sure that attributes added to dl are not valid -->
+<xs:complexType mixed="true">
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="dt"/>
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="dd"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="dt">
+<!-- 		How to make sure that attributes added to dt are not valid -->
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="minimalText"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="dd">
+<!-- 		How to make sure that attributes added to dd are not valid -->
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="minimalText"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<!-- We should make it possible to require number on ordered lists and bullet on unordered lists -->
+<xs:element name="list">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="li"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="page"/>
+</xs:all>
+<xs:attribute name="type" type="listType" use="required"/>
+<xs:attribute name="numbering" type="numberType" use="optional"/>
+<!-- 			<xs:attribute name="start" type="xs:positiveInteger" use="optional"/> -->
+<xs:attribute name="bullet" type="bulletType" use="optional"/>
+<xs:attribute name="role" type="roleType" use="optional"/>
+<xs:attribute name="style" type="listStyleType" use="optional"/>
+<xs:assert test="(@bullet) or (@numbering)"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="listStyleType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="horizontal"/>
+<xs:enumeration value="vertical"/>
+<xs:enumeration value="divider"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="roleType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="toc"/>
+<xs:enumeration value="endNotes"/>
+<xs:enumeration value="footNotes"/>
+<xs:enumeration value="chapterNotes"/>
+<xs:enumeration value="index"/>
+<!-- 			<xs:enumeration value="learningObjectives"/> -->
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="bulletType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="square"/>
+<xs:enumeration value="dash"/>
+<xs:enumeration value="none"/>
+<xs:enumeration value="circle"/>
+<xs:enumeration value="linecircle"/>
+<xs:enumeration value="predefined"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="listType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="ordered"/>
+<xs:enumeration value="unordered"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="numberType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="decimal"/>
+<xs:enumeration value="upperCaseAlpha"/>
+<xs:enumeration value="lowerCaseAlpha"/>
+<xs:enumeration value="upperCaseRoman"/>
+<xs:enumeration value="lowerCaseRoman"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="li">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="note"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="number"/>
+</xs:all>
+<xs:attribute name="skipBullet" type="xs:boolean" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="annoRef">
+<xs:complexType mixed="true">
+<xs:attribute name="idref" type="xs:IDREF" use="required"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="annotation">
+<xs:complexType mixed="true">
+<xs:assert test="count(@id) = 1"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="objectRef">
+<xs:complexType mixed="true">
+<xs:attribute name="idref" type="xs:IDREF" use="required"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="noteRef">
+<xs:complexType mixed="true">
+<xs:attribute name="idref" type="xs:IDREF" use="required"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="note">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+</xs:all>
+<xs:attribute name="type" type="noteType" use="required"/>
+<xs:assert test="count(@id) = 1"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="noteType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="endNote"/>
+<xs:enumeration value="footNote"/>
+<xs:enumeration value="chapterNote"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="chapterNotes">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="1" ref="list"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="page">
+<xs:complexType mixed="true">
+<xs:attribute name="emptyPage" type="xs:boolean" use="optional"/>
+<xs:attribute name="title" type="xs:string" use="optional"/>
+<!-- For written pagenumbering we can use the textNode and title will be used for only the number -->
+</xs:complexType>
+</xs:element>
+<xs:element name="span">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<!-- 	Use is out of scope at the moment. But prob required due to publisher source files. -->
+<xs:element name="aside">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="assessment">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="title"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="formula">
+<xs:complexType mixed="true">
+<xs:attribute name="role" type="formulaRole" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="formulaRole">
+<xs:restriction base="xs:string">
+<xs:enumeration value="dediconMath"/>
+<xs:enumeration value="asciiMath"/>
+<xs:enumeration value="latec"/>
+<xs:enumeration value="mathML"/>
+</xs:restriction>
+</xs:simpleType>
+<!-- 	If a element like <p> or <li> are bold/italic etc we should not use <em> but be able to put the attribute on the element itself? -->
+<xs:element name="em">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+<xs:element ref="number" maxOccurs="unbounded" minOccurs="0"/>
+</xs:all>
+<xs:attribute name="fontStyles" type="fontStyle" use="optional"/>
+<xs:attribute name="fontTypes" type="fontType" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="strong">
+<xs:complexType mixed="true">
+<xs:group ref="generalText"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="legend">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="minimalText"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="title"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="figureGroup">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:element maxOccurs="0" minOccurs="0" ref="title"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="figure"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="legend"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="subTitle"/>
+<xs:element maxOccurs="0" minOccurs="0" ref="caption"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="source"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="figure">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:element maxOccurs="1" minOccurs="1" ref="img"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="caption"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="textInImage"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="imageDescription"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="title"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="figure"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="answer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="legend"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="source"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="subTitle"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="img">
+<xs:complexType mixed="true">
+<xs:attribute name="src" type="xs:string" use="required"/>
+<xs:attribute name="alt" type="xs:string" use="required"/>
+<xs:attribute name="role" type="imageRole" use="required"/>
+<xs:attribute name="type" type="imageType" use="required"/>
+<!-- 			<xs:attribute name="label" type="xs:string" use="optional"/> -->
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="imageRole">
+<xs:restriction base="xs:string">
+<!-- 			<xs:enumeration value="illustrative"/> -->
+<xs:enumeration value="decorative"/>
+<xs:enumeration value="informative"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="imageType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="photo"/>
+<xs:enumeration value="comic"/>
+<xs:enumeration value="graph"/>
+<xs:enumeration value="map"/>
+<xs:enumeration value="infographic"/>
+<xs:enumeration value="illustration"/>
+<xs:enumeration value="logo"/>
+<xs:enumeration value="icon"/>
+<xs:enumeration value="qrcode"/>
+<!-- 			<xs:enumeration value="barcode"/> -->
+<xs:enumeration value="diagram"/>
+<xs:enumeration value="undefined"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="caption">
+<xs:complexType mixed="true">
+<xs:group ref="generalText"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="textInImage">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="source">
+<xs:complexType mixed="true">
+<xs:group ref="minimalText"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="imageDescription">
+<xs:complexType mixed="true">
+<xs:group ref="generalText"/>
+</xs:complexType>
+</xs:element>
+<!-- <xs:element name="context">
+		<xs:complexType mixed="true">
+			<xs:group ref="minimalText"/>
+		</xs:complexType>
+	</xs:element> -->
+<xs:element name="number">
+<xs:complexType mixed="true">
+<xs:group ref="minimalText"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="option">
+<xs:complexType mixed="true">
+<xs:group ref="minimalText"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="blockquote">
+<!-- 		How to make sure that attributes added to blockquote are not valid -->
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="minimalText"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="author"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="source"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="table">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="caption"/>
+<xs:element maxOccurs="unbounded" ref="tr"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="title"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="source"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="tr">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="th"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="td"/>
+</xs:all>
+<xs:attribute name="rowspan" type="xs:integer"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="th">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+</xs:all>
+<xs:attribute name="colspan" type="xs:integer"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="td">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+</xs:all>
+<xs:attribute name="colspan" type="xs:integer"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="author">
+<xs:complexType mixed="true"/>
+</xs:element>
+<xs:element name="publisher">
+<xs:complexType mixed="true"/>
+</xs:element>
+<xs:element name="creator">
+<xs:complexType mixed="true"/>
+</xs:element>
+<xs:element name="mediaBy">
+<xs:complexType mixed="true"/>
+</xs:element>
+<xs:simpleType name="publicationType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="book"/>
+<xs:enumeration value="newspaper"/>
+<xs:enumeration value="magazine"/>
+<xs:enumeration value="exam"/>
+<xs:enumeration value="supplement"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="article">
+<xs:complexType mixed="true">
+<xs:sequence>
+<xs:element minOccurs="0" ref="page"/>
+<xs:element maxOccurs="1" ref="metadata"/>
+<xs:element maxOccurs="1" ref="articleHead"/>
+<xs:element minOccurs="1" ref="articleBody"/>
+<xs:element minOccurs="0" ref="articleTail"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="articleHead">
+<xs:complexType mixed="true">
+<xs:sequence>
+<xs:element maxOccurs="1" ref="title"/>
+<xs:element minOccurs="0" ref="topTitle"/>
+<xs:element minOccurs="0" ref="subTitle"/>
+<xs:element minOccurs="0" ref="lead"/>
+<xs:element minOccurs="0" ref="byLine"/>
+<xs:element minOccurs="0" ref="dateline"/>
+<xs:element maxOccurs="5" minOccurs="0" ref="creator"/>
+<xs:element maxOccurs="5" minOccurs="0" ref="mediaBy"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="articleBody">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="page"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="section"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="hd"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="table"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="list"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="p"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="figure"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="img"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="blockquote"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="annotation"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="note"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="linegroup"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="title"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="subTitle"/>
+<xs:element maxOccurs="1" minOccurs="0" ref="caption"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="author"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="frame"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="question"/>
+<!-- 				<xs:element maxOccurs="unbounded" minOccurs="0" ref="label"/> -->
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="pullquote"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="aside"/>
+</xs:all>
+<xs:attribute name="level" type="levelRange" use="optional"/>
+<xs:attribute name="role" type="sectionRole" use="optional"/>
+<xs:attribute default="1" name="columns" type="xs:integer" use="optional"/>
+<xs:attribute name="backgroundImageId" type="xs:IDREF" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="articleTail">
+<xs:complexType mixed="true">
+<xs:all>
+<xs:group ref="generalText"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<!-- 	Make assert to make sure footer follows articlebody -->
+<xs:element name="sideIssue">
+<xs:complexType>
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="hd"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="table"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="list"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="p"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="figure"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="img"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="note"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="linegroup"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+<xs:element name="articleMetadata">
+<xs:complexType mixed="true">
+<xs:sequence>
+<xs:element minOccurs="0" ref="author"/>
+<xs:element minOccurs="0" ref="dateline"/>
+<xs:element minOccurs="0" ref="mediaBy"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="topTitle">
+<xs:complexType mixed="true"/>
+</xs:element>
+<xs:element name="lead">
+<xs:complexType>
+<xs:group ref="minimalText"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="byLine">
+<xs:complexType mixed="true"/>
+</xs:element>
+<xs:element name="dateline">
+<xs:complexType mixed="true"/>
+</xs:element>
+<xs:element name="pullquote">
+<xs:complexType mixed="true"/>
+</xs:element>
+<!-- 	How to combine different default attributes? and restriction on what elements it's allowed -->
+<xs:attributeGroup name="monetDefaultAttributes">
+<xs:attribute name="id" type="xs:ID" use="optional"/>
+<xs:attribute ref="xml:lang" use="optional"/>
+<xs:attribute default="left" name="textAlign" type="textAlign" use="optional"/>
+<xs:attribute default="ltr" name="textDir" type="textDir" use="optional"/>
+<xs:attribute name="fontColor" type="xs:string" use="optional"/>
+<xs:attribute name="bgColor" type="xs:string" use="optional"/>
+<xs:attribute name="margin" type="marginType" use="optional"/>
+<xs:attribute default="true" name="visible" type="xs:boolean" use="optional"/>
+<xs:attribute default="false" name="badge" type="xs:boolean" use="optional"/>
+</xs:attributeGroup>
+<xs:group name="minimalText">
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="span"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="em"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="br"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="p"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="list"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="hd"/>
+<!-- 			<xs:element maxOccurs="unbounded" minOccurs="0" ref="label"/> -->
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="table"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="a"/>
+</xs:all>
+</xs:group>
+<xs:group name="generalText">
+<xs:all>
+<xs:group ref="minimalText"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="page"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="figure"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="q"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="abbr"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="sup"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="sub"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="sent"/>
+<!-- <xs:element minOccurs="0" maxOccurs="unbounded" ref="input"/> -->
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="audio"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="video"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="annoRef"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="noteRef"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="formula"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="answer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="question"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="m:math"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="objectRef"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="frame"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="img"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="assessment"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="subQuestion"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="source"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="option"/>
+</xs:all>
+</xs:group>
+<!-- 	Check if its possible to require the elements below in the children of cover. -->
+<xs:group name="cover">
+<xs:all>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="section"/>
+<xs:element minOccurs="0" ref="hd"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="list"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="p"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="img"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="blockquote"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="table"/>
+</xs:all>
+</xs:group>
+<xs:simpleType name="fontType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="serif"/>
+<xs:enumeration value="sansSerif"/>
+<xs:enumeration value="handWriting"/>
+<xs:enumeration value="monoSpace"/>
+<xs:enumeration value="display"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="fontStyle">
+<xs:list>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="bold"/>
+<xs:enumeration value="underline"/>
+<xs:enumeration value="italic"/>
+<xs:enumeration value="strikeThrough"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:list>
+</xs:simpleType>
+<xs:simpleType name="fontColor">
+<xs:restriction base="xs:string"> </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="textAlign">
+<xs:restriction base="xs:string">
+<xs:enumeration value="right"/>
+<xs:enumeration value="left"/>
+<xs:enumeration value="center"/>
+<xs:enumeration value="justify"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="marginType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="top"/>
+<xs:enumeration value="bottom"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="textDir">
+<xs:restriction base="xs:string">
+<xs:enumeration value="ltr"/>
+<xs:enumeration value="rtl"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>

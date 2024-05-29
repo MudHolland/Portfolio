@@ -1,0 +1,199 @@
+document.addEventListener("DOMContentLoaded", function() {
+    // Smooth scroll to active section
+    var active = window.location.active;
+    if (active) {
+        var target = document.querySelector(active);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        }
+    }
+
+    // Toggle menu options and chevron rotation
+    document.querySelector('.menu-options-toggle').addEventListener('click', function() {
+        var menu = document.querySelector('.menu-options');
+        var chevronWeergave = document.getElementById('chevron-weergave');
+        menu.classList.toggle('show');
+        chevronWeergave.classList.toggle('rotate');
+    });
+
+    // Richtlijnen toggle
+    setupToggle(".richtlijnenFunctieOpenen", ".richtlijnenFunctie", ".richtlijnenFunctieSluiten");
+    setupToggle(".richtlijnenBeeldbeschrijvingenOpenen", ".richtlijnenBeeldbeschrijvingen", ".richtlijnenBeeldbeschrijvingenSluiten");
+
+    // Afbeeldingsbalk click event to replace image
+    document.querySelectorAll('.afbeeldingsbalk').forEach((balk, index) => {
+        balk.addEventListener('click', function() {
+            replaceImage(index);
+        });
+    });
+
+    // Toggle Decoratief
+    setupToggleButton("#toggleDecoratiefButton", ".functie p:contains('Decoratief')", ".afbeeldingsbalk", ".paginabalk");
+
+    // Toggle Gevuld
+    setupToggleButton("#toggleGevuldButton", ".fa-check-circle-o", ".afbeeldingsbalk", ".paginabalk");
+
+    // Functie select change event
+    $('#functie').change(handleFunctieChange).trigger('change');
+
+    // bbOpslaan button click
+    $('.bbOpslaan').click(handleBbOpslaanClick);
+
+    // Beeldvergelijker modal
+    setupModal("#openBeeldvergelijker", "#beeldvergelijker", ".beeldvergelijker-close");
+
+    // Suggestie textarea typing
+    setupSuggestie();
+});
+
+// Functions
+
+function setupToggle(openSelector, contentSelector, closeSelector) {
+    var contentElement = document.querySelector(contentSelector);
+    document.querySelector(openSelector).addEventListener('click', function() {
+        toggleDisplay(contentElement);
+    });
+    document.querySelector(closeSelector).addEventListener('click', function() {
+        contentElement.style.display = 'none';
+    });
+}
+
+function setupToggleButton(buttonSelector, filterSelector, ...containerSelectors) {
+    $(buttonSelector).click(function() {
+        var toggleButton = $(this).find('img');
+        var isOn = toggleButton.attr('src').endsWith("/src/toggle-on.svg");
+        toggleButton.attr('src', isOn ? '/src/toggle-off.svg' : '/src/toggle-on.svg');
+        containerSelectors.forEach(selector => {
+            $(selector).filter(function() {
+                return $(this).find(filterSelector).length > 0;
+            }).toggle(!isOn);
+        });
+    });
+}
+
+function handleFunctieChange() {
+    var selectedValue = $(this).val();
+    var showInfo = selectedValue === 'informatief';
+    var showDecoratief = selectedValue === 'decoratief';
+    $('.kbb-info, .lbb-info, .informatief-info, .kolom2, .bbBewerkenButton').toggle(showInfo);
+    $('.decoratief-info').toggle(showDecoratief);
+}
+
+function handleBbOpslaanClick() {
+    var voortgangsbalk = $('.voortgangsbalk');
+    voortgangsbalk.toggleClass('achtendertig negenendertig vol');
+    var currentAmount = parseInt($('#amount').text());
+    $('#amount').text(currentAmount + 1);
+    if (voortgangsbalk.hasClass('vol')) {
+        $('button.full-width').removeAttr('disabled');
+    }
+}
+
+function setupModal(buttonSelector, modalSelector, closeSelector) {
+    var modal = document.querySelector(modalSelector);
+    document.querySelector(buttonSelector).onclick = function() {
+        modal.style.display = "block";
+    };
+    document.querySelector(closeSelector).onclick = function() {
+        modal.style.display = "none";
+    };
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+}
+
+function setupSuggestie() {
+    document.getElementById("suggestButton").addEventListener("click", function() {
+        var suggestieDiv = document.querySelector(".suggestie");
+        var textarea = document.getElementById("suggestieTextarea");
+        var dotsInterval;
+        suggestieDiv.style.display = "block";
+        this.disabled = true;
+        dotsInterval = showWaitingDots(textarea);
+        setTimeout(function() {
+            clearInterval(dotsInterval);
+            textarea.value = "";
+            typeText();
+        }, 3000);
+    });
+
+    document.getElementById("suggestie-sluiten").addEventListener("click", function() {
+        var suggestieDiv = document.querySelector(".suggestie");
+        suggestieDiv.style.display = "none";
+        document.getElementById("suggestButton").disabled = false;
+        document.getElementById("suggestieTextarea").value = "";
+    });
+}
+
+function showWaitingDots(textarea) {
+    var dots = 1;
+    return setInterval(function() {
+        textarea.value += ".".repeat(dots);
+        dots = (dots % 3) + 1;
+    }, 500);
+}
+
+function typeText() {
+    var index = 0;
+    var textarea = document.getElementById("suggestieTextarea");
+    var activeAfbeeldingsbalk = document.querySelector('.afbeeldingsbalk.active');
+    var dataIndex = activeAfbeeldingsbalk ? activeAfbeeldingsbalk.getAttribute('data-index') : null;
+    var textToType = (dataIndex === '3') ?
+        "Een foto van een vrouw die een koptelefoon draagt en op een bank zit. Ze lacht en lijkt te genieten van haar tijd. De kamer heeft een houten interieur en een raam op de achtergrond." :
+        "Een foto van een vrouw en een klein meisje die aan een tafel zitten en aan een kleurboek werken. De vrouw draagt een grijze trui en helpt het kleine meisje met haar werk. De tafel is gevuld met kleurrijke papieren en boeken, waardoor een leuke en boeiende sfeer voor de kinderen ontstaat.";
+
+    function typeCharacter() {
+        textarea.value += textToType.charAt(index);
+        index++;
+        if (index < textToType.length) {
+            setTimeout(typeCharacter, 25);
+        }
+    }
+
+    if (dataIndex) typeCharacter();
+}
+
+function replaceImage(index) {
+    document.querySelectorAll('.afbeeldingsbalk').forEach(element => {
+        element.classList.remove('active');
+    });
+    var imageOverview = document.getElementById("currentImage");
+    var thumbSrc = document.querySelector(`.afbeeldingsbalk[data-index="${index}"] .afbeelding-thumb img`).src;
+    imageOverview.src = thumbSrc;
+    updateImageName(thumbSrc);
+    document.querySelector(`.afbeeldingsbalk[data-index="${index}"]`).classList.add('active');
+    openBijschrift(thumbSrc.substring(thumbSrc.lastIndexOf('/') + 1));
+}
+
+function updateImageName(src) {
+    var imageName = src.substring(src.lastIndexOf('/') + 1);
+    document.querySelector('.afbeeldingsoverzicht .informatievelden h1').textContent = imageName;
+}
+
+function openBijschrift(imageName) {
+    fetch('Dedicon-Jaarverslag-2023-pdf_DEF.json')
+        .then(response => response.json())
+        .then(data => {
+            var imageData = data.find(item => item.bestandsnaam === imageName);
+            var bijschriftElement = document.getElementById('bijschrift');
+            var bijschriftRow = document.getElementById('bijschrift-row');
+            if (imageData && imageData.bijschrift) {
+                bijschriftElement.innerHTML = `<i>"${imageData.bijschrift}"</i>`;
+                bijschriftRow.style.display = 'flex';
+            } else {
+                bijschriftElement.innerHTML = `<i>No bijschrift found for ${imageName}</i>`;
+                bijschriftRow.style.display = 'none';
+            }
+        })
+        .catch(error => console.error('Error fetching JSON:', error));
+}
+
+function toggleDisplay(element) {
+    element.style.display = (element.style.display === "none" || element.style.display === "") ? "flex" : "none";
+}
+
+document.getElementById("afmeldKnop").addEventListener("click", function() {
+    window.location.href = "/index2.html";
+});
