@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVX0SD01YQ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WVX0SD01YQ');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tafels Oefenen</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Comic Sans MS', 'Comic Neue', 'Comic Sans', cursive;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             background-color: #f0f8ff;
             text-align: center;
             padding: 50px;
@@ -18,12 +26,17 @@
         label, p {
             font-size: 1.2em;
         }
-        input[type="number"] {
+        .input-group {
+            margin: 10px 0;
+        }
+        input[type="number"], input[type="text"] {
             padding: 10px;
             font-size: 1.2em;
             border: 2px solid #ff4500;
             border-radius: 5px;
-            margin: 10px 0;
+            margin-top: 5px;
+            width: calc(100% - 24px);
+            box-sizing: border-box;
         }
         button {
             background-color: #ff4500;
@@ -47,9 +60,20 @@
             margin-top: 20px;
         }
         @media only screen and (max-width: 460px) {
-            body {
-            padding: 00px;
+            body  {
+                padding:0px;
             }
+        }
+        ul {
+            list-style-type: none;
+            background: lightgreen;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ff4500;
+        }
+        li {
+            padding: 10px;
         }
     </style>
     <script>
@@ -57,9 +81,19 @@
         let currentIndex = 0;
         let tableNumber;
         let problems = [];
-        
+        let playerName;
+        let randomOrder = false;
+
+        const highScores = [];
+
         function start() {
+            playerName = document.getElementById('player-name').value.trim();
             tableNumber = parseInt(document.getElementById('table-number').value);
+            randomOrder = document.getElementById('random-order').checked;
+            if (!playerName) {
+                alert("Voer je naam in.");
+                return;
+            }
             if (isNaN(tableNumber) || tableNumber <= 0) {
                 alert("Voer een geldig getal in.");
                 return;
@@ -78,7 +112,13 @@
 
         function showProblem() {
             const problem = problems[currentIndex];
-            document.getElementById('problem').textContent = `${problem.y} x ${problem.x} = `;
+            let question;
+            if (randomOrder && Math.random() > 0.5) {
+                question = `${problem.x} x ${problem.y}`;
+            } else {
+                question = `${problem.y} x ${problem.x}`;
+            }
+            document.getElementById('problem').textContent = `${question} = `;
             document.getElementById('answer').value = '';
             document.getElementById('answer').focus();
         }
@@ -104,16 +144,48 @@
 
         function endQuiz() {
             const endTime = new Date();
-            const timeTaken = (endTime - startTime) / 1000;
+            const timeTaken = ((endTime - startTime) / 1000).toFixed(1);
             document.getElementById('quiz').style.display = 'none';
             document.getElementById('result').style.display = 'block';
             document.getElementById('time-taken').textContent = `Je hebt de sommen gemaakt in ${timeTaken} seconden.`;
+            updateHighScores(playerName, tableNumber, timeTaken);
+        }
+
+        function updateHighScores(name, table, time) {
+            highScores.push({name: name, table: table, time: parseFloat(time)});
+            highScores.sort((a, b) => a.time - b.time);
+            if (highScores.length > 10) {
+                highScores.pop();
+            }
+            displayHighScores();
+        }
+
+        function displayHighScores() {
+            const highScoresListIntro = document.getElementById('high-scores-list-intro');
+            const highScoresListResult = document.getElementById('high-scores-list-result');
+            highScoresListIntro.innerHTML = '';
+            highScoresListResult.innerHTML = '';
+            if (highScores.length > 0) {
+                document.getElementById('high-scores-intro').style.display = 'block';
+                document.getElementById('high-scores-result').style.display = 'block';
+            } else {
+                document.getElementById('high-scores-intro').style.display = 'none';
+                document.getElementById('high-scores-result').style.display = 'none';
+            }
+            highScores.forEach((score, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${index + 1}. ${score.name} - Tafel van ${score.table} - ${score.time.toFixed(1)} seconden`;
+                highScoresListIntro.appendChild(li.cloneNode(true));
+                highScoresListResult.appendChild(li);
+            });
         }
 
         function resetQuiz() {
             document.getElementById('result').style.display = 'none';
             document.getElementById('intro').style.display = 'block';
             document.getElementById('table-number').value = '';
+            document.getElementById('player-name').value = '';
+            displayHighScores();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -127,16 +199,35 @@
                     start();
                 }
             });
+            document.getElementById('player-name').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    start();
+                }
+            });
+            displayHighScores();
         });
     </script>
 </head>
 <body>
     <div id="intro">
         <h1>Tafels Oefenen</h1>
-        <label for="table-number">Welke tafel wil je oefenen? </label>
-        <input type="number" id="table-number">
-        <br>
+        <div class="input-group">
+            <label for="player-name">Wat is je naam? </label>
+            <input type="text" id="player-name">
+        </div>
+        <div class="input-group">
+            <label for="table-number">Welke tafel wil je oefenen? </label>
+            <input type="number" id="table-number">
+        </div>
+        <div class="input-group">
+            <label for="random-order">Wisselende plek (5 x 3 en 3 x5)? </label>
+            <input type="checkbox" id="random-order">
+        </div>
         <button onclick="start()">Start</button>
+        <div id="high-scores-intro" style="display: none;">
+            <h2>High Scores</h2>
+            <ul id="high-scores-list-intro"></ul>
+        </div>
     </div>
 
     <div id="quiz" style="display: none;">
@@ -151,6 +242,10 @@
         <h1>Resultaat</h1>
         <p id="time-taken"></p>
         <button onclick="resetQuiz()">Opnieuw</button>
+        <div id="high-scores-result" style="display: none;">
+            <h2>High Scores</h2>
+            <ul id="high-scores-list-result"></ul>
+        </div>
     </div>
 </body>
 </html>
