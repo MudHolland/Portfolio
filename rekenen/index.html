@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<<<<<<< HEAD
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tafels Oefenen</title>
-    <style>
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-=======
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVX0SD01YQ"></script>
@@ -27,40 +19,28 @@
     <style>
         body {
             font-family: 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive;
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
             background-color: #f0f8ff;
             text-align: center;
             padding: 50px;
         }
         h1 {
-<<<<<<< HEAD
-=======
             font-weight:700;
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
             color: #ff4500;
         }
         label, p {
             font-size: 1.2em;
         }
-<<<<<<< HEAD
-        input[type="number"] {
-=======
         .input-group {
             margin: 10px 0;
         }
         input[type="number"], input[type="text"] {
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
             padding: 10px;
             font-size: 1.2em;
             border: 2px solid #ff4500;
             border-radius: 5px;
-<<<<<<< HEAD
-            margin: 10px 0;
-=======
             margin-top: 5px;
             width: calc(100% - 24px);
             box-sizing: border-box;
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
         }
         button {
             background-color: #ff4500;
@@ -81,9 +61,6 @@
             border-radius: 10px;
             padding: 20px;
             display: inline-block;
-<<<<<<< HEAD
-            margin-top: 20px;
-=======
             max-width:600px;
             margin: 20px auto;
         }
@@ -102,7 +79,6 @@
         }
         li {
             padding: 10px;
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
         }
     </style>
     <script>
@@ -110,11 +86,6 @@
         let currentIndex = 0;
         let tableNumber;
         let problems = [];
-<<<<<<< HEAD
-        
-        function start() {
-            tableNumber = parseInt(document.getElementById('table-number').value);
-=======
         let playerName;
         let randomOrder = false;
 
@@ -128,7 +99,6 @@
                 alert("Voer je naam in.");
                 return;
             }
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
             if (isNaN(tableNumber) || tableNumber <= 0) {
                 alert("Voer een geldig getal in.");
                 return;
@@ -147,9 +117,6 @@
 
         function showProblem() {
             const problem = problems[currentIndex];
-<<<<<<< HEAD
-            document.getElementById('problem').textContent = `${problem.x} x ${problem.y} = `;
-=======
             let question;
             if (randomOrder && Math.random() > 0.5) {
                 question = `${problem.x} x ${problem.y}`;
@@ -157,7 +124,6 @@
                 question = `${problem.y} x ${problem.x}`;
             }
             document.getElementById('problem').textContent = `${question} = `;
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
             document.getElementById('answer').value = '';
             document.getElementById('answer').focus();
         }
@@ -183,12 +149,6 @@
 
         function endQuiz() {
             const endTime = new Date();
-<<<<<<< HEAD
-            const timeTaken = (endTime - startTime) / 1000;
-            document.getElementById('quiz').style.display = 'none';
-            document.getElementById('result').style.display = 'block';
-            document.getElementById('time-taken').textContent = `Je hebt de sommen gemaakt in ${timeTaken} seconden.`;
-=======
             const timeTaken = ((endTime - startTime) / 1000).toFixed(1);
             document.getElementById('quiz').style.display = 'none';
             document.getElementById('result').style.display = 'block';
@@ -223,18 +183,14 @@
                 highScoresListIntro.appendChild(li.cloneNode(true));
                 highScoresListResult.appendChild(li);
             });
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
         }
 
         function resetQuiz() {
             document.getElementById('result').style.display = 'none';
             document.getElementById('intro').style.display = 'block';
             document.getElementById('table-number').value = '';
-<<<<<<< HEAD
-=======
             document.getElementById('player-name').value = '';
             displayHighScores();
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -248,27 +204,18 @@
                     start();
                 }
             });
-<<<<<<< HEAD
-=======
             document.getElementById('player-name').addEventListener('keyup', function(event) {
                 if (event.key === 'Enter') {
                     start();
                 }
             });
             displayHighScores();
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
         });
     </script>
 </head>
 <body>
     <div id="intro">
         <h1>Tafels Oefenen</h1>
-<<<<<<< HEAD
-        <label for="table-number">Welke tafel wil je oefenen? </label>
-        <input type="number" id="table-number">
-        <br>
-        <button onclick="start()">Start</button>
-=======
         <div class="input-group">
             <label for="player-name">Wat is je naam? </label>
             <input type="text" id="player-name">
@@ -286,17 +233,12 @@
             <h2>High Scores</h2>
             <ul id="high-scores-list-intro"></ul>
         </div>
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
     </div>
 
     <div id="quiz" style="display: none;">
         <h1>Tafels Oefenen</h1>
         <div id="problem"></div>
-<<<<<<< HEAD
-        <input type="number" id="answer">
-=======
         <input type="number" id="answer" inputmode="numeric" pattern="[0-9]*">
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
         <br>
         <button onclick="checkAnswer()">Controleer</button>
     </div>
@@ -305,13 +247,10 @@
         <h1>Resultaat</h1>
         <p id="time-taken"></p>
         <button onclick="resetQuiz()">Opnieuw</button>
-<<<<<<< HEAD
-=======
         <div id="high-scores-result" style="display: none;">
             <h2>High Scores</h2>
             <ul id="high-scores-list-result"></ul>
         </div>
->>>>>>> af79f5bd28e533ad70744620157c3d0e2c858cf3
     </div>
 </body>
 </html>
