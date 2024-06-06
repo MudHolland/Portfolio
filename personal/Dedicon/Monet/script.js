@@ -372,48 +372,51 @@ document.addEventListener('DOMContentLoaded', (event) => {
             $('.bbOpslaan').click(function() {
                 // Store the initially active .afbeeldingsbalk
                 var initiallyActive = $('.afbeeldingsbalk.active');
-
+        
                 // Find the <i> element with class fa-circle-o inside the initially active .afbeeldingsbalk and change it to fa-check-circle-o
                 initiallyActive.find('i.fa-circle-o').removeClass('fa-circle-o').addClass('fa-check-circle-o');
-
+        
                 // Remove 'active' class from all '.afbeeldingsbalk'
                 $('.afbeeldingsbalk').removeClass('active');
-
+        
                 // Add 'active' class to the '.afbeeldingsbalk' containing 'image-010'
                 var activeAfbeeldingsbalk = $('.afbeeldingsbalk img[src$="image-010.jpg"]').closest('.afbeeldingsbalk');
                 activeAfbeeldingsbalk.addClass('active');
-
+        
                 // Trigger click event on the active .afbeeldingsbalk
                 activeAfbeeldingsbalk.click();
-
+        
                 // Check if activeAfbeeldingsbalk contains "image-010.jpg"
                 if (activeAfbeeldingsbalk.find('img[src$="image-010.jpg"]').length > 0) {
                     // Clear text in textareas with ids "kbb" and "lbb"
                     $('#kbb').val('');
                     $('#lbb').val('');
-
+        
                     // Reset character count
                     const charCount = document.getElementById('charCount');
                     charCount.style.display = 'none';
                     charCount.textContent = '0/100 karakters';
                     charCount.style.color = 'var(--darkgrey)';
                     charCount.style.fontWeight = '400';
-
+        
                     // Reset border color of textarea
                     const textarea = document.getElementById('kbb');
                     textarea.style.borderColor = 'var(--grey)';
                     textarea.style.borderWidth = 'var(--size-xxs)';
-
+        
                     // Hide problem-length message
                     const problemLength = document.querySelector('.problemLength');
                     problemLength.style.display = 'none';
                 }
-
+        
                 // Close .problemLengthPanel
                 const problemLengthPanel = document.querySelector('.problemLengthPanel');
                 if (problemLengthPanel) {
                     problemLengthPanel.style.display = 'none';
                 }
+        
+                // Disable the save button
+                $(this).attr('disabled', 'disabled');
             });
         });
 
@@ -434,7 +437,9 @@ $(document).ready(function() {
 
         // Update the amount text
         var currentAmount = parseInt($('#amount').text());
-        $('#amount').text(currentAmount + 1);
+        if (currentAmount < 40) {
+            $('#amount').text(currentAmount + 1);
+        }
 
         // Check if .voortgangsbalk has .vol
         if (voortgangsbalk.hasClass('vol')) {
@@ -593,3 +598,24 @@ document.addEventListener("DOMContentLoaded", function() {
 //         richtlijnenBeeldbeschrijvingen.style.display = "none";
 //     });
 // });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the textarea and button elements
+    var kbbTextarea = document.getElementById('kbb');
+    var saveButton = document.querySelector('.primary.bbOpslaan');
+
+    // Function to check the textarea and enable/disable the button
+    function checkTextarea() {
+        if (kbbTextarea.value.trim().length > 0) {
+            saveButton.removeAttribute('disabled');
+        } else {
+            saveButton.setAttribute('disabled', 'disabled');
+        }
+    }
+
+    // Add event listener to the textarea to check on input
+    kbbTextarea.addEventListener('input', checkTextarea);
+
+    // Initial check in case there is already text in the textarea
+    checkTextarea();
+});
