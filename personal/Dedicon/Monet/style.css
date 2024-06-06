@@ -809,7 +809,7 @@ button[disabled] {
 	/* background-color: var(--white); */
 	/* border:var(--card-border); */
 	/* border-radius: 1rem; */
-	margin: 5rem auto; /* 20% from the top and centered */
+	margin: 5rem auto 0; /* 20% from the top and centered */
 	/* padding: 2rem; */
 	/* border:var(--card-border); */
 	width: 112rem; /* Could be more or less, depending on screen size */
