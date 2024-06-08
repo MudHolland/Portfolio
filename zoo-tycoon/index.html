@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo Tycoon Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game">
+        <div id="controls">
+            <div id="money">Money: $100</div>
+            <button onclick="selectBuilding('giraffe')">Giraffe Pen ($90)</button>
+            <button onclick="selectBuilding('path')">Path</button>
+            <button onclick="selectBuilding('parking')">Parking</button>
+        </div>
+        <div id="grid"></div>
+        <div id="legend">
+            <div>Legend:</div>
+            <div class="legend-item"><div class="color-block" style="background-color: black;"></div> Entrance</div>
+            <div class="legend-item"><div class="color-block" style="background-color: yellow;"></div> Giraffe Pen</div>
+            <div class="legend-item"><div class="color-block" style="background-color: grey;"></div> Path</div>
+            <div class="legend-item"><div class="color-block" style="background-color: lightgrey;"></div> Parking</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
