@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Italianno';
+    src: url('Italianno-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #d32f2f; /* Tomatenrode kleur */
+    --secondary-color: #fbc02d; /* Gouden accenten */
+    --accent-color: #388e3c; /* Basilicumgroene kleur */
+    --background-color: #f8f9fa;
+    --font-family-heading: 'Italianno', cursive, sans-serif;
+}
+
+.hero {
+    background-image: url('image.webp');
+}

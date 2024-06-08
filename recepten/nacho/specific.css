@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'MexicanTequila';
+    src: url('MexicanTequila.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #E94B3C;
+    --secondary-color: #FFD700;
+    --accent-color: #008000;
+    --background-color: #FFF5E1;
+    --font-family-heading: 'MexicanTequila', cursive, sans-serif;
+}
+
+.hero {
+    background-image: url('image.webp');
+}

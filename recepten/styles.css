@@ -1,0 +1,101 @@
+:root{
+    --font-family: arial, cursive, sans-serif;
+}
+
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+}
+
+.hero {
+    font-family: var(--font-family-heading);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 5rem 1rem;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column; /* Zorgt ervoor dat elementen onder elkaar staan */
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.25); /* Semi-transparante achtergrond voor betere leesbaarheid */
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-family: var(--font-family-heading);
+    font-size: 6rem;
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-weight: normal;
+}
+
+.hero p {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0.5rem 2rem;
+}
+
+main {
+    padding: 2rem 1rem;
+}
+
+.recipe {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    color: var(--secondary-color);
+}
+
+form label {
+    display: block;
+    font-size: 1.1rem;
+}
+
+form input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+ol {
+    margin-left: 1rem;
+    padding-left: 1rem;
+}
+
+ol.preparation-steps {
+    list-style: none;
+    padding: 0;
+}
+
+ol.preparation-steps li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.step-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+    transform: translateY(0.5rem);
+}
