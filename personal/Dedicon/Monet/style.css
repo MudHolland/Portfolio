@@ -857,3 +857,36 @@ button[disabled] {
 	color: var(--darkgrey);
     font-weight: 400;
  }
+
+ .toggle-container {
+    display: flex;
+    /* align-items: center; */
+    border: 2px solid var(--black-100);
+	background-color:var(--grey);
+    border-radius: 2rem;
+    /* overflow: hidden; */
+    min-width:max-content;
+}
+
+.toggle-container input[type="radio"] {
+    display: none;
+    color: white;
+}
+
+.toggle-container label {
+    padding: 0.25rem 1rem;
+	margin:0.25rem;
+	flex-grow:2;
+	border-radius:2rem;
+    cursor: pointer;
+    color: white;
+}
+
+.toggle-container input[type="radio"]:checked + label {
+    background: var(--white);
+    color: var(--black-100);
+	border-radius: 2rem;
+	padding-right:1rem;
+    font-weight: bold;
+}
+
