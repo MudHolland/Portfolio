@@ -30,6 +30,28 @@
         label, p {
             font-size: 1.2em;
         }
+        .table-input-group {
+            margin: 10px 0;
+        }
+        .table-input-group input {
+            padding: 10px;
+            font-size: 1.2em;
+            border: 2px solid #ff4500;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .table-input-group button {
+            background-color: #ff4500;
+            color: #fff;
+            padding: 10px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .table-input-group button:not(:disabled):hover {
+            background-color: #ff6347;
+        }
         .input-group {
             margin: 10px 0;
         }
@@ -52,8 +74,12 @@
             cursor: pointer;
             margin-top: 20px;
         }
-        button:hover {
+        button:not(:disabled):hover {
             background-color: #ff6347;
+        }
+        button:disabled {
+            background-color: grey;
+            cursor:not-allowed;
         }
         #intro, #quiz, #result {
             background-color: #fffacd;
@@ -80,6 +106,50 @@
         li {
             padding: 10px;
         }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            text-align: center;
+        }
+
+        ul li {
+            display: flex;
+            justify-content: center;  /* Center both the circle and the text */
+            align-items: center;
+            padding-left: 0;
+            position: relative;
+        }
+
+        ul li::before {
+            content: counter(list-item);
+            counter-increment: list-item;
+            background-color: white;
+            color: black;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border: 2px solid white;
+            margin-right: 10px; /* Add spacing between the circle and text */
+        }
+        /* Gold for 1st place */
+        ul li:nth-child(1)::before {
+            background-color: gold;
+        }
+
+        /* Silver for 2nd place */
+        ul li:nth-child(2)::before {
+            background-color: silver;
+        }
+
+        /* Bronze for 3rd place */
+        ul li:nth-child(3)::before {
+            background-color: #cd7f32; /* Bronze color */
+        }
+
     </style>
     <script>
         let startTime;
@@ -88,25 +158,68 @@
         let problems = [];
         let playerName;
         let randomOrder = false;
+        let tableCount = 1;
+        let maxTables = 5;
 
         const highScores = [];
 
+        function updateButtons() {
+            // Disable the "+" button if there are 3 table fields, enable otherwise
+            document.getElementById('add-table').disabled = tableCount >= maxTables;
+            
+            // Disable the "-" button if there is only 1 table field, enable otherwise
+            document.getElementById('remove-table').disabled = tableCount <= 1;
+        }
+
+        function addTableField() {
+            if (tableCount < maxTables) {
+                tableCount++;
+                const tablesContainer = document.getElementById('tables-container');
+                const newField = document.createElement('div');
+                newField.classList.add('table-input-group');
+                newField.innerHTML = `<input type="number" id="table-number-${tableCount}" placeholder="Tafel ${tableCount}">`;
+                
+                // Insert the new field before the "+" button
+                tablesContainer.appendChild(newField);
+                
+                updateButtons();  // Update the button states
+            }
+        }
+
+        function removeTableField() {
+            if (tableCount > 1) {
+                const lastField = document.querySelector(`#table-number-${tableCount}`).parentElement;
+                lastField.remove();
+                tableCount--;
+                updateButtons();  // Update the button states
+            }
+        }
+
         function start() {
             playerName = document.getElementById('player-name').value.trim();
-            tableNumber = parseInt(document.getElementById('table-number').value);
+            const tableNumbers = [];
+            for (let i = 1; i <= tableCount; i++) {
+                const tableInput = document.getElementById(`table-number-${i}`);
+                const tableValue = parseInt(tableInput.value);
+                if (!isNaN(tableValue) && tableValue > 0) {
+                    tableNumbers.push(tableValue);
+                }
+            }
             randomOrder = document.getElementById('random-order').checked;
             if (!playerName) {
                 alert("Voer je naam in.");
                 return;
             }
-            if (isNaN(tableNumber) || tableNumber <= 0) {
-                alert("Voer een geldig getal in.");
+            if (tableNumbers.length === 0) {
+                alert("Voer ten minste één geldige tafel in.");
                 return;
             }
             problems = [];
-            for (let i = 1; i <= 10; i++) {
-                problems.push({x: tableNumber, y: i});
-            }
+            tableNumbers.forEach(tableNumber => {
+                for (let i = 1; i <= 10; i++) {
+                    problems.push({x: tableNumber, y: i});
+                }
+            });
             problems = problems.sort(() => Math.random() - 0.5);
             currentIndex = 0;
             document.getElementById('intro').style.display = 'none';
@@ -152,24 +265,54 @@
             const timeTaken = ((endTime - startTime) / 1000).toFixed(1);
             document.getElementById('quiz').style.display = 'none';
             document.getElementById('result').style.display = 'block';
-            document.getElementById('time-taken').textContent = `Je hebt de sommen gemaakt in ${timeTaken} seconden.`;
-            updateHighScores(playerName, tableNumber, timeTaken);
+            document.getElementById('time-taken').textContent = `Je hebt de sommen gemaakt in ${timeTaken} sec.`;
+            const tableNumbers = [];
+            for (let i = 1; i <= tableCount; i++) {
+                const tableInput = document.getElementById(`table-number-${i}`);
+                const tableValue = parseInt(tableInput.value);
+                if (!isNaN(tableValue) && tableValue > 0) {
+                    tableNumbers.push(tableValue);
+                }
+            }
+            updateHighScores(playerName, tableNumbers, timeTaken);
         }
 
-        function updateHighScores(name, table, time) {
-            highScores.push({name: name, table: table, time: parseFloat(time)});
+        function updateHighScores(name, tables, time) {
+            let combinedTables;
+
+            if (tables.length === 1) {
+                combinedTables = `Tafel ${tables[0]}`;
+            } else if (tables.length === 2) {
+                combinedTables = `Tafel ${tables[0]} en ${tables[1]}`;
+            } else {
+                // Voor 3 of meer tafels, voeg ", " toe tussen de eerste tafels en gebruik "en" voor de laatste
+                combinedTables = `Tafel ${tables.slice(0, -1).join(', ')} en ${tables[tables.length - 1]}`;
+            }
+
+            // Voeg één item toe aan de highScores array met de gecombineerde tafels
+            highScores.push({name: name, table: combinedTables, time: parseFloat(time)});
+
+            // Sorteer op tijd
             highScores.sort((a, b) => a.time - b.time);
+
+            // Beperk het aantal high scores tot 10
             if (highScores.length > 10) {
                 highScores.pop();
             }
+
+            // Toon de high scores
             displayHighScores();
         }
+
+
 
         function displayHighScores() {
             const highScoresListIntro = document.getElementById('high-scores-list-intro');
             const highScoresListResult = document.getElementById('high-scores-list-result');
             highScoresListIntro.innerHTML = '';
             highScoresListResult.innerHTML = '';
+            
+            // Verberg of toon de high scores sectie afhankelijk van of er scores zijn
             if (highScores.length > 0) {
                 document.getElementById('high-scores-intro').style.display = 'block';
                 document.getElementById('high-scores-result').style.display = 'block';
@@ -177,13 +320,17 @@
                 document.getElementById('high-scores-intro').style.display = 'none';
                 document.getElementById('high-scores-result').style.display = 'none';
             }
+            
+            // Voeg de high scores toe aan beide secties
             highScores.forEach((score, index) => {
                 const li = document.createElement('li');
-                li.textContent = `${index + 1}. ${score.name} - Tafel van ${score.table} - ${score.time.toFixed(1)} seconden`;
+                // li.textContent = `${index + 1}. ${score.name} - ${score.table} - ${score.time.toFixed(1)} sec.`;
+                li.textContent = `${score.name} - ${score.table} - ${score.time.toFixed(1)} sec.`;
                 highScoresListIntro.appendChild(li.cloneNode(true));
                 highScoresListResult.appendChild(li);
             });
         }
+
 
         function resetQuiz() {
             document.getElementById('result').style.display = 'none';
@@ -192,6 +339,15 @@
             document.getElementById('player-name').value = '';
             displayHighScores();
         }
+
+        function nogEenKeer() {
+    // Hide the result and show the quiz section
+    document.getElementById('result').style.display = 'none';
+    document.getElementById('quiz').style.display = 'block';
+
+    // Restart the quiz with the same settings
+    start();
+}
 
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('answer').addEventListener('keyup', function(event) {
@@ -221,8 +377,15 @@
             <input type="text" id="player-name">
         </div>
         <div class="input-group">
-            <label for="table-number">Welke tafel wil je oefenen? </label>
-            <input type="number" id="table-number">
+            <label for="table-number-1">Welke tafels wil je oefenen? </label>
+            <div class="table-input-group">
+                <div id="tables-container">
+                    <input type="number" id="table-number-1" placeholder="Tafel 1">
+                </div>
+                <label for="table-number-1">Tafel toevoegen/verwijderen? </label>
+                <button type="button" id="remove-table" onclick="removeTableField()" disabled>-</button>
+                <button type="button" id="add-table" onclick="addTableField()">+</button>
+            </div>
         </div>
         <div class="input-group">
             <label for="random-order">Wisselende plek (5 x 3 en 3 x 5)? </label>
@@ -246,11 +409,23 @@
     <div id="result" style="display: none;">
         <h1>Resultaat</h1>
         <p id="time-taken"></p>
-        <button onclick="resetQuiz()">Opnieuw</button>
+        <button onclick="nogEenKeer()">Nog een keer</button>
+        <button onclick="resetQuiz()">Instellen</button>
         <div id="high-scores-result" style="display: none;">
             <h2>High Scores</h2>
             <ul id="high-scores-list-result"></ul>
         </div>
     </div>
+    
+
+    <!-- <div id="result" style="display: none;">
+        <h1>Resultaat</h1>
+        <p id="time-taken"></p>
+        <button onclick="resetQuiz()">Opnieuw</button>
+        <div id="high-scores-result" style="display: none;">
+            <h2>High Scores</h2>
+            <ul id="high-scores-list-result"></ul>
+        </div>
+    </div> -->
 </body>
 </html>
