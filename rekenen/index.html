@@ -170,6 +170,7 @@
         let randomOrder = false;
         let tableCount = 1;
         let maxTables = 5;
+        let mistakes = 0; 
 
         const highScores = [];
 
@@ -264,6 +265,7 @@
                     showProblem();
                 }
             } else {
+                mistakes++; // Increment mistakes counter
                 alert("Fout antwoord, probeer het opnieuw.");
                 document.getElementById('answer').value = '';
                 document.getElementById('answer').focus();
@@ -276,6 +278,7 @@
             document.getElementById('quiz').style.display = 'none';
             document.getElementById('result').style.display = 'block';
             document.getElementById('time-taken').textContent = `Je hebt de sommen gemaakt in ${timeTaken} sec.`;
+            document.getElementById('mistakes').textContent = `Aantal fouten: ${getMistakeText(mistakes)}`; // Use getMistakeText function
             const tableNumbers = [];
             for (let i = 1; i <= tableCount; i++) {
                 const tableInput = document.getElementById(`table-number-${i}`);
@@ -284,10 +287,10 @@
                     tableNumbers.push(tableValue);
                 }
             }
-            updateHighScores(playerName, tableNumbers, timeTaken);
+            updateHighScores(playerName, tableNumbers, timeTaken, mistakes); // Pass mistakes to high scores
         }
 
-        function updateHighScores(name, tables, time) {
+        function updateHighScores(name, tables, time, mistakes) {
             let combinedTables;
 
             if (tables.length === 1) {
@@ -295,26 +298,23 @@
             } else if (tables.length === 2) {
                 combinedTables = `Tafel ${tables[0]} en ${tables[1]}`;
             } else {
-                // Voor 3 of meer tafels, voeg ", " toe tussen de eerste tafels en gebruik "en" voor de laatste
                 combinedTables = `Tafel ${tables.slice(0, -1).join(', ')} en ${tables[tables.length - 1]}`;
             }
 
-            // Voeg één item toe aan de highScores array met de gecombineerde tafels
-            highScores.push({name: name, table: combinedTables, time: parseFloat(time)});
+            highScores.push({name: name, table: combinedTables, time: parseFloat(time), mistakes: mistakes});
 
-            // Sorteer op tijd
             highScores.sort((a, b) => a.time - b.time);
 
-            // Beperk het aantal high scores tot 10
             if (highScores.length > 10) {
                 highScores.pop();
             }
 
-            // Toon de high scores
             displayHighScores();
         }
 
-
+        function getMistakeText(mistakes) {
+            return mistakes === 1 ? '1 fout' : `${mistakes} fouten`;
+        }
 
         function displayHighScores() {
             const highScoresListIntro = document.getElementById('high-scores-list-intro');
@@ -322,7 +322,6 @@
             highScoresListIntro.innerHTML = '';
             highScoresListResult.innerHTML = '';
             
-            // Verberg of toon de high scores sectie afhankelijk van of er scores zijn
             if (highScores.length > 0) {
                 document.getElementById('high-scores-intro').style.display = 'block';
                 document.getElementById('high-scores-result').style.display = 'block';
@@ -331,11 +330,9 @@
                 document.getElementById('high-scores-result').style.display = 'none';
             }
             
-            // Voeg de high scores toe aan beide secties
             highScores.forEach((score, index) => {
                 const li = document.createElement('li');
-                // li.textContent = `${index + 1}. ${score.name} - ${score.table} - ${score.time.toFixed(1)} sec.`;
-                li.textContent = `${score.name} - ${score.table} - ${score.time.toFixed(1)} sec.`;
+                li.textContent = `${index + 1}. ${score.name} - ${score.table} - ${getMistakeText(score.mistakes)} - ${score.time.toFixed(1)} sec.`;
                 highScoresListIntro.appendChild(li.cloneNode(true));
                 highScoresListResult.appendChild(li);
             });
@@ -419,8 +416,9 @@
     <div id="result" style="display: none;">
         <h1>Resultaat</h1>
         <p id="time-taken"></p>
-        <button onclick="nogEenKeer()">Nog een keer</button>
-        <button class="outline" onclick="resetQuiz()">Instellen</button>
+        <p id="mistakes"></p> <!-- Display number of mistakes here -->
+        <button onclick="resetQuiz()">Opnieuw</button>
+        <button onclick="restartQuiz()">Nog een keer</button>
         <div id="high-scores-result" style="display: none;">
             <h2>High Scores</h2>
             <ul id="high-scores-list-result"></ul>
