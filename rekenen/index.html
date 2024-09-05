@@ -22,6 +22,7 @@
             background-color: #f0f8ff;
             text-align: center;
             padding: 50px;
+            transition:all 200ms;
         }
         h1 {
             font-weight:700;
@@ -30,7 +31,7 @@
         label, p {
             font-size: 1.2em;
         }
-        .table-input-group {
+        /* .table-input-group {
             margin: 10px 0;
         }
         .table-input-group input {
@@ -48,7 +49,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-        }
+        } */
         .table-input-group button:not(:disabled):hover {
             background-color: #ff6347;
         }
@@ -73,6 +74,7 @@
             border-radius: 5px;
             cursor: pointer;
             margin-top: 20px;
+            transition:all 200ms;
         }
         button:not(:disabled):hover {
             background-color: #ff6347;
@@ -149,7 +151,15 @@
         ul li:nth-child(3)::before {
             background-color: #cd7f32; /* Bronze color */
         }
-
+        .outline:not(:disabled){ 
+            box-shadow: 0px 0px 0px 2px #ff4500 inset;
+            background-color: transparent;
+            color: #ff4500;
+        }
+        .outline:not(:disabled):hover{ 
+            background-color: #ff6347;
+            color:white;
+        }
     </style>
     <script>
         let startTime;
@@ -383,8 +393,8 @@
                     <input type="number" id="table-number-1" placeholder="Tafel 1">
                 </div>
                 <label for="table-number-1">Tafel toevoegen/verwijderen? </label>
-                <button type="button" id="remove-table" onclick="removeTableField()" disabled>-</button>
-                <button type="button" id="add-table" onclick="addTableField()">+</button>
+                <button type="button" class="outline" id="remove-table" onclick="removeTableField()" disabled>-</button>
+                <button type="button" class="outline" id="add-table" onclick="addTableField()">+</button>
             </div>
         </div>
         <div class="input-group">
@@ -410,7 +420,7 @@
         <h1>Resultaat</h1>
         <p id="time-taken"></p>
         <button onclick="nogEenKeer()">Nog een keer</button>
-        <button onclick="resetQuiz()">Instellen</button>
+        <button class="outline" onclick="resetQuiz()">Instellen</button>
         <div id="high-scores-result" style="display: none;">
             <h2>High Scores</h2>
             <ul id="high-scores-list-result"></ul>
