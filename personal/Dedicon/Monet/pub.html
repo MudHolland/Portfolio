@@ -546,15 +546,21 @@
 							<i class="fa fa-question-circle-o" aria-hidden="true"></i>
 						</div>
 						<!-- <input type="checkbox" id="informatief-checkbox" name="InformatiefKeuze" value="Informatief">  -->
-							<select name="functie" id="functie">
+						<!-- <select name="functie" id="functie">
 							<option value="informatief" default>Informatief</option>
 							<option value="decoratief">Decoratief</option>
-							<!-- <option value="functioneel">Functioneel</option>
+							<option value="functioneel">Functioneel</option>
 							<option value="Tekst">Tekst</option>
 							<option value="complex">Complex</option>
 							<option value="afbeeldingengroep">Afbeeldingengroep</option>
-							<option value="afbeeldingskaart">Afbeeldingskaart</option> -->
-						</select>
+							<option value="afbeeldingskaart">Afbeeldingskaart</option>
+						</select> -->
+						<div class="toggle-container" style="width:190px;">
+							<input type="radio" id="decoratief" name="functie" value="decoratief">
+							<label for="decoratief">decoratief</label>
+							<input type="radio" id="informatief" name="functie" value="informatief" checked>
+							<label for="informatief">informatief</label>
+						</div>
 					</div>
 					<p class="detail grey informatief-info">Een informatieve afbeelding heeft minstens een korte beeldbeschrijving.</p>
 					<p class="detail grey decoratief-info">Een decoratieve afbeelding heeft geen beeldbeschrijving. Zet de functie van de afbeeldign op informatief om een beeldbeschrijving toe te voegen.</p>
@@ -651,7 +657,7 @@
 					</div>
 					<div class="alters-knoppen">
 						<button class="secondary bbBewerkenButton">annuleren</button>
-						<button class="primary bbOpslaan">opslaan</button>
+						<button class="primary bbOpslaan" disabled="disabled">opslaan</button>
 					</div>
 				</div>
 

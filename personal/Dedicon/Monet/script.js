@@ -619,3 +619,69 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial check in case there is already text in the textarea
     checkTextarea();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var radioButtons = document.querySelectorAll('.toggle-container input[type="radio"]');
+
+    function handleToggleChange() {
+        // Get the selected value of the radio button
+        var selectedValue = document.querySelector('.toggle-container input[type="radio"]:checked').value;
+
+        // Show or hide classes based on the selected value
+        if (selectedValue === 'informatief') {
+            // Show classes for 'informatief' and hide 'decoratief'
+            document.querySelectorAll('.kbb-info, .lbb-info, .informatief-info, .kolom2, .bbBewerkenButton').forEach(function(element) {
+                element.style.display = 'block';
+            });
+            document.querySelectorAll('.decoratief-info').forEach(function(element) {
+                element.style.display = 'none';
+            });
+
+            // Update the text and remove the <i> element for 'informatief'
+            var activeAfbeeldingsbalk = document.querySelector('.afbeeldingsbalk.active .functie p');
+            if (activeAfbeeldingsbalk) {
+                activeAfbeeldingsbalk.textContent = 'Informatief';
+            }
+            
+            // Add the <i> element for 'decoratief' if it's not already there
+            var functieContainer = document.querySelector('.afbeeldingsbalk.active .functie');
+            if (functieContainer && !functieContainer.querySelector('i.fa-circle-o')) {
+                var iElement = document.createElement('i');
+                iElement.className = 'fa fa-circle-o justify-right';
+                iElement.setAttribute('aria-hidden', 'true');
+                functieContainer.appendChild(iElement);
+            }
+
+        } else if (selectedValue === 'decoratief') {
+            // Show class 'decoratief' and hide others
+            document.querySelectorAll('.decoratief-info').forEach(function(element) {
+                element.style.display = 'block';
+            });
+            document.querySelectorAll('.kbb-info, .lbb-info, .informatief-info, .kolom2, .bbBewerkenButton').forEach(function(element) {
+                element.style.display = 'none';
+            });
+
+            // Update the text and remove the <i> element for 'decoratief'
+            var activeAfbeeldingsbalk = document.querySelector('.afbeeldingsbalk.active .functie p');
+            if (activeAfbeeldingsbalk) {
+                activeAfbeeldingsbalk.textContent = 'Decoratief';
+            }
+            var iElement = document.querySelector('.afbeeldingsbalk.active .functie i');
+            if (iElement) {
+                iElement.remove();
+            }
+        } else {
+            // For other values, hide all related classes
+            document.querySelectorAll('.kbb-info, .lbb-info, .informatief-info, .decoratief-info, .kolom2, .bbBewerkenButton').forEach(function(element) {
+                element.style.display = 'none';
+            });
+        }
+    }
+
+    radioButtons.forEach(function(radioButton) {
+        radioButton.addEventListener('change', handleToggleChange);
+    });
+
+    // Trigger the change event to initialize the state based on the initial value
+    handleToggleChange();
+});
