@@ -207,6 +207,7 @@
         }
 
         function start() {
+            mistakes = 0;  // Reset the mistake count
             playerName = document.getElementById('player-name').value.trim();
             const tableNumbers = [];
             for (let i = 1; i <= tableCount; i++) {
@@ -340,6 +341,7 @@
 
 
         function resetQuiz() {
+            mistakes = 0;  // Reset the mistake count
             document.getElementById('result').style.display = 'none';
             document.getElementById('intro').style.display = 'block';
             document.getElementById('table-number').value = '';
@@ -347,14 +349,16 @@
             displayHighScores();
         }
 
-        function nogEenKeer() {
-    // Hide the result and show the quiz section
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('quiz').style.display = 'block';
+        function restartQuiz() {
+            mistakes = 0;  // Reset the mistake count for the new attempt
+            currentIndex = 0;  // Reset the current question index
+            startTime = new Date();  // Restart the timer
 
-    // Restart the quiz with the same settings
-    start();
-}
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('quiz').style.display = 'block';
+            
+            showProblem();  // Show the first problem
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('answer').addEventListener('keyup', function(event) {
@@ -417,7 +421,7 @@
         <h1>Resultaat</h1>
         <p id="time-taken"></p>
         <p id="mistakes"></p> <!-- Display number of mistakes here -->
-        <button class="outline" onclick="resetQuiz()">Instellen</button>
+        <button onclick="resetQuiz()" class="outline" >Instellen</button>
         <button onclick="restartQuiz()">Nog een keer</button>
         <div id="high-scores-result" style="display: none;">
             <h2>High Scores</h2>
