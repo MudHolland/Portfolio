@@ -278,8 +278,8 @@
             const timeTaken = ((endTime - startTime) / 1000).toFixed(1);
             document.getElementById('quiz').style.display = 'none';
             document.getElementById('result').style.display = 'block';
-            document.getElementById('time-taken').textContent = `Je hebt de sommen gemaakt in ${timeTaken} sec.`;
-            document.getElementById('mistakes').textContent = `Aantal fouten: ${getMistakeText(mistakes)}`; // Use getMistakeText function
+            document.getElementById('time-taken').textContent = `Je hebt de sommen gemaakt in ${timeTaken} sec. met ${getMistakeText(mistakes)}.`;
+            // document.getElementById('mistakes').textContent = `Aantal fouten: ${getMistakeText(mistakes)}`; // Use getMistakeText function
             const tableNumbers = [];
             for (let i = 1; i <= tableCount; i++) {
                 const tableInput = document.getElementById(`table-number-${i}`);
