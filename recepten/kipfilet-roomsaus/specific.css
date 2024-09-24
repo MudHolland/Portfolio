@@ -1,0 +1,12 @@
+:root {
+    --primary-color: #0056b3; /* Franse blauwe kleur */
+    --secondary-color: #ffcc00; /* Franse gele kleur */
+    --accent-color: #b30000; /* Franse rode kleur */
+
+    --background-color: #f8f9fa;
+    font-family: 'Garamond', serif;
+}
+
+.hero {
+    background-image: url('image.webp');
+}
