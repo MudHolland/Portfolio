@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pacifico&display=swap');
+
 :root {
     --primary-color: #d32f2f; /* Tomatenrode kleur */
     --secondary-color: #fbc02d; /* Gouden accenten */
     --accent-color: #388e3c; /* Basilicumgroene kleur */
     --background-color: #f8f9fa;
-    --font-family: 'Garamond', serif;
-    --font-family-heading: 'Garamond', serif;
+    --font-family: 'pacifico', serif;
+    --font-family-heading: "Inter", sans-serif;
 }
 
 body {
@@ -15,7 +17,7 @@ body {
 
 .hero {
     font-family: var(--font-family-heading);
-    background-image: url('image.webp');
+    background-image: url('./image.webp');
     background-size: cover;
     background-position: center;
     color: white;
@@ -50,19 +52,21 @@ body {
 }
 
 .recipes {
+    max-width:1200px;
+    margin:0 auto;
     display: flex;
     flex-wrap: wrap;
+    gap:1rem;
     justify-content: center;
-    padding: 2rem;
 }
 
 .recipe-card {
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     margin: 1rem;
     overflow: hidden;
-    width: 250px;
+    width: 400px;
     text-align: center;
     transition: transform 0.3s,box-shadow 0.3s;
     text-decoration: none;
@@ -72,7 +76,8 @@ body {
 
 .recipe-card img {
     width: 100%;
-    height: 150px; /* Gelijke hoogte voor alle afbeeldingen */
+    aspect-ratio: 1;
+    /* height: 150px; */
     object-fit: cover;
 }
 
