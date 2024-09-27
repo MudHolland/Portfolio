@@ -1,75 +1,91 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVX0SD01YQ"></script>
-        <script>
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-WVX0SD01YQ"></script>
+		<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
 
 		gtag('config', 'G-WVX0SD01YQ');
-        </script>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE-edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/ico" href="/images/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="/css/reset.css">
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
-        <script type="text/javascript" src="/script/script.js" defer></script>
-        <title>Beeldbeschrijvingsinterface Monet: High Fidelity Prototype</title>
-    </head>
-    <body>
-        <aside>
-            <button class="darkmode" onclick="darkmode()">dark mode</button>
-            <div id="myModal" class="modal">
-                <span class="close">&times;</span>
-                <img class="modal-content" id="img01">
-                <div id="caption"></div>
-            </div>
-        </aside>
-        <header>
-            <section>
-                <h1>Beeldbeschrijvingsinterface Monet: High Fidelity Prototype</h1>
-                <nav class="subtitle crumbs">
-                    <ol>
-                        <li class="crumb"><a href="/">Portfolio</a></li>
-                        <li class="crumb"><a href="/school">School</a></li>
-                        <li class="crumb"><a href="/school#Dedicon">Afstuderen bij Dedicon</a></li>
-                    </ol>
-                </nav>
-            </section>
-        </header>
-        <main>
-            <article>
-                <p class="opening">De laatste stap in de Design-Evaluatie-activiteiten, High Fidelity Prototyping, richt zich op de gebruikerservaring van de eindgebruikers. Hierbij speelt het visuele en functionele ontwerp een grote rol, waarbij Dedicon zich vanuit haar missie richt op de WCAG-richtlijnen om zo toegankelijk mogelijk te ontwerpen.</p>
-                <p class="no-spacing">:</p>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-                <figure>
-                    <img src="/images/GreenArnhem_V1.0.png" loading="lazy" alt="">
-                    <figcaption></figcaption>
-                </figure>
-                <figure class="half-width">
-                    <img src="/images/sprint2-schets-0.png" loading="lazy" alt="">
-                    <figcaption></figcaption>
-                </figure>
-            </article>
-        </main>
-        <footer>
-            <section>
-                <p class="detail">
-                    <a href="/about">Over mij</a>
-                    | 
+		</script>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/ico" href="/images/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
+		<script type="text/javascript" src="/script/script.js" defer></script>
+		<title>Beeldbeschrijvingsinterface Monet: High Fidelity Prototype</title>
+	</head>
+	<body>
+		<aside>
+			<button class="darkmode" onclick="darkmode()">dark mode</button>
+			<div id="myModal" class="modal">
+				<span class="close">&times;</span>
+				<img class="modal-content" id="img01">
+				<div id="caption"></div>
+			</div>
+		</aside>
+		<header>
+			<section>
+				<h1>Beeldbeschrijvingsinterface Monet: High Fidelity Prototype</h1>
+				<nav class="subtitle crumbs">
+					<ol>
+						<li class="crumb"><a href="/">Portfolio</a></li>
+						<li class="crumb"><a href="/school">School</a></li>
+						<li class="crumb"><a href="/school#Dedicon">Afstuderen bij Dedicon</a></li>
+					</ol>
+				</nav>
+			</section>
+		</header>
+		<main>
+			<article>
+				<p class="opening">De laatste stap in de Design-Evaluatie-activiteiten, High Fidelity Prototyping, richt zich op de gebruikerservaring van de eindgebruikers. Hierbij speelt het visuele en functionele ontwerp een grote rol, waarbij Dedicon zich vanuit haar missie richt op de WCAG-richtlijnen om zo toegankelijk mogelijk te ontwerpen.</p>
+				<h2>Informatie-hierarchie</h2>
+				<p>Ik vroeg een document zonder auteursrechtelijk beschermde afbeelding op, zodat ik vrij kan werken met de inhoud van een publicatie. Met een online-tool haalde ik geautomatiseerd de afbeeldingen uit het document. Ik beoordeelde de functie van de afbeeldingen (decoratief of informatief), legde inhoudelijke afbeeldingsinformatie vast en schreef met een AI-tool beeldbeschrijvingen op basis van Dedicons richtlijnen.</p>
+				<figure>
+					<img src="/images/informatiehierarchie.png" loading="lazy" alt="Spreadsheet met afbeeldingsinforamtie: bestand, functie (decoratief geel, gekoppelde afbeeldingen blauw), pagina, bijschrift, korte/lange beeldbeschrijving">
+					<figcaption>Spreadsheet met afbeeldingsinforamtie: bestand, functie (decoratief geel, gekoppelde afbeeldingen blauw), pagina, bijschrift, korte/lange beeldbeschrijving</figcaption>
+				</figure>
+				<p>Ik merkte bij het verwerken van de afbeeldingen welke taken het systeem op de achtergrond allemaal moet gaan zetten. Uit het verwerken van deze informatie werd me duidelijk hoe uiteenlopend deze informatie kan zijn, bijvoorbeeld al de lengte van bijschriften.</p>
+				<h2>Heuristic Analysis</h2>
+				<p>Als laatste controlestap voor ik de interface in high fidelity op ga stellen, loop ik het ontwerp door met de <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noopener noreferrer">10 Usability Heuristics</a>. Dit heeft wat kleine problemen aan het licht gebracht, zoals tekstgebruik, aansturing van de happy flow (zoals call to actions) en begeleiding bij problemen, als er bijvoorbeeld niks kan worden weergegeven omdat alle beeldbeschrijvingen zijn gevuld.</p>
+				<h2>Visueel Prototype</h2>
+				<p>Dedicon werkt voor mensen met een leesbeperking. Hierdoor zijn ze bewust bezig met toegankelijkheid en inclusief ontwerpen. Ik onderzocht hoe elementen op de website van Dedicon zijn vormgegeven. Hierbij vond ik dat Dedicon uiteraard al op veel plekken aan de toegankelijkheidseisen voldoet. Om dit vast te leggen en meetbaar te maken, heb ik gebruikte elementen zoals teksten, kleuren en bedieningselementen in Figma ontworpen en <a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer">minimale contrast van kleurencombinaties</a>.</p>
+				<figure>
+					<img src="/images/HiFidelityElementen.png" loading="lazy" alt="High Fidelity-elementen: gebaseerd op Dedicon-huisstijl en toegankelijkheidseisen. Typografie van de website met tekstgroottes voorgesteld in de snelstartgidsen. Kleuren die gebruikt worden, en een onderzoek naar de contrastratio's om toegankelijk kleuren toe te passen">
+					<figcaption>High Fidelity-elementen: gebaseerd op Dedicon-huisstijl en toegankelijkheidseisen. Typografie van de website met tekstgroottes voorgesteld in de snelstartgidsen. Kleuren die gebruikt worden, en een onderzoek naar de contrastratio's om toegankelijk kleuren toe te passen</figcaption>
+				</figure>
+				<p>Tekst heeft duidelijke hiërarchie door gebruik van verschillende groottes en diktes. Knoppen hebben hiërarchie: primaire knoppen zijn zwaar (zwart), secundaire knoppen zijn licht (wit) en taak-annulerende knoppen zijn enkel tekst (en lichten pas op als de gebruiker er op hovert).</p>
+				<p>Vanuit de toegankelijkheid-first blik besloot ik - net als op Dedicons website - witte achtergronden en zwarte knoppen te gebruiken. Een grijze achtergrond geeft gebruikers aan welke elementen bij elkaar horen. Voor mensen die minder contrast zien, helpt een grijze rand rondom de elementen.</p>
+				<figure>
+					<img src="/images/HiFidelityComponenten.png" loading="lazy" alt="High Fidelity-componenten: basiselementen in Dedicons huisstijl, toegepast in componenten in het Mid Fidelity-prototype. Typografie, afstanden en kleuren, rekening houdend met behoud van voldoende contrast. Oranje kleur bij problemen en Dedicon-highlight voor actieve afbeeldingen zoals op de website.">
+					<figcaption>High Fidelity-componenten: basiselementen in Dedicons huisstijl, toegepast in componenten in het Mid Fidelity-prototype. Typografie, afstanden en kleuren, rekening houdend met behoud van voldoende contrast. Oranje kleur bij problemen en Dedicon-highlight voor actieve afbeeldingen zoals op de website.</figcaption>
+				</figure>
+				<h3>Resultaat</h3>
+				<p>Om te tonen hoe dit resultaat aansluit bij de huisstijl van Dedicon:</p>
+				<figure>
+					<img src="/images/HiFidelityResultaat.png" loading="lazy" alt="Afbeeldingenoverzicht: lijst met afbeeldingen per pagina, highlight van actieve afbeelding. Overzicht van voortgang en inactieve afmeldknop. Afbeeldingskaart met informatievelden, weergave van bestaande beeldbeschrijvingen en optie om deze te bewerken, alternatieve representaties met functie voor automatische generatie, en automatisch generatieveld.">
+					<figcaption>Afbeeldingenoverzicht: lijst met afbeeldingen per pagina, highlight van actieve afbeelding. Overzicht van voortgang en inactieve afmeldknop. Afbeeldingskaart met informatievelden, weergave van bestaande beeldbeschrijvingen en optie om deze te bewerken, alternatieve representaties met functie voor automatische generatie, en automatisch generatieveld.</figcaption>
+				</figure>
+				<h2>Functioneel Prototype</h2>
+				<p>Gebruikers gaven aan dat ze het Mid Fidelity-prototype lastig in te schatten vonden, omdat ze er niet in konden werken. Daarin was met name het typen van beeldbeschrijvingen en het verplaatsen van schermen een gemis. Om de gebruikers hierin te ondersteunen met het High Fidelity-prototype maak ik het high Fidelity-prototype na in webtechnologie zodat het prototype via <a href="https://www.nngroup.com/articles/wizard-of-oz/" target="_blank" rel="noopener noreferrer">Wizard of Oz</a>-methodes toont hoe het in de echte situatie moet gaan werken.</p> 
+				<h2>Pitch</h2>
+				Ik heb mijn proces in een presentatie aan Dedicon getoond. Hiermee liep ik in stappen door mijn proces, van het opstellen van definities en requirements, tot het ontwerpen en evalueren met de gebruikers, met als laatste, persuasion-evaluatie, het tonen van het uiteindelijke prototype: <a href="../Persuasion/">Project Monet</a>.
+			</article>
+		</main>
+		<footer>
+			<section>
+				<p class="detail">
+					<a href="/about">Over mij</a>
+					| 
 				&copy;
-                    <script>document.write(new Date().getFullYear());</script>
-                    dennisulijn.com | All rights reserved |
-                    <a href="mailto:dennisulijn@gmail.com">contact</a>
-                </p>
-            </section>
-        </footer>
-    </body>
+					<script>document.write(new Date().getFullYear());</script>
+					dennisulijn.com | All rights reserved |
+					<a href="mailto:dennisulijn@gmail.com">contact</a>
+				</p>
+			</section>
+		</footer>
+	</body>
