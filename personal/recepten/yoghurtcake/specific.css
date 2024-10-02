@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'BrownieCake';
+    src: url('BrownieCake.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #FFDDC1;
+    --secondary-color: #FFB6B9;
+    --accent-color: #F8B195;
+    --background-color: #FFF0E0;
+    --font-family-heading: 'BrownieCake', cursive, sans-serif;
+}
+
+.hero {
+    background-image: url('image.webp');
+}
