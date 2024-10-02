@@ -6,8 +6,8 @@
       captionText.innerHTML = img.alt;
     }
   }
-
-  const images = document.querySelectorAll('img');
+  
+  const images = document.querySelectorAll('img:not(.no-modal)');
   images.forEach(function (img) {
     img.addEventListener('click', function () {
       openModal(this);
