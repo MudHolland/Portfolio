@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pacifico&display=swap');
+
+:root {
+    --primary-color: #FFDDC1;
+    --secondary-color: #FFB6B9;
+    --accent-color: #F8B195;
+    --background-color: #FFF0E0;
+    --font-family-heading: Pacifico, cursive, sans-serif;
+}
+
+.hero {
+    background-image: url('image.webp');
+}
