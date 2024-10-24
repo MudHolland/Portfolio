@@ -1,0 +1,10 @@
+:root {
+    --primary-color: #4CAF50; /* Frisse groene kleur voor groente */
+    --secondary-color: #81C784; /* Lichte groentetint */
+    --accent-color: #FFEB3B; /* Vrolijke gele kleur (bijv. voor verse ingrediënten) */
+    --background-color: #f1f8e9; /* Lichtgroene achtergrondkleur */
+}
+
+.hero {
+    background-image: url('image.webp');
+}
