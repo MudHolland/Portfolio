@@ -457,4 +457,47 @@ h1 {
     background-color: #f0f0f0;
     color: #666;
     border: 1px dashed #999;
+}
+
+.fetch-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--brand-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    margin: 1rem auto;
+    box-shadow: var(--shadow-sm);
+}
+
+.fetch-button:hover {
+    background-color: #a41d1d;  /* Slightly darker than brand color */
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.fetch-button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.fetch-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Add a refresh icon to the button */
+.fetch-button::before {
+    content: "↻";  /* Refresh symbol */
+    font-size: 1.2rem;
+    font-weight: bold;
 } 
