@@ -3,145 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perspective News</title>
+    <title>Nederlands Nieuws Reader</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23003399' d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 14H5c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z'/%3E%3Cpath fill='%23003399' d='M5 8h14v2H5zm0 4h14v2H5z'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TpSIVBzuIOGSoThZERRy1CkWoEGqFVh1MLv2CJg1Jiouj4Fpw8GOx6uDirKuDqyAIfoA4OTopukiJ/0sKLWI8OO7Hu3uPu3eAUC8zzeoYBzTdNlOJuJjJroqhVwQRQgCz6JeYqcfSxQy8x9c9Any9i/Ms/3N/jh41azEgIBLPMMO0ideJpzZtg/M+cYyVZJX4nHjUpAsSP3JdafAb54rNXp4xjtnEsWKxWOlgpYdZ0dSIp4mjqqZTvpBxWeW8xVkrV1nrnvyFoZy+ssx1msNIYBFLkCBCQRUllGEjRqtOioUU7cc9/ENNv0QuhVwlMHIsoAINctPPH/7u1spPjntJYRzQeeG6H8NA6BdoNNz3437jOAECz8CV3vJX6sDMJ+m1lhY7Anq3gYvrlqbsAZc7wNCTIZuyKwVpCfk88H5G35QF+m6B0KrXW3Mfpw9AmrpK3gAHh8BIgbLXPd4d7O7t3zPt/n4Ax9dyyerighsAAAAGYktHRAD/AP8A/6C9p5MAAAAJcEhZcwAALiMAAC4jAXilP3YAAAAHdElNRQfnBRkTNyBqxHGYAAAAGXRFWHRDb21tZW50AENyZWF0ZWQgd2l0aCBHSU1QV4EOFwAAAyVJREFUWMPtl0FrE1EUhb+ZyUyTNKVpbWtTW6UUqRUXghWpCxeuBBH8Af4REcGFa0EQxY24cyOCCxHcCN0JLqS4qYrVItiqtNqmja1p0yZpZl4XM4WYTJJJAhYELwwz8+67957z7n3vzUgiwn5CYZ/xX8BeQ5Yk6Xa7ieOYIAhIJpM4jkMmk8F1Xer1OmEY4vs+1WqVVquF67qkUqlduA0RYWxsTBYWFmR5eVmy2axks1lZWlqSQqEgxWJR5ufnZXZ2VqampmRiYkLGx8dlbGxMHMf5LbckIqTTaer1OgMDA9i2Tb/fJ5VK0e12SSQSJBIJLMuis+nQ7XRxXZdOp0MYhvi+TxRFWJaFYRi/rAER4fHsY+qNOsViEcdxaLfbNJtNGo0GnudRq9VYW1uj2WxiWRa2bSOAYRgYhoGqqhiGQTKZxLKsXRQQEd6V3jE8PEy326XT6eD7Pp7n4fs+QRBQqVSo1WqEYYiu66iqiqqqKIqCoihomoZhGOi6jqZpaJqGrusoirLzGhARnr14xvDQMO12mzAM6fV6BEFAFEWsr6+ztrbGxsYGmqahqiqapqFpGqqqout6rABVVVFVFVmWkWUZSZJ2FiAiPH3+lKGhIVqtFv1+nyiKiKKIMAzxPI9KpYLneQAoioKiKMiyTBAErK6u4vs+iqJgmiYDAwPous7g4CCGYaDrOoqiIMsysizv7IKZ1zMMDg6yvr5OFEV/RBAEGA8ePpCBwQFkWSYIAkqlEuVyGVVV0XWdfr+PaZpYloVpmhiGged5VKtVwjDE8zyCIKDX69Hr9QjDkF6vRxRFRFEUk0CSJOJEPHn2hP7mJp1OhyiKcF0XRVGwbRvTNHFdF8dxsCwL0zSxbRvHcchkMgwNDZFOp7FtG9M0MQwDXdfRdR1N0+JGtGUNPJp5xMjICLlcDtu2MU0T27bJ5/Nks1nS6TSO45DJZEilUjiOQzqdJpfLkc/nyefzDA8Pk0qlcBwH0zTjjmiaFnfELQXMvp4ll8vFwvL5PPl8nmw2i+M4pNNpUqkUjuPEFZumSSKRwDRNTNOMO+JWFWxrRH+DPf8v+CPwE2q4TWCOCTmxAAAAAElFTkSuQmCC">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="brand-section">
-                <img src="Perspective-logo.png" alt="Perspective" class="brand-logo">
-                <span class="brand-name">Perspective News</span>
-            </div>
-            <div class="profile-section">
-                <!-- Reserved for future profile features -->
-            </div>
-        </div>
-    </header>
-    
     <div class="container">
-        <div class="filter-container">
-            <div class="filter-label">Nieuwsbronnen</div>
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-source="NOS">
-                    <img src="logos/nos.png" alt="NOS" class="source-icon">
-                    <span>NOS</span>
-                </button>
-                <button class="filter-btn active" data-source="Nu.nl">
-                    <img src="logos/nu.png" alt="Nu.nl" class="source-icon">
-                    <span>Nu.nl</span>
-                </button>
-                <button class="filter-btn active" data-source="Telegraaf">
-                    <img src="logos/telegraaf.png" alt="Telegraaf" class="source-icon">
-                    <span>Telegraaf</span>
-                </button>
-                <button class="filter-btn active" data-source="AD">
-                    <img src="logos/ad.png" alt="AD" class="source-icon">
-                    <span>AD</span>
-                </button>
+        <header>
+            <h1>Nederlands Nieuws Reader</h1>
+            <button id="fetchButton" class="fetch-button">Fetch Latest News</button>
+            <div class="filter-container">
+                <div class="filter-label">Filter bronnen:</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-source="NOS">
+                        <img src="logos/nos.png" alt="NOS" class="source-icon">
+                        <span>NOS</span>
+                    </button>
+                    <button class="filter-btn active" data-source="Nu.nl">
+                        <img src="logos/nu.png" alt="Nu.nl" class="source-icon">
+                        <span>Nu.nl</span>
+                    </button>
+                    <button class="filter-btn active" data-source="Telegraaf">
+                        <img src="logos/telegraaf.png" alt="Telegraaf" class="source-icon">
+                        <span>Telegraaf</span>
+                    </button>
+                    <button class="filter-btn active" data-source="Volkskrant">
+                        <img src="logos/volkskrant.png" alt="Volkskrant" class="source-icon">
+                        <span>Volkskrant</span>
+                    </button>
+                    <button class="filter-btn active" data-source="AD">
+                        <img src="logos/ad.png" alt="AD" class="source-icon">
+                        <span>AD</span>
+                    </button>
+                </div>
             </div>
-        </div>
-
-        <button id="fetchButton" class="fetch-button">Nieuws Vernieuwen</button>
-        
+        </header>
         <div class="loading-indicator">
             <div class="loading-spinner"></div>
             <span class="loading-text">Nieuws ophalen...</span>
         </div>
-        
         <main id="articles" class="articles-grid">
-            <!-- Sample Articles -->
-            <article class="article-card" data-source="NOS">
-                <div class="article-meta">
-                    <span class="article-source-badge">
-                        <img src="logos/nos.png" alt="NOS">
-                        NOS
-                    </span>
-                    <span class="article-date">24 juli 2023, 14:30</span>
-                </div>
-                <h2 class="article-title">
-                    <a href="#" target="_blank">Kabinet valt over nieuwe asielplannen</a>
-                </h2>
-                <div class="article-tags">
-                    <span class="tag category">Politiek</span>
-                    <span class="tag geography">Nationaal</span>
-                    <span class="tag time">Recent</span>
-                    <span class="tag sample">Voorbeeld</span>
-                </div>
-                <div class="article-content collapsed">
-                    Het kabinet is gevallen over de nieuwe asielplannen. Premier Rutte heeft het ontslag van zijn kabinet aangeboden aan de koning. Er komen nieuwe verkiezingen. De partijen konden het niet eens worden over nieuwe maatregelen om de asielinstroom te beperken.
-                </div>
-                <button class="expand-button">Lees meer</button>
-            </article>
-
-            <article class="article-card" data-source="Nu.nl">
-                <div class="article-meta">
-                    <span class="article-source-badge">
-                        <img src="logos/nu.png" alt="Nu.nl">
-                        Nu.nl
-                    </span>
-                    <span class="article-date">24 juli 2023, 14:15</span>
-                </div>
-                <h2 class="article-title">
-                    <a href="#" target="_blank">Ajax bereikt akkoord over nieuwe spits</a>
-                </h2>
-                <div class="article-tags">
-                    <span class="tag category">Sport</span>
-                    <span class="tag geography">Nationaal</span>
-                    <span class="tag time">Recent</span>
-                    <span class="tag sample">Voorbeeld</span>
-                </div>
-                <div class="article-content collapsed">
-                    Ajax heeft een akkoord bereikt over de transfer van een nieuwe spits. De 23-jarige aanvaller komt over van een buitenlandse club en moet de problemen in de voorhoede oplossen. Met de transfer is een bedrag van ongeveer 15 miljoen euro gemoeid.
-                </div>
-                <button class="expand-button">Lees meer</button>
-            </article>
-
-            <article class="article-card" data-source="Telegraaf">
-                <div class="article-meta">
-                    <span class="article-source-badge">
-                        <img src="logos/telegraaf.png" alt="Telegraaf">
-                        Telegraaf
-                    </span>
-                    <span class="article-date">24 juli 2023, 14:00</span>
-                </div>
-                <h2 class="article-title">
-                    <a href="#" target="_blank">Doorbraak in onderzoek duurzame energie</a>
-                </h2>
-                <div class="article-tags">
-                    <span class="tag category">Wetenschap</span>
-                    <span class="tag geography">Nationaal</span>
-                    <span class="tag time">Recent</span>
-                    <span class="tag sample">Voorbeeld</span>
-                </div>
-                <div class="article-content collapsed">
-                    Nederlandse wetenschappers hebben een belangrijke doorbraak bereikt in het onderzoek naar duurzame energie. De nieuwe technologie zou de energietransitie kunnen versnellen en de kosten van duurzame energie significant kunnen verlagen.
-                </div>
-                <button class="expand-button">Lees meer</button>
-            </article>
-
-            <article class="article-card" data-source="AD">
-                <div class="article-meta">
-                    <span class="article-source-badge">
-                        <img src="logos/ad.png" alt="AD">
-                        AD
-                    </span>
-                    <span class="article-date">24 juli 2023, 13:30</span>
-                </div>
-                <h2 class="article-title">
-                    <a href="#" target="_blank">Lokaal festival trekt recordaantal bezoekers</a>
-                </h2>
-                <div class="article-tags">
-                    <span class="tag category">Entertainment</span>
-                    <span class="tag geography">Lokaal</span>
-                    <span class="tag time">Recent</span>
-                    <span class="tag sample">Voorbeeld</span>
-                </div>
-                <div class="article-content collapsed">
-                    Het jaarlijkse stadsfestival heeft dit weekend een recordaantal bezoekers getrokken. De organisatie spreekt van een groot succes en kondigt plannen aan voor volgend jaar. Het evenement trok meer dan 50.000 bezoekers uit de hele regio.
-                </div>
-                <button class="expand-button">Lees meer</button>
-            </article>
+            <!-- Articles will be inserted here -->
         </main>
     </div>
     <script src="script.js"></script>
