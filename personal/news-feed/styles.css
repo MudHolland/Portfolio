@@ -1,0 +1,435 @@
+:root {
+    --primary-color: #1a73e8;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #202124;
+    --secondary-text: #5f6368;
+    --border-radius: 12px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    --transition: all 0.2s ease;
+    --nos-color: #E61E14;
+    --nu-color: #1f2544;
+    --telegraaf-color: #27509a;
+    --volkskrant-color: #121212;
+    --ad-color: #d10a10;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+header {
+    background: var(--card-background);
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.fetch-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.fetch-button:hover {
+    background-color: #1557b0;
+    box-shadow: var(--shadow-md);
+}
+
+.articles-grid {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article-card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.article-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.article-source-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2px 0.8rem 2px 2px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    height: 24px;
+}
+
+.article-source-badge img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+	padding:2px;
+}
+
+.article-date {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+.article-title {
+    font-size: 1.35rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.article-title a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    display: inline-block;
+}
+
+.article-title a::after {
+    content: '→';
+    margin-left: 0.5rem;
+    color: var(--primary-color);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.article-title a:hover {
+    color: var(--primary-color);
+}
+
+.article-title a:hover::after {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+.article-content {
+    color: var(--secondary-text);
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.article-content.collapsed {
+    max-height: 100px;
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.article-content.expanded {
+    max-height: 2000px;
+}
+
+.expand-button {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.9rem;
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.expand-button::after {
+    content: '↓';
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.expand-button.expanded::after {
+    transform: rotate(180deg);
+}
+
+.expand-button:hover {
+    background-color: rgba(26, 115, 232, 0.1);
+}
+
+.article-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0.75rem 0;
+}
+
+.tag {
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: rgba(0,0,0,0.05);
+    color: var(--secondary-text);
+}
+
+.filter-container {
+    margin-top: 1.5rem;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 1rem 0 0;
+    height: 32px;
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    background-color: rgba(26, 115, 232, 0.1);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.new-article {
+    border-left: 4px solid var(--primary-color);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.article-card.hidden {
+    display: none !important;
+}
+
+.loading-indicator {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.loading-indicator.active {
+    display: flex;
+}
+
+.loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(26, 115, 232, 0.2);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.fetch-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.source-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background-color: white;
+    padding: 4px;
+}
+
+.filter-btn[data-source="NOS"] {
+    border-color: var(--nos-color);
+    color: var(--nos-color);
+}
+
+.filter-btn[data-source="NOS"].active {
+    background-color: var(--nos-color);
+    color: white;
+}
+
+.filter-btn[data-source="Nu.nl"] {
+    border-color: var(--nu-color);
+    color: var(--nu-color);
+}
+
+.filter-btn[data-source="Nu.nl"].active {
+    background-color: var(--nu-color);
+    color: white;
+}
+
+.filter-btn[data-source="Telegraaf"] {
+    border-color: var(--telegraaf-color);
+    color: var(--telegraaf-color);
+}
+
+.filter-btn[data-source="Telegraaf"].active {
+    background-color: var(--telegraaf-color);
+    color: white;
+}
+
+.filter-btn[data-source="Volkskrant"] {
+    border-color: var(--volkskrant-color);
+    color: var(--volkskrant-color);
+}
+
+.filter-btn[data-source="Volkskrant"].active {
+    background-color: var(--volkskrant-color);
+    color: white;
+}
+
+.filter-btn[data-source="AD"] {
+    border-color: var(--ad-color);
+    color: var(--ad-color);
+}
+
+.filter-btn[data-source="AD"].active {
+    background-color: var(--ad-color);
+    color: white;
+}
+
+.article-source-badge {
+    background-color: var(--primary-color);
+}
+
+[data-source="NOS"] .article-source-badge {
+    background-color: var(--nos-color);
+}
+
+[data-source="Nu.nl"] .article-source-badge {
+    background-color: var(--nu-color);
+}
+
+[data-source="Telegraaf"] .article-source-badge {
+    background-color: var(--telegraaf-color);
+}
+
+[data-source="Volkskrant"] .article-source-badge {
+    background-color: var(--volkskrant-color);
+}
+
+[data-source="AD"] .article-source-badge {
+    background-color: var(--ad-color);
+}
+
+.new-article[data-source="NOS"] {
+    border-left-color: var(--nos-color);
+}
+
+.new-article[data-source="Nu.nl"] {
+    border-left-color: var(--nu-color);
+}
+
+.new-article[data-source="Telegraaf"] {
+    border-left-color: var(--telegraaf-color);
+}
+
+.new-article[data-source="Volkskrant"] {
+    border-left-color: var(--volkskrant-color);
+}
+
+.new-article[data-source="AD"] {
+    border-left-color: var(--ad-color);
+}
+
+.filter-btn[data-source="NOS"]:hover {
+    background-color: rgba(230, 30, 20, 0.1);
+}
+
+.filter-btn[data-source="Nu.nl"]:hover {
+    background-color: rgba(31, 37, 68, 0.1);
+}
+
+.filter-btn[data-source="Telegraaf"]:hover {
+    background-color: rgba(39, 80, 154, 0.1);
+}
+
+.filter-btn[data-source="Volkskrant"]:hover {
+    background-color: rgba(18, 18, 18, 0.1);
+}
+
+.filter-btn[data-source="AD"]:hover {
+    background-color: rgba(209, 10, 16, 0.1);
+} 
