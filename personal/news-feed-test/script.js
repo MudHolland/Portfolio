@@ -4,16 +4,40 @@ let unreadCount = 0;
 
 // Remove the button click event listener and add automatic refresh functionality
 document.addEventListener('DOMContentLoaded', () => {
-    // Initial fetch
-    fetchAllFeeds();
+    // Hide Volkskrant filter button
+    const volkskrantButton = document.querySelector('.filter-btn[data-source="Volkskrant"]');
+    if (volkskrantButton) {
+        volkskrantButton.style.display = 'none';
+    }
 
-    // Set up periodic refresh (every 5 minutes)
-    setInterval(fetchAllFeeds, 5 * 60 * 1000);
+    // Hide Volkskrant articles
+    const volkskrantArticles = document.querySelectorAll('.article-card[data-source="Volkskrant"]');
+    volkskrantArticles.forEach(article => {
+        article.style.display = 'none';
+    });
+
+    // Add sample tag to all articles
+    const articles = document.querySelectorAll('.article-card');
+    articles.forEach(article => {
+        const tagsContainer = article.querySelector('.article-tags');
+        const sampleTag = document.createElement('span');
+        sampleTag.className = 'tag sample';
+        sampleTag.textContent = 'Voorbeeld';
+        tagsContainer.appendChild(sampleTag);
+    });
+
+    // Initial fetch simulation
+    setTimeout(() => {
+        hideLoading();
+    }, 1000);
 
     // Set up visibility change detection
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') {
-            fetchAllFeeds();
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+            }, 1000);
         }
     });
 });
@@ -197,16 +221,16 @@ function createArticleContent(content) {
 // Add these functions at the top of your script
 function showLoading() {
     const loadingIndicator = document.querySelector('.loading-indicator');
-    const fetchButton = document.getElementById('fetchButton');
-    loadingIndicator.classList.add('active');
-    fetchButton.disabled = true;
+    if (loadingIndicator) {
+        loadingIndicator.classList.add('active');
+    }
 }
 
 function hideLoading() {
     const loadingIndicator = document.querySelector('.loading-indicator');
-    const fetchButton = document.getElementById('fetchButton');
-    loadingIndicator.classList.remove('active');
-    fetchButton.disabled = false;
+    if (loadingIndicator) {
+        loadingIndicator.classList.remove('active');
+    }
 }
 
 // Modify the fetchAllFeeds function

@@ -451,4 +451,10 @@ h1 {
 
 .filter-btn[data-source="AD"]:hover {
     background-color: rgba(209, 10, 16, 0.1);
+}
+
+.tag.sample {
+    background-color: #f0f0f0;
+    color: #666;
+    border: 1px dashed #999;
 } 
