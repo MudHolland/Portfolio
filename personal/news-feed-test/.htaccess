@@ -1,2 +1,18 @@
 RewriteEngine On
 RewriteRule ^feed/(.*)$ http://$1 [P] 
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Allow PHP files to be executed
+<Files "proxy.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Optional: Add security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule> 
