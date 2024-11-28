@@ -1,6 +1,7 @@
 // Keep track of fetched articles
 let fetchedArticles = new Set();
 let unreadCount = 0;
+let displayedArticles = new Set(); // Track displayed article URLs
 
 document.getElementById('fetchButton').addEventListener('click', fetchAllFeeds);
 
@@ -305,4 +306,111 @@ async function fetchAllFeeds() {
     } finally {
         hideLoading();
     }
+}
+
+function loadArticles(appendNew = true) {
+    const loadingIndicator = document.querySelector('.loading-indicator');
+    loadingIndicator.style.display = 'flex';
+
+    // Get active sources
+    const activeSources = Array.from(document.querySelectorAll('.filter-btn.active'))
+        .map(btn => btn.dataset.source);
+
+    fetch('proxy.php')
+        .then(response => response.json())
+        .then(articles => {
+            const articlesContainer = document.getElementById('articles');
+            
+            // Filter new articles
+            const newArticles = articles.filter(article => {
+                // Check if we haven't displayed this article yet
+                return !displayedArticles.has(article.url) &&
+                    activeSources.includes(article.source);
+            });
+
+            if (newArticles.length === 0) {
+                // No new articles found
+                loadingIndicator.style.display = 'none';
+                return;
+            }
+
+            // Sort new articles by date (newest first)
+            newArticles.sort((a, b) => {
+                return new Date(b.publishedAt) - new Date(a.publishedAt);
+            });
+
+            // Create elements for new articles
+            const articleElements = newArticles.map(article => {
+                displayedArticles.add(article.url); // Track this article
+                
+                const articleElement = document.createElement('article');
+                articleElement.className = 'news-article';
+                articleElement.dataset.source = article.source;
+                
+                articleElement.innerHTML = `
+                    <div class="article-header">
+                        <img src="logos/${article.source.toLowerCase()}.png" 
+                             alt="${article.source}" 
+                             class="source-icon">
+                        <span class="publish-date">
+                            ${new Date(article.publishedAt).toLocaleString('nl-NL')}
+                        </span>
+                    </div>
+                    <h2>${article.title}</h2>
+                    <p>${article.description}</p>
+                    <a href="${article.url}" target="_blank" rel="noopener noreferrer">
+                        Lees meer
+                    </a>
+                `;
+                
+                return articleElement;
+            });
+
+            if (appendNew) {
+                // Prepend new articles to the top
+                articleElements.reverse().forEach(element => {
+                    articlesContainer.insertBefore(element, articlesContainer.firstChild);
+                });
+            } else {
+                // Replace all articles
+                articlesContainer.innerHTML = '';
+                articleElements.forEach(element => {
+                    articlesContainer.appendChild(element);
+                });
+            }
+
+            loadingIndicator.style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error fetching articles:', error);
+            loadingIndicator.style.display = 'none';
+        });
+}
+
+// Initial load
+document.addEventListener('DOMContentLoaded', () => {
+    loadArticles(false); // false means replace all articles on initial load
+});
+
+// Fetch button click handler
+document.getElementById('fetchButton').addEventListener('click', () => {
+    loadArticles(true); // true means append new articles to existing ones
+});
+
+// Source filter handlers
+document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        filterArticles();
+    });
+});
+
+function filterArticles() {
+    const activeSources = Array.from(document.querySelectorAll('.filter-btn.active'))
+        .map(btn => btn.dataset.source);
+
+    document.querySelectorAll('.news-article').forEach(article => {
+        const source = article.dataset.source;
+        article.style.display = activeSources.includes(source) ? 'block' : 'none';
+    });
 } 
