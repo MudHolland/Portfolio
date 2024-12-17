@@ -86,6 +86,10 @@ html, body {
 	z-index:-10;
 	overflow:hidden;
 	scroll-behavior: smooth;
+	word-break: normal;
+	hyphens: auto; 
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto; 
 }
 
 body{
@@ -215,6 +219,8 @@ header {
 	align-items: center;
 	text-align: center;
 	z-index: -2;
+	margin:0 auto;
+	padding-inline:1rem;
 	/* transform-style: preserve-3d; */
 
 	.header-img {
@@ -324,6 +330,7 @@ footer{
 
 main{
 	width: min(100%, 48rem);
+	padding-inline: 1rem;
 }
 
 article{
@@ -602,6 +609,14 @@ h3{
 
 h4{
 	/* color:var(--random-color-150); */
+	margin-top:1rem;
+	font-weight:700;
+	text-transform: uppercase;
+	font-size:0.75rem;
+}
+
+h5{
+	/* color:var(--random-color-150); */
     display: flex;
     align-items: center;
     text-align: center;
@@ -614,27 +629,19 @@ h4{
 	padding-bottom:0.5rem;
 }
 
-h4::before,
-h4::after {
+h5::before,
+h5::after {
     content: "";
     flex: 1;
     border-bottom: 0.1rem solid var(--text-color);
 }
 
-h4::before {
+h5::before {
     margin-right: 0.5rem;
 }
 
-h4::after {
+h5::after {
     margin-left: 0.25rem;
-}
-
-h5{
-	/* color:var(--random-color-150); */
-	margin-top:1rem;
-	font-weight:700;
-	text-transform: uppercase;
-	font-size:0.75rem;
 }
 p{
 	font-weight:400;
@@ -1018,8 +1025,7 @@ button{
 }
 
 .card-featured{
-
-
+	position:relative;
 	flex-direction: column;
 	/* background-color: var(--blue-150); */
 	/* color:var(--white); */
@@ -1033,6 +1039,20 @@ button{
 		background-color: var(--blue-200);
 		color:white;	
 	} */
+}
+
+.card-featured::after{
+	position:absolute;
+	top:1rem;
+	left:1rem;
+	content:'uitgelicht';
+	color:var(--text-color);
+	background-color:var(--blue-025);
+	font-size:0.75rem;
+	padding:0.25rem 0.75rem;
+	font-weight:400;
+	border-radius:1rem;
+	box-shadow:0 var(--shadow-size-m) 0 var(--element-shadow-color);
 }
 
 table{
@@ -1078,4 +1098,38 @@ tr:nth-child(odd){
 
 td:first-child {
 	font-weight: 700;
+}
+
+@media screen and (max-width:768px){
+	article{
+		padding:1rem;
+		width: calc(100% - 2rem);
+	}
+
+	.card{
+		flex-direction: column;
+
+		img{
+			width:100%;
+			height:15rem;
+		}
+	}
+
+	footer{
+		.content{
+			padding-inline:1rem;
+		}
+	}
+	
+	nav,footer{
+		.content{
+			padding-inline:1rem;
+		}
+	}
+
+	.card-featured{
+		img{
+			height:20rem;
+		}
+	}
 }
