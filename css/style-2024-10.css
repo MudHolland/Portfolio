@@ -1034,3 +1034,49 @@ button{
 		color:white;	
 	} */
 }
+
+table{
+    border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+	width:100%;
+	margin-bottom:1rem;
+}
+
+th{
+	background-color: var(--text-color);
+	color:var(--bg-color);
+	font-weight:700;
+}
+
+th:first-child {
+    border-radius: 0.5rem 0 0 0;
+}
+
+th:last-child {
+    border-radius: 0 0.5rem 0 0;
+}
+
+th:only-child{
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+table,
+th,
+td{
+	text-align:left;
+	padding:0.5rem;
+}
+
+tr:last-child{
+	border-bottom: 0.125rem solid var(--text-color);
+}
+
+tr:nth-child(odd){
+	background-color:var(--bg-color);
+	
+}
+
+
+td:first-child {
+	font-weight: 700;
+}
