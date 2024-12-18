@@ -182,8 +182,7 @@ footer{
 		align-items: center;
 	}
 
-
-	.logo {
+	.logo svg{
 		padding:1.5rem 3rem;
 		margin:-1.5rem -3rem;
 		fill: var(--text-color);
