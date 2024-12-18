@@ -1,3 +1,3 @@
-ErrorDocument 404 /index.html
-
 Redirect 301 /school/M6-BTH/Multidisciplinair-en-projectmatig/ /blog/2023-01-arnhem-multidisciplinair-1-10-100/
+
+ErrorDocument 404 /index.html
