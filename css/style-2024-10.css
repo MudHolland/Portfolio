@@ -286,16 +286,6 @@ header {
 		/* text-shadow: 0.125rem 0.125rem 10px rgba(0, 0, 0, 0.5); */
 		/* transform: translateZ(-0.5rem) scale(1.5); */
 
-		h1{
-			/* rotate: -5deg; */
-			line-height:1.1;
-			letter-spacing: -0.125rem;
-			color:var(--blue-150);
-			text-shadow: 0 var(--shadow-size-m) var(--blue-200);
-			padding-inline:1rem;
-			z-index:10;
-		}
-
 		.subtitle{
 			font-size:1rem;
 		}
@@ -575,13 +565,17 @@ i,em{
 
 h1,h2,h3,h4,h5,h6{
 	text-transform: capitalize;
+	text-wrap:balance;
 }
 
 h1{
 	color:var(--blue-150);
 	font-weight:700;
 	font-size:clamp(4rem, 10vw, 6rem);
-	line-height:1.2;
+	line-height:1.1;
+	letter-spacing: -0.125rem;
+	text-shadow: 0 var(--shadow-size-m) var(--blue-200);
+	z-index:10;
 }
 
 .subtitle{
@@ -1131,5 +1125,14 @@ td:first-child {
 		img{
 			height:20rem;
 		}
+	}
+
+	h1{
+		font-size: 3rem;
+		text-shadow: 0 var(--shadow-size-s) 0 var(--blue-200);
+	}
+
+	h2{
+		font-size:2rem;
 	}
 }
