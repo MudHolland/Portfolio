@@ -45,6 +45,13 @@
     });
   }
 
+  document.querySelectorAll(".quote").forEach((quote) => {
+    const bigText = quote.getAttribute("big-text");
+    if (!bigText) {
+      quote.setAttribute("big-text", "“"); // Fallback to quotation marks
+    }
+  });
+
   async function handleImageAspectRatio(figureElement) {
     const imgElement = figureElement.querySelector('img');
     await loadImage(imgElement);
@@ -56,6 +63,23 @@
       figureElement.classList.add('half-width');
     }
   }
+
+  function addExternalLinkClass() {
+    // Get all anchor elements on the page
+    const links = document.querySelectorAll('a');
+
+    // Iterate over each link
+    links.forEach(link => {
+        // Check if the link's hostname is different from the current hostname
+        if (link.hostname && link.hostname !== window.location.hostname) {
+            // Add the 'external' class
+            link.classList.add('external');
+        }
+    });
+}
+
+// Call the function after the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', addExternalLinkClass);
 
   document.addEventListener("DOMContentLoaded", function () {
     const figureElements = document.querySelectorAll('figure');
