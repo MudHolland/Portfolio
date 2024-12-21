@@ -16,8 +16,8 @@
 	--dark-blue:	hsl(200, 100%, 13%);
 	
 	--shadow-size-m:		0.25rem;	
-	--shadow-size-s:		calc(var(--shadow-size-m) * 2);
-	--shadow-size-l:		calc(var(--shadow-size-m) / 2);
+	--shadow-size-s:		calc(var(--shadow-size-m) / 2);
+	--shadow-size-l:		calc(var(--shadow-size-m) * 2);
 
 	--border-radius-m:		0.5rem;
 	--border-radius-l:		calc(var(--border-radius-m) * 2);
@@ -434,9 +434,9 @@ h1,h2,h3,h4,h5,h6{
 
 h1{
 	color:var(--text-color);
-	font-size:clamp(4rem, 10vw, 8rem);
+	font-size:clamp(4rem, 5vw, 6rem);
 	line-height:1.1;
-	text-shadow: var(--shadow-size-m) var(--shadow-size-m) var(--element-bg-color);
+	text-shadow: var(--shadow-size-s) var(--shadow-size-s) var(--element-bg-color);
 	z-index:10;
 }
 
