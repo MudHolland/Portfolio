@@ -23,6 +23,40 @@ document.addEventListener('scroll', function() {
     }
 });
 
+const h1Element = document.querySelector('h1');
+
+// Track taps and timing
+let tapCount = 0;
+let lastTapTime = 0;
+
+// Function to switch stylesheets
+function switchStylesheet() {
+    const stylesheet = document.querySelector('link[rel="stylesheet"][href*="style"]');
+    if (stylesheet) {
+        const currentHref = stylesheet.getAttribute('href');
+        const newHref = currentHref === '/css/style-2024-10.css' ? '/css/style-2024-12.css' : '/css/style-2024-10.css';
+        stylesheet.setAttribute('href', newHref);
+    }
+}
+
+// Handle tap events
+h1Element.addEventListener('click', () => {
+    const currentTime = new Date().getTime();
+
+    // Reset tap count if too much time has passed since the last tap
+    if (currentTime - lastTapTime > 500) {
+        tapCount = 0;
+    }
+
+    tapCount++;
+    lastTapTime = currentTime;
+
+    // Switch stylesheet if tapped 3 times quickly
+    if (tapCount === 3) {
+        switchStylesheet();
+        tapCount = 0; // Reset the tap count after switching
+    }
+});
 
 
 

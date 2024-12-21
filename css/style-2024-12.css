@@ -762,12 +762,12 @@ button:disabled{
 		opacity: 1;
 	}
 
-	.opening{
+	p{
 		font-weight:400;
 		display: -webkit-box;       
 		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 5;     
-		line-clamp: 5;     
+		-webkit-line-clamp: 7;     
+		line-clamp: 7;     
 		overflow: hidden;          
 		text-overflow: ellipsis; 
 	}
@@ -925,6 +925,16 @@ table{
 	.card-featured{
 		img{
 			height:20rem;
+		}
+
+		h3 {
+			-webkit-line-clamp: unset;     
+			line-clamp: unset;    
+		}
+	
+		p{
+			-webkit-line-clamp: unset;     
+			line-clamp: unset;     
 		}
 	}
 
