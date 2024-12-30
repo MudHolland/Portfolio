@@ -59,7 +59,7 @@
     const image = new Image();
     image.src = imgElement.src;
 
-    if (image.height * 1.1 >= image.width) {
+    if (image.height > image.width) {
       figureElement.classList.add('half-width');
     }
   }

@@ -1,11 +1,504 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0;url=/project/reken-maar/">
-    <link rel="canonical" href="/project/reken-maar/">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVX0SD01YQ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WVX0SD01YQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/ico" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/m1-lwg2-dudesign-logo.png">
+    <title>Tafels Oefenen</title>
+    <style>
+        body {
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 50px;
+            transition:all 200ms;
+        }
+        h1 {
+            font-weight:700;
+            color: #ff4500;
+        }
+        label, p {
+            font-size: 1.2em;
+        }
+        /* .table-input-group {
+            margin: 10px 0;
+        }
+        .table-input-group input {
+            padding: 10px;
+            font-size: 1.2em;
+            border: 2px solid #ff4500;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .table-input-group button {
+            background-color: #ff4500;
+            color: #fff;
+            padding: 10px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        } */
+        .table-input-group button:not(:disabled):hover {
+            background-color: #ff6347;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        input[type="number"], input[type="text"] {
+            padding: 10px;
+            font-size: 1.2em;
+            border: 2px solid #ff4500;
+            border-radius: 5px;
+            margin-top: 5px;
+            width: calc(100% - 24px);
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #ff4500;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition:all 200ms;
+        }
+        button:not(:disabled):hover {
+            background-color: #ff6347;
+        }
+        button:disabled {
+            background-color: grey;
+            cursor:not-allowed;
+        } 
+        #intro, #quiz, #result {
+            background-color: #fffacd;
+            border: 2px solid #ff4500;
+            border-radius: 10px;
+            padding: 20px;
+            display: inline-block;
+            max-width:600px;
+            margin: 20px auto;
+        }
+        @media only screen and (max-width: 512px) {
+            body  {
+                padding:0px;
+            }
+        }
+        ul {
+            list-style-type: none;
+            background: lightgreen;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ff4500;
+        }
+        li {
+            padding: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            text-align: center;
+        }
+
+        ul li {
+            display: flex;
+            justify-content: center;  /* Center both the circle and the text */
+            align-items: center;
+            padding-left: 0;
+            position: relative;
+        }
+
+        ul li::before {
+            content: counter(list-item);
+            counter-increment: list-item;
+            background-color: white;
+            color: black;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border: 2px solid white;
+            margin-right: 10px; /* Add spacing between the circle and text */
+        }
+        /* Gold for 1st place */
+        ul li:nth-child(1)::before {
+            background-color: gold;
+        }
+
+        /* Silver for 2nd place */
+        ul li:nth-child(2)::before {
+            background-color: silver;
+        }
+
+        /* Bronze for 3rd place */
+        ul li:nth-child(3)::before {
+            background-color: #cd7f32; /* Bronze color */
+        }
+        .outline:not(:disabled){ 
+            box-shadow: 0px 0px 0px 2px #ff4500 inset;
+            background-color: transparent;
+            color: #ff4500;
+        }
+        .outline:not(:disabled):hover{ 
+            background-color: #ff6347;
+            color:white;
+        }
+    </style>
+    <script>
+        let startTime;
+        let currentIndex = 0;
+        let tableNumber;
+        let problems = [];
+        let playerName;
+        let randomOrder = false;
+        let tableCount = 1;
+        let maxTables = 5;
+        let mistakes = 0; 
+
+        const highScores = [];
+
+        function updateButtons() {
+            // Disable the "+" button if there are 3 table fields, enable otherwise
+            document.getElementById('add-table').disabled = tableCount >= maxTables;
+            
+            // Disable the "-" button if there is only 1 table field, enable otherwise
+            document.getElementById('remove-table').disabled = tableCount <= 1;
+        }
+
+        function addTableField() {
+            if (tableCount < maxTables) {
+                tableCount++;
+                const tablesContainer = document.getElementById('tables-container');
+                const newField = document.createElement('div');
+                newField.classList.add('table-input-group');
+                newField.innerHTML = `<input type="number" id="table-number-${tableCount}" placeholder="Tafel ${tableCount}">`;
+                
+                // Insert the new field before the "+" button
+                tablesContainer.appendChild(newField);
+                
+                updateButtons();  // Update the button states
+            }
+        }
+
+        function removeTableField() {
+            if (tableCount > 1) {
+                const lastField = document.querySelector(`#table-number-${tableCount}`).parentElement;
+                lastField.remove();
+                tableCount--;
+                updateButtons();  // Update the button states
+            }
+        }
+
+        function start() {
+            mistakes = 0;  // Reset the mistake count
+            playerName = document.getElementById('player-name').value.trim();
+            const tableNumbers = [];
+            for (let i = 1; i <= tableCount; i++) {
+                const tableInput = document.getElementById(`table-number-${i}`);
+                const tableValue = parseInt(tableInput.value);
+                if (!isNaN(tableValue) && tableValue > 0) {
+                    tableNumbers.push(tableValue);
+                }
+            }
+            randomOrder = document.getElementById('random-order').checked;
+            if (!playerName) {
+                alert("Voer je naam in.");
+                return;
+            }
+            if (tableNumbers.length === 0) {
+                alert("Voer ten minste één geldige tafel in.");
+                return;
+            }
+            problems = [];
+            tableNumbers.forEach(tableNumber => {
+                for (let i = 1; i <= 10; i++) {
+                    problems.push({x: tableNumber, y: i});
+                }
+            });
+            problems = problems.sort(() => Math.random() - 0.5);
+            currentIndex = 0;
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('quiz').style.display = 'block';
+            startTime = new Date();
+            showProblem();
+        }
+
+        function showProblem() {
+            const problem = problems[currentIndex];
+            let question;
+            if (randomOrder && Math.random() > 0.5) {
+                question = `${problem.x} x ${problem.y}`;
+            } else {
+                question = `${problem.y} x ${problem.x}`;
+            }
+            document.getElementById('problem').textContent = `${question} = `;
+            document.getElementById('answer').value = '';
+            document.getElementById('answer').focus();
+        }
+
+        function checkAnswer() {
+            const problem = problems[currentIndex];
+            const correctAnswer = problem.x * problem.y;
+            const userAnswer = parseInt(document.getElementById('answer').value);
+
+            if (userAnswer === correctAnswer) {
+                currentIndex++;
+                if (currentIndex >= problems.length) {
+                    endQuiz();
+                } else {
+                    showProblem();
+                }
+            } else {
+                mistakes++; // Increment mistakes counter
+                alert("Fout antwoord, probeer het opnieuw.");
+                document.getElementById('answer').value = '';
+                document.getElementById('answer').focus();
+            }
+        }
+
+        function endQuiz() {
+            const endTime = new Date();
+            const timeTaken = ((endTime - startTime) / 1000).toFixed(1);
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('time-taken').innerHTML = `Je hebt de sommen gemaakt in <b>${timeTaken}</b> sec. met <b>${getMistakeText(mistakes)}</b>.`;
+            
+        // Motivational message based on performance
+        let message = '';
+
+        // Messages for less than 40 seconds and no mistakes
+        const positiveMessages = [
+            'Goed gedaan!', 
+            'Lekker bezig!', 
+            'Knap gedaan!', 
+            'Geweldig!', 
+            'Topprestatie!'
+        ];
+
+        // Messages for longer times or some mistakes
+        const encouragingMessages = [
+            'Dat gaat de goede kant op!', 
+            'Je wordt steeds beter!', 
+            'Probeer nog een keer en zie hoe goed je kunt zijn!', 
+            'Je bent goed op weg!', 
+            'Goed gewerkt, probeer het nog eens!'
+        ];
+
+        // Messages for faster performance with no mistakes
+        const fasterMessages = [
+            'Goed, probeer er tempo in te krijgen!', 
+            'Geen fouten! Probeer tempo te maken!', 
+            'Probeer nog een keer en zie hoe snel je kunt zijn!', 
+            'Je bent goed op weg!', 
+            'Goed gewerkt, probeer het nog eens en kijk of je sneller kunt gaan!'
+        ];
+
+        // Messages for a lot of mistakes or long time
+        const practiceMessages = [
+            'Oefening baart kunst.', 
+            'Goed oefenen en dan heb je het zo onder de knie.', 
+            'Blijf oefenen en je wordt er steeds beter in!', 
+            'Iedere poging maakt je beter!', 
+            'Blijven proberen, dan haal je het!'
+        ];
+
+        // Bereken tijd per tafel
+        const tablesCount = problems.length / 10;  // Aantal tafels berekend aan de hand van het aantal sommen gedeeld door 10
+        const timePerTableLimit = 40 * tablesCount;  // Basis tijdslimiet per tafel
+        const mistakePerTableLimit = 1 * tablesCount;  // Basis foutenlimiet per tafel
+
+        // Bepaal welk bericht getoond moet worden op basis van prestaties
+        if (timeTaken <= timePerTableLimit && mistakes <= mistakePerTableLimit) {
+            // Great performance
+            message = positiveMessages[Math.floor(Math.random() * positiveMessages.length)];
+        } else if (timeTaken > timePerTableLimit * 1.5 && mistakes <= mistakePerTableLimit) {
+            // Good, but could be faster
+            message = fasterMessages[Math.floor(Math.random() * fasterMessages.length)];
+        } else if (timeTaken > timePerTableLimit || mistakes <= mistakePerTableLimit * 1.5) {
+            // Room for improvement
+            message = encouragingMessages[Math.floor(Math.random() * encouragingMessages.length)];
+        } else if (timeTaken > timePerTableLimit * 3 || mistakes > mistakePerTableLimit * 2) {
+            // Needs more practice
+            message = practiceMessages[Math.floor(Math.random() * practiceMessages.length)];
+        }
+
+            document.getElementById('mistakes').innerHTML = `<b>${message}</b>`;
+            
+            const tableNumbers = [];
+            for (let i = 1; i <= tableCount; i++) {
+                const tableInput = document.getElementById(`table-number-${i}`);
+                const tableValue = parseInt(tableInput.value);
+                if (!isNaN(tableValue) && tableValue > 0) {
+                    tableNumbers.push(tableValue);
+                }
+            }
+            updateHighScores(playerName, tableNumbers, timeTaken, mistakes); // Pass mistakes to high scores
+        }
+
+        function updateHighScores(name, tables, time, mistakes) {
+            let combinedTables;
+
+            if (tables.length === 1) {
+                combinedTables = `Tafel van ${tables[0]}`;
+            } else if (tables.length === 2) {
+                combinedTables = `Tafel van ${tables[0]} en ${tables[1]}`;
+            } else {
+                combinedTables = `Tafel van ${tables.slice(0, -1).join(', ')} en ${tables[tables.length - 1]}`;
+            }
+
+            highScores.push({name: name, table: combinedTables, time: parseFloat(time), mistakes: mistakes});
+
+            highScores.sort((a, b) => a.time - b.time);
+
+            if (highScores.length > 10) {
+                highScores.pop();
+            }
+
+            displayHighScores();
+        }
+
+        function getMistakeText(mistakes) {
+            return mistakes === 1 ? '1 fout' : `${mistakes} fouten`;
+        }
+
+        function displayHighScores() {
+            const highScoresListIntro = document.getElementById('high-scores-list-intro');
+            const highScoresListResult = document.getElementById('high-scores-list-result');
+            highScoresListIntro.innerHTML = '';
+            highScoresListResult.innerHTML = '';
+            
+            if (highScores.length > 0) {
+                document.getElementById('high-scores-intro').style.display = 'block';
+                document.getElementById('high-scores-result').style.display = 'block';
+            } else {
+                document.getElementById('high-scores-intro').style.display = 'none';
+                document.getElementById('high-scores-result').style.display = 'none';
+            }
+            
+            highScores.forEach((score, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${score.name} - ${score.table} - ${getMistakeText(score.mistakes)} - ${score.time.toFixed(1)} sec.`;
+                highScoresListIntro.appendChild(li.cloneNode(true));
+                highScoresListResult.appendChild(li);
+            });
+        }
+
+
+        function resetQuiz() {
+            mistakes = 0;  // Reset the mistake count
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('intro').style.display = 'block';
+            document.getElementById('table-number').value = '';
+            document.getElementById('player-name').value = '';
+            displayHighScores();
+        }
+
+        function restartQuiz() {
+            mistakes = 0;  // Reset the mistake count for the new attempt
+            currentIndex = 0;  // Reset the current question index
+            startTime = new Date();  // Restart the timer
+
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('quiz').style.display = 'block';
+            
+            showProblem();  // Show the first problem
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('answer').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+            document.getElementById('table-number').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    start();
+                }
+            });
+            document.getElementById('player-name').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    start();
+                }
+            });
+            displayHighScores();
+        });
+    </script>
 </head>
 <body>
-    <p>Redirecting to <a href="/project/reken-maar/">/project/reken-maar/</a>...</p>
+    <div id="intro">
+        <h1>Tafels Oefenen</h1>
+        <div class="input-group">
+            <label for="player-name">Wat is je naam? </label>
+            <input type="text" id="player-name">
+        </div>
+        <div class="input-group">
+            <label for="table-number-1">Welke tafels wil je oefenen? </label>
+            <div class="table-input-group">
+                <div id="tables-container">
+                    <input type="number" id="table-number-1" placeholder="Tafel 1">
+                </div>
+                <label for="table-number-1">Meer/minder tafels? </label>
+                <button type="button" class="outline" id="remove-table" onclick="removeTableField()" disabled>-</button>
+                <button type="button" class="outline" id="add-table" onclick="addTableField()">+</button>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="random-order">Wisselende plek (5 x 3 en 3 x 5)? </label>
+            <input type="checkbox" id="random-order">
+        </div>
+        <button onclick="start()">Start</button>
+        <div id="high-scores-intro" style="display: none;">
+            <h2>High Scores</h2>
+            <ul id="high-scores-list-intro"></ul>
+        </div>
+    </div>
+
+    <div id="quiz" style="display: none;">
+        <h1>Tafels Oefenen</h1>
+        <div id="problem"></div>
+        <input type="number" id="answer" inputmode="numeric" pattern="[0-9]*">
+        <br>
+        <button onclick="checkAnswer()">Controleer</button>
+    </div>
+
+    <div id="result" style="display: none;">
+        <h1>Resultaat</h1>
+        <p id="time-taken"></p>
+        <p id="mistakes"></p> <!-- Display number of mistakes here -->
+        <button onclick="resetQuiz()" class="outline" >Instellen</button>
+        <button onclick="restartQuiz()">Nog een keer</button>
+        <div id="high-scores-result" style="display: none;">
+            <h2>High Scores</h2>
+            <ul id="high-scores-list-result"></ul>
+        </div>
+    </div>
+    
+
+    <!-- <div id="result" style="display: none;">
+        <h1>Resultaat</h1>
+        <p id="time-taken"></p>
+        <button onclick="resetQuiz()">Opnieuw</button>
+        <div id="high-scores-result" style="display: none;">
+            <h2>High Scores</h2>
+            <ul id="high-scores-list-result"></ul>
+        </div>
+    </div> -->
 </body>
 </html>
